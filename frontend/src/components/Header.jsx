@@ -15,31 +15,31 @@ export const Header = () => {
   };
 
   return (
-    <header className="fixed top-0 left-0 right-0 z-50 bg-white/90 backdrop-blur-lg border-b border-gray-200">
+    <header className="fixed top-0 left-0 right-0 z-50 bg-black/80 backdrop-blur-xl border-b border-white/10">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between items-center h-16">
           {/* Logo */}
           <Link to="/" className="flex items-center space-x-2">
-            <div className="text-2xl font-bold text-gray-900">
+            <div className="text-2xl font-bold text-white">
               SayKee
             </div>
           </Link>
 
           {/* Desktop Navigation */}
           <nav className="hidden md:flex items-center space-x-1">
-            <Link to="/" className="px-4 py-2 text-gray-700 hover:text-blue-600 font-medium transition-colors rounded-lg hover:bg-blue-50">
+            <Link to="/" className="px-4 py-2 text-gray-300 hover:text-white font-medium transition-colors rounded-lg hover:bg-white/5">
               Accueil
             </Link>
-            <Link to="/about" className="px-4 py-2 text-gray-700 hover:text-blue-600 font-medium transition-colors rounded-lg hover:bg-blue-50">
+            <Link to="/about" className="px-4 py-2 text-gray-300 hover:text-white font-medium transition-colors rounded-lg hover:bg-white/5">
               À propos
             </Link>
-            <Link to="/trading" className="px-4 py-2 text-gray-700 hover:text-blue-600 font-medium transition-colors rounded-lg hover:bg-blue-50">
+            <Link to="/trading" className="px-4 py-2 text-gray-300 hover:text-blue-400 font-medium transition-colors rounded-lg hover:bg-blue-500/10">
               Trading
             </Link>
-            <Link to="/ecommerce" className="px-4 py-2 text-gray-700 hover:text-green-600 font-medium transition-colors rounded-lg hover:bg-green-50">
+            <Link to="/ecommerce" className="px-4 py-2 text-gray-300 hover:text-green-400 font-medium transition-colors rounded-lg hover:bg-green-500/10">
               E-commerce
             </Link>
-            <Link to="/contact" className="px-4 py-2 text-gray-700 hover:text-blue-600 font-medium transition-colors rounded-lg hover:bg-blue-50">
+            <Link to="/contact" className="px-4 py-2 text-gray-300 hover:text-white font-medium transition-colors rounded-lg hover:bg-white/5">
               Contact
             </Link>
           </nav>
@@ -48,15 +48,15 @@ export const Header = () => {
           <div className="hidden md:flex items-center space-x-3">
             {isLoggedIn ? (
               <>
-                <Button onClick={() => navigate("/dashboard")} variant="ghost" className="hover:bg-blue-50 hover:text-blue-600">
+                <Button onClick={() => navigate("/dashboard")} variant="ghost" className="hover:bg-white/5 text-gray-300 hover:text-white">
                   Dashboard
                 </Button>
-                <Button onClick={handleLogout} variant="outline" className="border-gray-300 hover:bg-gray-50">
+                <Button onClick={handleLogout} variant="outline" className="border-white/20 hover:bg-white/5 text-white">
                   Déconnexion
                 </Button>
               </>
             ) : (
-              <Button onClick={() => navigate("/login")} className="bg-blue-600 hover:bg-blue-700 text-white font-semibold">
+              <Button onClick={() => navigate("/login")} className="bg-blue-600 hover:bg-blue-500 text-white font-semibold">
                 Se connecter
               </Button>
             )}
@@ -65,7 +65,7 @@ export const Header = () => {
           {/* Mobile Menu Button */}
           <button
             onClick={() => setIsMenuOpen(!isMenuOpen)}
-            className="md:hidden text-gray-900 p-2 hover:bg-gray-100 rounded-lg transition-colors"
+            className="md:hidden text-white p-2 hover:bg-white/5 rounded-lg transition-colors"
           >
             {isMenuOpen ? <X size={24} /> : <Menu size={24} />}
           </button>
@@ -73,54 +73,54 @@ export const Header = () => {
 
         {/* Mobile Menu */}
         {isMenuOpen && (
-          <div className="md:hidden py-6 border-t border-gray-200">
+          <div className="md:hidden py-6 border-t border-white/10">
             <nav className="flex flex-col space-y-1">
               <Link
                 to="/"
-                className="px-4 py-3 text-gray-700 hover:text-blue-600 font-medium rounded-lg hover:bg-blue-50 transition-colors"
+                className="px-4 py-3 text-gray-300 hover:text-white font-medium rounded-lg hover:bg-white/5 transition-colors"
                 onClick={() => setIsMenuOpen(false)}
               >
                 Accueil
               </Link>
               <Link
                 to="/about"
-                className="px-4 py-3 text-gray-700 hover:text-blue-600 font-medium rounded-lg hover:bg-blue-50 transition-colors"
+                className="px-4 py-3 text-gray-300 hover:text-white font-medium rounded-lg hover:bg-white/5 transition-colors"
                 onClick={() => setIsMenuOpen(false)}
               >
                 À propos
               </Link>
               <Link
                 to="/trading"
-                className="px-4 py-3 text-gray-700 hover:text-blue-600 font-medium rounded-lg hover:bg-blue-50 transition-colors"
+                className="px-4 py-3 text-gray-300 hover:text-blue-400 font-medium rounded-lg hover:bg-blue-500/10 transition-colors"
                 onClick={() => setIsMenuOpen(false)}
               >
                 Trading
               </Link>
               <Link
                 to="/ecommerce"
-                className="px-4 py-3 text-gray-700 hover:text-green-600 font-medium rounded-lg hover:bg-green-50 transition-colors"
+                className="px-4 py-3 text-gray-300 hover:text-green-400 font-medium rounded-lg hover:bg-green-500/10 transition-colors"
                 onClick={() => setIsMenuOpen(false)}
               >
                 E-commerce
               </Link>
               <Link
                 to="/contact"
-                className="px-4 py-3 text-gray-700 hover:text-blue-600 font-medium rounded-lg hover:bg-blue-50 transition-colors"
+                className="px-4 py-3 text-gray-300 hover:text-white font-medium rounded-lg hover:bg-white/5 transition-colors"
                 onClick={() => setIsMenuOpen(false)}
               >
                 Contact
               </Link>
               {isLoggedIn ? (
                 <>
-                  <Button onClick={() => { navigate("/dashboard"); setIsMenuOpen(false); }} variant="ghost" className="w-full justify-start hover:bg-blue-50">
+                  <Button onClick={() => { navigate("/dashboard"); setIsMenuOpen(false); }} variant="ghost" className="w-full justify-start hover:bg-white/5 text-gray-300">
                     Dashboard
                   </Button>
-                  <Button onClick={handleLogout} variant="outline" className="w-full border-gray-300 hover:bg-gray-50">
+                  <Button onClick={handleLogout} variant="outline" className="w-full border-white/20 hover:bg-white/5 text-white">
                     Déconnexion
                   </Button>
                 </>
               ) : (
-                <Button onClick={() => { navigate("/login"); setIsMenuOpen(false); }} className="w-full bg-blue-600 hover:bg-blue-700 text-white font-semibold mt-2">
+                <Button onClick={() => { navigate("/login"); setIsMenuOpen(false); }} className="w-full bg-blue-600 hover:bg-blue-500 text-white font-semibold mt-2">
                   Se connecter
                 </Button>
               )}

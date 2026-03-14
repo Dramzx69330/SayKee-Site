@@ -1,8 +1,8 @@
-/* SayKee Custom Styles - Modern with Natural Colors */
+/* SayKee Custom Styles - Dark Mode with Natural Colors */
 
 .App {
   min-height: 100vh;
-  background-color: #fafafa;
+  background-color: #0a0a0a;
 }
 
 /* Smooth transitions */
@@ -21,20 +21,7 @@ button:hover {
 
 .module-card:hover {
   transform: translateY(-3px);
-  box-shadow: 0 12px 24px rgba(0, 0, 0, 0.1);
-}
-
-/* Gradient backgrounds - subtle and natural */
-.gradient-bg-blue {
-  background: linear-gradient(135deg, #eff6ff 0%, #dbeafe 100%);
-}
-
-.gradient-bg-green {
-  background: linear-gradient(135deg, #f0fdf4 0%, #dcfce7 100%);
-}
-
-.gradient-bg-orange {
-  background: linear-gradient(135deg, #fff7ed 0%, #ffedd5 100%);
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.5);
 }
 
 /* Section spacing */
