@@ -8,26 +8,26 @@ export const SecretHomePage = () => {
   const scamTypes = [
     {
       icon: CreditCard,
-      title: "Carding & Fraude CB",
-      description: "Comment les escrocs volent et utilisent les données bancaires. Apprenez à reconnaître les signaux d'alerte.",
+      title: "Carding & Faux Conseillé",
+      description: "Le carding est une fraude qui consiste à utiliser des CC (cartes bancaires volées) pour faire des achats.",
       color: "red"
     },
     {
       icon: Mail,
-      title: "Phishing & Social Engineering",
-      description: "Les techniques de manipulation psychologique utilisées pour voler vos informations personnelles.",
+      title: "Social Engineering",
+      description: "Techniques de manipulation psychologique utilisées pour exploiter la confiance ou la peur d’une personne pour obtenir des informations sensibles",
       color: "orange"
     },
     {
       icon: Globe,
-      title: "Faux Sites & Dropshipping Arnaque",
-      description: "Comment identifier les boutiques frauduleuses et les vendeurs malhonnêtes.",
+      title: "Scama & Letter",
+      description: "Scama = Dossié contenant les fausses pages / Letter = Apercu du mail recus par la victime.",
       color: "yellow"
     },
     {
       icon: UserX,
       title: "Usurpation d'Identité",
-      description: "Protection contre le vol d'identité et les conséquences juridiques pour les victimes.",
+      description: "Technique pour se faire passer pour une personne ou une organisation légitime pour gagner la confiance de la victime et obtenir des informations sensibles.",
       color: "red"
     }
   ];
@@ -35,18 +35,18 @@ export const SecretHomePage = () => {
   const protectionTips = [
     {
       number: "01",
-      title: "Ne jamais partager vos codes",
-      description: "Aucune banque, aucun service légitime ne vous demandera jamais vos codes par téléphone ou email."
+      title: "VPN no log",
+      description: "Pour commencer il te faudras un VPN no log ( qui ne conserve aucune trace d'activité (connexions, IP, historique), EX : Mullvad"
     },
     {
       number: "02", 
-      title: "Vérifiez les URLs",
-      description: "Avant d'entrer des informations sensibles, vérifiez toujours que l'URL est correcte et sécurisée (https)."
+      title: "RDP",
+      description: "Un RDP c'est un protocole qui permet de se connecter à distance a un serveur et de le contrôler comme si on était directement devant. mais avec aucune donnée sur son reel PC"
     },
     {
       number: "03",
-      title: "Méfiez-vous des urgences",
-      description: "Les escrocs créent un sentiment d'urgence. Prenez toujours le temps de réfléchir avant d'agir."
+      title: "SENDER",
+      description: "Un sender c'est un outil pour envoyer des messages en masse (emails ou SMS) beaucoup de destinataires automatiquement. qu'on va détourné pour l’envoi de spam."
     }
   ];
 
@@ -63,7 +63,7 @@ export const SecretHomePage = () => {
             <div className="mb-8 flex items-center gap-3">
               <AlertTriangle className="text-red-500" size={24} />
               <span className="text-sm uppercase tracking-wider text-red-500 font-bold">
-                Face Cachée — Sensibilisation
+                Face Cachée — Escroquerie
               </span>
             </div>
             
@@ -73,8 +73,8 @@ export const SecretHomePage = () => {
             </h1>
             
             <p className="text-xl text-neutral-400 mb-12 max-w-2xl leading-relaxed">
-              Cette section existe pour une raison : <span className="text-white font-semibold">vous protéger</span>. 
-              Comprendre comment fonctionnent les arnaques est la meilleure défense contre elles. 
+              Cette section existe pour une raison : <span className="text-white font-semibold">vous faire bekter</span>. 
+              Comprendre comment fonctionnent l'escroquerie est la meilleure maniere de la reproduire. 
               Pas de glorification, juste de l'éducation.
             </p>
             
@@ -83,7 +83,7 @@ export const SecretHomePage = () => {
               <div>
                 <p className="text-white font-bold">Objectif : Prévention</p>
                 <p className="text-neutral-400 text-sm">
-                  Chaque arnaque que vous comprenez est une arnaque que vous pouvez éviter.
+                  Chaque arnaque que vous comprenez est une arnaque que vous pouvez reproduire.
                 </p>
               </div>
             </div>
@@ -107,10 +107,10 @@ export const SecretHomePage = () => {
         <div className="max-w-7xl mx-auto">
           <div className="mb-20">
             <h2 className="text-5xl md:text-6xl font-black text-white mb-4 tracking-tight">
-              Les arnaques les plus <span className="text-red-500">courantes</span>
+              Les maitrise en fin de <span className="text-red-500">formations</span>
             </h2>
             <p className="text-xl text-neutral-400 max-w-2xl">
-              Connaître l'ennemi pour mieux se défendre.
+              On commence directement.
             </p>
           </div>
 
@@ -159,9 +159,8 @@ export const SecretHomePage = () => {
                   <h3 className="text-xl font-bold text-white">Pourquoi cette section ?</h3>
                 </div>
                 <p className="text-neutral-400 leading-relaxed">
-                  J'ai vu trop de gens se faire arnaquer. Des proches, des connaissances, 
-                  des gens sur internet. L'ignorance est ce qui permet aux escrocs de prospérer. 
-                  En partageant ces connaissances, je veux inverser la tendance.
+                On dit que tout doit se mériter avec le temps et les efforts. Mais certains ne jouent pas selon ces règles. 
+                Ils observent le système, ses failles, et les opportunités que les autres refusent de voir.
                 </p>
               </div>
 
@@ -171,29 +170,30 @@ export const SecretHomePage = () => {
                   <h3 className="text-xl font-bold text-white">Ce que j'ai appris</h3>
                 </div>
                 <p className="text-neutral-400 leading-relaxed">
-                  Dans mon parcours en trading et e-commerce, j'ai croisé le pire comme le meilleur. 
-                  Les techniques que j'enseigne ici viennent de cette expérience — reconnaître les 
-                  signaux d'alerte avant qu'il ne soit trop tard.
+                  Dans ma vie, j'ai vécu le pire comme le meilleur. 
+                  Les tech que j'enseigne ici viennent de cette expérience — 
+                  monter dans le train avant de le voir passer.
                 </p>
               </div>
             </div>
 
             <div className="bg-red-950/20 border border-red-900/30 p-10">
               <h3 className="text-2xl font-black text-white mb-6">
-                Le message important
+                Avertissement important
               </h3>
               <div className="space-y-6">
                 <p className="text-neutral-300 leading-relaxed">
-                  L'argent facile n'existe pas. Quand quelqu'un vous promet des gains 
-                  rapides sans effort, fuyez. C'est le premier signe d'une arnaque.
+                Nous n’encourageons en aucun cas l’escroquerie, la fraude ou toute activité illégale. 
+                Le contenu présenté ici a uniquement pour objectif d’informer et de sensibiliser aux différentes techniques utilisées dans ce domaine.
                 </p>
                 <p className="text-neutral-300 leading-relaxed">
-                  Mes formations sur le trading et l'e-commerce demandent du travail, 
-                  du temps et de la persévérance. Ceux qui réussissent sont ceux qui 
-                  investissent dans leur éducation — pas dans des schémas douteux.
+                Les exemples, termes et situations évoqués sont utilisés dans un cadre éducatif et de prévention afin de mieux comprendre ces pratiques et de savoir les reconnaître.
+                 </p>
+                <p className="text-neutral-300 leading-relaxed">
+                  Chacun reste responsable de l’utilisation qu’il fait de ces informations. Notre objectif est d’informer, pas d’inciter.
                 </p>
                 <p className="text-white font-bold">
-                  Protégez-vous. Éduquez-vous. C'est la seule vraie stratégie.
+                  Protégez-vous. Éduquez-vous.
                 </p>
               </div>
             </div>
@@ -206,10 +206,10 @@ export const SecretHomePage = () => {
         <div className="max-w-7xl mx-auto">
           <div className="mb-20">
             <h2 className="text-5xl md:text-6xl font-black text-white mb-4 tracking-tight">
-              Comment se <span className="text-red-500">protéger</span>
+              Comment se <span className="text-red-500">préparer</span>
             </h2>
             <p className="text-xl text-neutral-400">
-              Les règles de base qui sauvent
+              Les prérequis de base
             </p>
           </div>
 
@@ -234,33 +234,30 @@ export const SecretHomePage = () => {
         <div className="max-w-7xl mx-auto">
           <div className="mb-20">
             <h2 className="text-5xl font-black text-white mb-4 tracking-tight">
-              Ressources <span className="text-red-500">utiles</span>
+              Ne pas <span className="text-red-500">RED</span>
             </h2>
             <p className="text-xl text-neutral-400">
-              Où signaler et se renseigner
+              Comment eviter de RED
             </p>
           </div>
 
           <div className="grid md:grid-cols-3 gap-8">
             <div className="bg-neutral-900 border border-neutral-800 p-8">
               <Phone className="text-red-500 mb-4" size={28} />
-              <h3 className="text-xl font-bold text-white mb-3">Info Escroqueries</h3>
-              <p className="text-neutral-400 text-sm mb-4">Numéro vert gratuit</p>
-              <p className="text-2xl font-black text-white">0 805 805 817</p>
+              <h3 className="text-xl font-bold text-white mb-3">Bonne Scama</h3>
+              <p className="text-neutral-400 text-lg mb-4">Pas de leak</p>
             </div>
 
             <div className="bg-neutral-900 border border-neutral-800 p-8">
               <Globe className="text-red-500 mb-4" size={28} />
-              <h3 className="text-xl font-bold text-white mb-3">Signal Spam</h3>
-              <p className="text-neutral-400 text-sm mb-4">Signaler un email frauduleux</p>
-              <p className="text-lg font-bold text-white">signal-spam.fr</p>
+              <h3 className="text-xl font-bold text-white mb-3">AB a jour</h3>
+              <p className="text-neutral-400 text-lg mb-4">Avoir les AB de sa scama a jour</p>
             </div>
 
             <div className="bg-neutral-900 border border-neutral-800 p-8">
               <Shield className="text-red-500 mb-4" size={28} />
-              <h3 className="text-xl font-bold text-white mb-3">Cybermalveillance</h3>
-              <p className="text-neutral-400 text-sm mb-4">Assistance et prévention</p>
-              <p className="text-lg font-bold text-white">cybermalveillance.gouv.fr</p>
+              <h3 className="text-xl font-bold text-white mb-3">NDD</h3>
+              <p className="text-neutral-400 text-lg mb-4">Avoir un NDD pas trop flag</p>
             </div>
           </div>
         </div>
