@@ -1,7 +1,10 @@
+import { useNavigate } from "react-router-dom";
 import { AlertTriangle, CreditCard, Shield, Eye, Lock, Fingerprint, Database } from "lucide-react";
 import { Button } from "../../components/ui/button";
 
 export const CardingPage = () => {
+  const navigate = useNavigate();
+
   const modules = [
     {
       id: 1,
@@ -92,7 +95,12 @@ export const CardingPage = () => {
                   <span className="text-xs uppercase tracking-wider text-neutral-500 font-medium">
                     {module.level}
                   </span>
-                  <Button variant="ghost" className="text-red-500 hover:text-red-400 hover:bg-red-950/30 p-0 h-auto font-semibold">
+                  <Button 
+                    onClick={() => navigate(`/secret/module/carding/${module.id}`)}
+                    variant="ghost" 
+                    className="text-red-500 hover:text-red-400 hover:bg-red-950/30 p-0 h-auto font-semibold"
+                    data-testid={`module-${module.id}-btn`}
+                  >
                     Commencer →
                   </Button>
                 </div>
