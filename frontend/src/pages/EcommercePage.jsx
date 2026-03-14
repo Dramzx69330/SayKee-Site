@@ -1,192 +1,468 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "../components/ui/card";
 import { Button } from "../components/ui/button";
-import { Badge } from "../components/ui/badge";
-import { Progress } from "../components/ui/progress";
-import { Clock, Play, FileText, HelpCircle, ArrowRight } from "lucide-react";
-import { ecommerceModules } from "../mockData";
+import { BookOpen, Brain, ShoppingCart, Trophy, ChevronRight, CheckCircle, XCircle, ArrowRight, Download, Gamepad2, Package, TrendingUp } from "lucide-react";
 
 export const EcommercePage = () => {
   const navigate = useNavigate();
-  const [modules] = useState(ecommerceModules);
   const isLoggedIn = localStorage.getItem("isLoggedIn") === "true";
+  
+  // Quiz state
+  const [showQuiz, setShowQuiz] = useState(false);
+  const [currentQuestion, setCurrentQuestion] = useState(0);
+  const [score, setScore] = useState(0);
+  const [showResult, setShowResult] = useState(false);
+  const [selectedAnswer, setSelectedAnswer] = useState(null);
 
-  const getModuleIcon = (type) => {
-    switch (type) {
-      case "video":
-        return <Play size={16} />;
-      case "article":
-        return <FileText size={16} />;
-      case "quiz":
-        return <HelpCircle size={16} />;
-      case "exercise":
-        return <FileText size={16} />;
-      default:
-        return <Play size={16} />;
+  // Product finder game
+  const [showProductGame, setShowProductGame] = useState(false);
+  const [productStep, setProductStep] = useState(0);
+  const [productResult, setProductResult] = useState(null);
+
+  const ebooks = [
+    {
+      id: 1,
+      title: "Lancer sa Boutique",
+      description: "De zéro à ta première vente. Je te montre tout : choix de niche, création de boutique, premiers produits.",
+      level: "Débutant",
+      chapters: ["Trouver ta niche", "Shopify vs WooCommerce", "Créer ta boutique", "Tes premiers produits"],
+      color: "emerald"
+    },
+    {
+      id: 2,
+      title: "Trouver des Produits Gagnants",
+      description: "Le secret c'est le produit. Je te donne mes méthodes pour trouver des winners à tous les coups.",
+      level: "Intermédiaire",
+      chapters: ["Les critères d'un winner", "Où chercher", "Analyser la concurrence", "Tester sans se ruiner"],
+      color: "emerald"
+    },
+    {
+      id: 3,
+      title: "Facebook Ads Masterclass",
+      description: "Les pubs Facebook, c'est l'arme fatale du e-commerce. Apprends à créer des pubs qui convertissent.",
+      level: "Avancé",
+      chapters: ["Structure de campagne", "Ciblage qui marche", "Créatifs qui convertissent", "Scaler sans tout cramer"],
+      color: "emerald"
     }
+  ];
+
+  const quizQuestions = [
+    {
+      question: "C'est quoi le dropshipping ?",
+      options: ["Vendre ses propres produits", "Vendre sans stock", "Acheter en gros", "Vendre sur Amazon"],
+      correct: 1,
+      explanation: "Tu vends, le fournisseur expédie direct au client. Zéro stock, zéro galère."
+    },
+    {
+      question: "Le CPM en pub, ça veut dire quoi ?",
+      options: ["Coût par Message", "Coût pour Mille impressions", "Clics par Minute", "Conversions par Mois"],
+      correct: 1,
+      explanation: "CPM = Coût pour 1000 impressions. C'est ce que tu paies pour être vu."
+    },
+    {
+      question: "C'est quoi un bon taux de conversion ?",
+      options: ["0.1%", "1-3%", "10%", "50%"],
+      correct: 1,
+      explanation: "Entre 1 et 3%, t'es dans la moyenne. Au-dessus de 3%, t'es un boss."
+    },
+    {
+      question: "AOV, ça veut dire quoi ?",
+      options: ["Average Order Value", "All Online Views", "Ads Optimization Value", "Account Overview"],
+      correct: 0,
+      explanation: "Average Order Value = panier moyen. Plus il est haut, plus tu gagnes."
+    },
+    {
+      question: "Pour tester un produit, tu mets combien en pub ?",
+      options: ["10€", "50-100€", "500€", "1000€"],
+      correct: 1,
+      explanation: "50-100€ c'est le sweet spot pour avoir assez de data sans te ruiner."
+    }
+  ];
+
+  const productQuestions = [
+    {
+      question: "Tu veux vendre quoi ?",
+      options: [
+        { label: "Gadgets & Tech", value: "tech" },
+        { label: "Mode & Accessoires", value: "fashion" },
+        { label: "Maison & Déco", value: "home" },
+        { label: "Sport & Fitness", value: "sport" }
+      ]
+    },
+    {
+      question: "Ta cible principale ?",
+      options: [
+        { label: "18-25 ans", value: "young" },
+        { label: "25-35 ans", value: "adult" },
+        { label: "35-50 ans", value: "mature" },
+        { label: "Tout le monde", value: "all" }
+      ]
+    },
+    {
+      question: "Ton budget pub pour démarrer ?",
+      options: [
+        { label: "Moins de 100€", value: "low" },
+        { label: "100-500€", value: "medium" },
+        { label: "500€+", value: "high" },
+        { label: "Je sais pas encore", value: "unknown" }
+      ]
+    }
+  ];
+
+  const productResults = {
+    tech: "Les gadgets tech marchent bien avec les 18-35 ans. Focus sur les produits qui résolvent un problème du quotidien. Évite les trucs trop chers au début.",
+    fashion: "La mode c'est top mais ultra concurrentiel. Trouve un angle unique (éco-responsable, streetwear, minimaliste). Les accessoires ont souvent de meilleures marges.",
+    home: "La déco maison, c'est un marché en or. Les gens veulent des trucs uniques. Mise sur Pinterest et Facebook pour le trafic.",
+    sport: "Le fitness c'est evergreen. Les gens achètent toute l'année. Focus sur les accessoires plutôt que les vêtements au début."
   };
 
-  const getLevelColor = (level) => {
-    switch (level) {
-      case "Débutant":
-        return "bg-green-900/50 text-green-300 border-green-700";
-      case "Intermédiaire":
-        return "bg-yellow-900/50 text-yellow-300 border-yellow-700";
-      case "Avancé":
-        return "bg-red-900/50 text-red-300 border-red-700";
-      default:
-        return "bg-gray-900/50 text-gray-300 border-gray-700";
+  const handleAnswer = (index) => {
+    setSelectedAnswer(index);
+    if (index === quizQuestions[currentQuestion].correct) {
+      setScore(score + 1);
     }
+    
+    setTimeout(() => {
+      if (currentQuestion < quizQuestions.length - 1) {
+        setCurrentQuestion(currentQuestion + 1);
+        setSelectedAnswer(null);
+      } else {
+        setShowResult(true);
+      }
+    }, 1500);
   };
 
-  const handleModuleClick = (moduleId) => {
-    if (!isLoggedIn) {
-      navigate("/login");
+  const handleProductAnswer = (value) => {
+    if (productStep === 0) {
+      setProductResult(value);
+    }
+    
+    if (productStep < productQuestions.length - 1) {
+      setProductStep(productStep + 1);
     } else {
-      navigate(`/module/ecommerce/${moduleId}`);
+      setProductStep(-1); // Show result
     }
+  };
+
+  const resetQuiz = () => {
+    setCurrentQuestion(0);
+    setScore(0);
+    setShowResult(false);
+    setSelectedAnswer(null);
+    setShowQuiz(false);
+  };
+
+  const resetProductGame = () => {
+    setProductStep(0);
+    setProductResult(null);
+    setShowProductGame(false);
   };
 
   return (
-    <div className="min-h-screen pt-16">
-      {/* Hero Section */}
-      <section className="relative overflow-hidden bg-gradient-to-b from-black via-yellow-950/20 to-black py-20">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center">
-            <h1 className="text-5xl md:text-6xl font-bold mb-6">
-              Formations <span className="gradient-text">E-commerce</span>
+    <div className="min-h-screen pt-20 bg-black">
+      {/* Hero */}
+      <section className="py-24 px-6">
+        <div className="max-w-7xl mx-auto">
+          <div className="max-w-3xl">
+            <span className="text-sm uppercase tracking-wider text-emerald-500 font-bold mb-4 block">
+              Formations E-commerce
+            </span>
+            <h1 className="text-5xl md:text-7xl font-black text-white mb-6 tracking-tight">
+              Lance ta <span className="text-emerald-500">boutique</span> en ligne
             </h1>
-            <p className="text-xl text-gray-300 max-w-3xl mx-auto mb-8">
-              Lancez et développez votre boutique en ligne avec nos formations complètes : création, marketing digital, SEO et optimisation des conversions.
+            <p className="text-xl text-neutral-400 mb-8">
+              Dropshipping, print on demand, marque... Peu importe ton modèle, je te montre comment 
+              faire tes premières ventes. Concrètement, sans bullshit.
             </p>
-            {!isLoggedIn && (
-              <Button
-                size="lg"
-                onClick={() => navigate("/login")}
-                className="bg-yellow-700 hover:bg-yellow-600"
+            <div className="flex flex-wrap gap-4">
+              <Button 
+                onClick={() => setShowQuiz(true)}
+                className="bg-emerald-600 hover:bg-emerald-700 text-white font-bold px-8 h-14 rounded-none"
               >
-                Commencer gratuitement
-                <ArrowRight className="ml-2" size={20} />
+                <Gamepad2 className="mr-2" size={20} />
+                Teste ton niveau
               </Button>
-            )}
+              <Button 
+                onClick={() => setShowProductGame(true)}
+                variant="outline"
+                className="border-neutral-700 hover:bg-neutral-900 text-white font-bold px-8 h-14 rounded-none"
+              >
+                <Package className="mr-2" size={20} />
+                Trouve ta niche
+              </Button>
+            </div>
           </div>
         </div>
       </section>
 
-      {/* Modules Section */}
-      <section className="section-spacing">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-            {modules.map((module) => (
-              <Card
-                key={module.id}
-                className="bg-card/50 backdrop-blur border-yellow-800/50 module-card cursor-pointer"
-                onClick={() => handleModuleClick(module.id)}
-              >
-                <CardHeader className="pb-4">
-                  <img
-                    src={module.image}
-                    alt={module.title}
-                    className="w-full h-48 object-cover rounded-lg mb-4"
-                  />
-                  <div className="flex items-center justify-between mb-2">
-                    <Badge className={getLevelColor(module.level)}>
-                      {module.level}
-                    </Badge>
-                    <div className="flex items-center text-gray-400 text-sm">
-                      <Clock size={16} className="mr-1" />
-                      {module.duration}
-                    </div>
+      {/* Quiz Modal */}
+      {showQuiz && (
+        <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/90 p-4">
+          <div className="bg-neutral-900 border border-neutral-800 max-w-2xl w-full p-8">
+            {!showResult ? (
+              <>
+                <div className="flex justify-between items-center mb-8">
+                  <span className="text-emerald-500 font-bold">Question {currentQuestion + 1}/{quizQuestions.length}</span>
+                  <span className="text-neutral-400">Score: {score}</span>
+                </div>
+                
+                <h2 className="text-2xl font-bold text-white mb-8">
+                  {quizQuestions[currentQuestion].question}
+                </h2>
+                
+                <div className="space-y-4">
+                  {quizQuestions[currentQuestion].options.map((option, index) => (
+                    <button
+                      key={index}
+                      onClick={() => selectedAnswer === null && handleAnswer(index)}
+                      disabled={selectedAnswer !== null}
+                      className={`w-full p-4 text-left transition-all ${
+                        selectedAnswer === null 
+                          ? "bg-neutral-800 hover:bg-neutral-700 text-white" 
+                          : selectedAnswer === index
+                            ? index === quizQuestions[currentQuestion].correct
+                              ? "bg-green-900 text-green-300 border border-green-700"
+                              : "bg-red-900 text-red-300 border border-red-700"
+                            : index === quizQuestions[currentQuestion].correct
+                              ? "bg-green-900 text-green-300 border border-green-700"
+                              : "bg-neutral-800 text-neutral-500"
+                      }`}
+                    >
+                      <div className="flex items-center justify-between">
+                        <span>{option}</span>
+                        {selectedAnswer !== null && index === quizQuestions[currentQuestion].correct && (
+                          <CheckCircle className="text-green-500" size={20} />
+                        )}
+                        {selectedAnswer === index && index !== quizQuestions[currentQuestion].correct && (
+                          <XCircle className="text-red-500" size={20} />
+                        )}
+                      </div>
+                    </button>
+                  ))}
+                </div>
+                
+                {selectedAnswer !== null && (
+                  <div className="mt-6 p-4 bg-emerald-950/30 border border-emerald-900/50">
+                    <p className="text-emerald-300 text-sm">
+                      {quizQuestions[currentQuestion].explanation}
+                    </p>
                   </div>
-                  <CardTitle className="text-white text-2xl">{module.title}</CardTitle>
-                  <CardDescription className="text-gray-300">
-                    {module.description}
-                  </CardDescription>
-                </CardHeader>
-                <CardContent>
-                  <div className="space-y-3 mb-4">
-                    {module.modules.map((subModule) => (
-                      <div
-                        key={subModule.id}
-                        className="flex items-center justify-between text-sm"
-                      >
-                        <div className="flex items-center text-gray-300">
-                          {getModuleIcon(subModule.type)}
-                          <span className="ml-2">{subModule.name}</span>
-                        </div>
-                        <span className="text-gray-500">{subModule.duration}</span>
+                )}
+              </>
+            ) : (
+              <div className="text-center py-8">
+                <Trophy className="text-yellow-500 mx-auto mb-6" size={64} />
+                <h2 className="text-3xl font-black text-white mb-4">Quiz terminé !</h2>
+                <p className="text-5xl font-black text-emerald-500 mb-4">{score}/{quizQuestions.length}</p>
+                <p className="text-neutral-400 mb-8">
+                  {score === quizQuestions.length ? "T'es prêt à scaler ! 🚀" :
+                   score >= 3 ? "Tu connais les bases, on peut aller plus loin." :
+                   "T'inquiète, les ebooks sont là pour ça."}
+                </p>
+                <Button onClick={resetQuiz} className="bg-emerald-600 hover:bg-emerald-700 rounded-none">
+                  Fermer
+                </Button>
+              </div>
+            )}
+          </div>
+        </div>
+      )}
+
+      {/* Product Finder Modal */}
+      {showProductGame && (
+        <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/90 p-4">
+          <div className="bg-neutral-900 border border-neutral-800 max-w-2xl w-full p-8">
+            {productStep >= 0 ? (
+              <>
+                <div className="flex justify-between items-center mb-8">
+                  <span className="text-emerald-500 font-bold">Étape {productStep + 1}/{productQuestions.length}</span>
+                  <button onClick={resetProductGame} className="text-neutral-400 hover:text-white">✕</button>
+                </div>
+                
+                <h2 className="text-2xl font-bold text-white mb-8">
+                  {productQuestions[productStep].question}
+                </h2>
+                
+                <div className="grid grid-cols-2 gap-4">
+                  {productQuestions[productStep].options.map((option, index) => (
+                    <button
+                      key={index}
+                      onClick={() => handleProductAnswer(option.value)}
+                      className="p-6 bg-neutral-800 hover:bg-emerald-900/30 hover:border-emerald-700 border border-neutral-700 text-white font-medium transition-all"
+                    >
+                      {option.label}
+                    </button>
+                  ))}
+                </div>
+              </>
+            ) : (
+              <div className="py-8">
+                <Package className="text-emerald-500 mx-auto mb-6" size={64} />
+                <h2 className="text-3xl font-black text-white mb-6 text-center">Mon conseil</h2>
+                <div className="bg-emerald-950/30 border border-emerald-900/50 p-6 mb-8">
+                  <p className="text-neutral-300 leading-relaxed">
+                    {productResults[productResult]}
+                  </p>
+                </div>
+                <div className="text-center">
+                  <Button onClick={resetProductGame} className="bg-emerald-600 hover:bg-emerald-700 rounded-none">
+                    Fermer
+                  </Button>
+                </div>
+              </div>
+            )}
+          </div>
+        </div>
+      )}
+
+      {/* Ebooks Section */}
+      <section className="py-20 px-6 bg-neutral-900/30">
+        <div className="max-w-7xl mx-auto">
+          <div className="mb-12">
+            <h2 className="text-4xl font-black text-white mb-4">
+              Les <span className="text-emerald-500">ebooks</span>
+            </h2>
+            <p className="text-neutral-400 text-lg">
+              Tout ce que j'aurais aimé savoir quand j'ai commencé. Sans langue de bois.
+            </p>
+          </div>
+
+          <div className="grid md:grid-cols-3 gap-8">
+            {ebooks.map((ebook) => (
+              <div key={ebook.id} className="bg-neutral-900 border border-neutral-800 hover:border-emerald-900/50 transition-colors">
+                <div className="p-8">
+                  <div className="flex items-center justify-between mb-4">
+                    <span className={`text-xs uppercase tracking-wider font-bold px-3 py-1 ${
+                      ebook.level === "Débutant" ? "bg-green-950 text-green-500" :
+                      ebook.level === "Intermédiaire" ? "bg-yellow-950 text-yellow-500" :
+                      "bg-red-950 text-red-500"
+                    }`}>
+                      {ebook.level}
+                    </span>
+                    <BookOpen className="text-emerald-500" size={24} />
+                  </div>
+                  
+                  <h3 className="text-2xl font-bold text-white mb-3">{ebook.title}</h3>
+                  <p className="text-neutral-400 mb-6">{ebook.description}</p>
+                  
+                  <div className="space-y-2 mb-6">
+                    {ebook.chapters.map((chapter, i) => (
+                      <div key={i} className="flex items-center gap-2 text-sm text-neutral-300">
+                        <ChevronRight className="text-emerald-500" size={14} />
+                        <span>{chapter}</span>
                       </div>
                     ))}
                   </div>
-
-                  {isLoggedIn && (
-                    <div className="mb-4">
-                      <div className="flex justify-between text-sm mb-1">
-                        <span className="text-gray-400">Progression</span>
-                        <span className="text-yellow-400">{module.progress}%</span>
-                      </div>
-                      <Progress value={module.progress} className="h-2" />
-                    </div>
-                  )}
-
-                  <Button
-                    className="w-full bg-yellow-700 hover:bg-yellow-600"
-                    onClick={(e) => {
-                      e.stopPropagation();
-                      handleModuleClick(module.id);
-                    }}
+                  
+                  <Button 
+                    className="w-full bg-emerald-600 hover:bg-emerald-700 rounded-none font-bold"
+                    onClick={() => !isLoggedIn && navigate("/login")}
                   >
-                    {isLoggedIn ? "Continuer" : "Commencer"}
+                    <Download className="mr-2" size={18} />
+                    {isLoggedIn ? "Télécharger" : "Connecte-toi pour télécharger"}
                   </Button>
-                </CardContent>
-              </Card>
+                </div>
+              </div>
             ))}
           </div>
         </div>
       </section>
 
-      {/* Why E-commerce Section */}
-      <section className="section-spacing bg-yellow-950/10">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-12">
-            <h2 className="text-4xl font-bold mb-4">Pourquoi se lancer dans l'e-commerce ?</h2>
+      {/* Interactive Tools */}
+      <section className="py-20 px-6">
+        <div className="max-w-7xl mx-auto">
+          <div className="mb-12">
+            <h2 className="text-4xl font-black text-white mb-4">
+              Outils <span className="text-emerald-500">interactifs</span>
+            </h2>
+            <p className="text-neutral-400 text-lg">
+              Des mini-outils pour t'aider à démarrer plus vite.
+            </p>
           </div>
 
           <div className="grid md:grid-cols-3 gap-8">
-            <Card className="bg-card/50 backdrop-blur border-yellow-800/50">
-              <CardHeader>
-                <CardTitle className="text-white">Opportunité de marché</CardTitle>
-              </CardHeader>
-              <CardContent>
-                <p className="text-gray-300">
-                  Le e-commerce est en pleine croissance. C'est le moment idéal pour lancer votre boutique en ligne.
-                </p>
-              </CardContent>
-            </Card>
+            <div className="bg-neutral-900 border border-neutral-800 p-8">
+              <div className="flex items-center gap-4 mb-6">
+                <div className="w-14 h-14 bg-emerald-600 flex items-center justify-center">
+                  <Brain size={28} className="text-white" />
+                </div>
+                <div>
+                  <h3 className="text-xl font-bold text-white">Quiz E-commerce</h3>
+                  <p className="text-neutral-400 text-sm">Teste tes connaissances</p>
+                </div>
+              </div>
+              <p className="text-neutral-300 mb-6">
+                Tu connais les bases ? On va voir ça en 5 questions.
+              </p>
+              <Button 
+                onClick={() => setShowQuiz(true)}
+                className="w-full bg-emerald-600 hover:bg-emerald-700 rounded-none font-bold"
+              >
+                Lancer le quiz
+              </Button>
+            </div>
 
-            <Card className="bg-card/50 backdrop-blur border-yellow-800/50">
-              <CardHeader>
-                <CardTitle className="text-white">Faibles coûts de démarrage</CardTitle>
-              </CardHeader>
-              <CardContent>
-                <p className="text-gray-300">
-                  Contrairement à un magasin physique, l'e-commerce nécessite peu d'investissement initial.
-                </p>
-              </CardContent>
-            </Card>
+            <div className="bg-neutral-900 border border-neutral-800 p-8">
+              <div className="flex items-center gap-4 mb-6">
+                <div className="w-14 h-14 bg-emerald-600 flex items-center justify-center">
+                  <Package size={28} className="text-white" />
+                </div>
+                <div>
+                  <h3 className="text-xl font-bold text-white">Trouve ta Niche</h3>
+                  <p className="text-neutral-400 text-sm">Mini-guide interactif</p>
+                </div>
+              </div>
+              <p className="text-neutral-300 mb-6">
+                Réponds à 3 questions et je te donne des pistes concrètes.
+              </p>
+              <Button 
+                onClick={() => setShowProductGame(true)}
+                className="w-full bg-emerald-600 hover:bg-emerald-700 rounded-none font-bold"
+              >
+                Commencer
+              </Button>
+            </div>
 
-            <Card className="bg-card/50 backdrop-blur border-yellow-800/50">
-              <CardHeader>
-                <CardTitle className="text-white">Portée mondiale</CardTitle>
-              </CardHeader>
-              <CardContent>
-                <p className="text-gray-300">
-                  Vendez vos produits dans le monde entier, 24h/24 et 7j/7, sans limites géographiques.
-                </p>
-              </CardContent>
-            </Card>
+            <div className="bg-neutral-900 border border-neutral-800 p-8">
+              <div className="flex items-center gap-4 mb-6">
+                <div className="w-14 h-14 bg-emerald-600 flex items-center justify-center">
+                  <TrendingUp size={28} className="text-white" />
+                </div>
+                <div>
+                  <h3 className="text-xl font-bold text-white">Calculateur de Marge</h3>
+                  <p className="text-neutral-400 text-sm">Calcule ta rentabilité</p>
+                </div>
+              </div>
+              <p className="text-neutral-300 mb-6">
+                Vérifie si ton produit est rentable avant de te lancer.
+              </p>
+              <Button 
+                variant="outline"
+                className="w-full border-emerald-700 hover:bg-emerald-950/30 text-white rounded-none font-bold"
+              >
+                Bientôt disponible
+              </Button>
+            </div>
           </div>
+        </div>
+      </section>
+
+      {/* CTA */}
+      <section className="py-24 px-6 bg-emerald-950/20 border-t border-emerald-900/30">
+        <div className="max-w-4xl mx-auto text-center">
+          <h2 className="text-4xl md:text-5xl font-black text-white mb-6">
+            Prêt à lancer ta boutique ?
+          </h2>
+          <p className="text-xl text-neutral-400 mb-10">
+            Crée ton compte gratuit et accède à tous les ebooks et outils.
+          </p>
+          <Button 
+            onClick={() => navigate("/login")}
+            className="bg-emerald-600 hover:bg-emerald-700 text-white font-bold text-lg px-12 h-16 rounded-none"
+          >
+            Commencer maintenant
+            <ArrowRight className="ml-2" size={20} />
+          </Button>
         </div>
       </section>
     </div>
