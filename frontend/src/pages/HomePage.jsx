@@ -167,10 +167,10 @@ export const HomePage = () => {
         <div className="max-w-7xl mx-auto">
           <div className="mb-20">
             <h2 className="text-5xl font-black text-white mb-4 tracking-tight">
-              Témoignages
+              Retours d'étudiants
             </h2>
             <p className="text-xl text-neutral-400">
-              Résultats réels d'étudiants
+              Ce qu'ils ont appris avec SayKee
             </p>
           </div>
 
