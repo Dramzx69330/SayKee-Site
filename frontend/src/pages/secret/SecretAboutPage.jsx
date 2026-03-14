@@ -32,6 +32,18 @@ export const SecretAboutPage = () => {
       {/* Story */}
       <section className="py-20 px-6">
         <div className="max-w-4xl mx-auto">
+          {/* Results Banner */}
+          <div className="bg-gradient-to-r from-red-950/50 to-red-900/30 border border-red-900/50 p-10 mb-12">
+            <div className="text-center">
+              <div className="text-6xl md:text-7xl font-black text-white mb-2">+200 000€</div>
+              <p className="text-red-500 font-bold text-lg mb-4">Générés grâce à ces méthodes</p>
+              <p className="text-neutral-400 max-w-xl mx-auto">
+                Comprendre comment fonctionnent les arnaques m'a permis de les éviter, 
+                de protéger mon business, et de maximiser mes gains en trading et e-commerce.
+              </p>
+            </div>
+          </div>
+
           <div className="space-y-8 text-lg text-neutral-300 leading-relaxed">
             <p>
               <span className="text-white font-bold">J'ai vu trop de gens se faire avoir.</span> Des proches, 
@@ -42,17 +54,25 @@ export const SecretAboutPage = () => {
             <p>
               Dans mon parcours en trading et e-commerce, j'ai croisé le pire. Des scammers, 
               des arnaqueurs, des gens sans scrupules qui profitent de la naïveté des autres.
+              <span className="text-red-500 font-bold"> Moi, j'ai appris à les reconnaître.</span>
             </p>
             
             <div className="bg-red-950/30 border border-red-900/50 p-8 my-10">
               <p className="text-white font-bold text-xl mb-4">
-                L'ignorance est ce qui permet aux escrocs de prospérer.
+                +200 000€ en évitant les pièges et en comprenant le game.
               </p>
               <p className="text-neutral-300">
-                Plus les gens comprennent comment fonctionnent les arnaques, moins ils se font avoir. 
-                C'est mathématique.
+                Chaque arnaque que j'ai identifiée, c'est de l'argent que j'ai gardé. Chaque technique 
+                que j'ai comprise, c'est une protection de plus pour mon business. Aujourd'hui, je partage 
+                tout ça gratuitement.
               </p>
             </div>
+            
+            <p>
+              <span className="text-white font-bold">L'ignorance est ce qui permet aux escrocs de prospérer.</span> 
+              Plus les gens comprennent comment fonctionnent les arnaques, moins ils se font avoir. 
+              C'est mathématique.
+            </p>
             
             <p>
               Cette section n'est pas là pour glorifier quoi que ce soit. Elle est là pour 
