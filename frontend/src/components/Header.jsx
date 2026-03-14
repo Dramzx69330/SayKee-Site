@@ -2,11 +2,13 @@ import { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { Menu, X } from "lucide-react";
 import { Button } from "./ui/button";
+import { useSecretMode } from "../context/SecretModeContext";
 
 export const Header = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const navigate = useNavigate();
   const isLoggedIn = localStorage.getItem("isLoggedIn") === "true";
+  const { isSecretMode, toggleSecretMode } = useSecretMode();
 
   const handleLogout = () => {
     localStorage.removeItem("isLoggedIn");
@@ -15,20 +17,34 @@ export const Header = () => {
   };
 
   return (
-    <header className="fixed top-0 left-0 right-0 z-50 bg-black/70 backdrop-blur-xl border-b border-neutral-800">
+    <header className={`fixed top-0 left-0 right-0 z-50 backdrop-blur-xl border-b transition-colors duration-500 ${
+      isSecretMode 
+        ? "bg-black/80 border-red-900/50" 
+        : "bg-black/70 border-neutral-800"
+    }`}>
       <div className="max-w-7xl mx-auto px-6">
         <div className="flex justify-between items-center h-20">
           {/* Logo */}
           <Link to="/" className="flex items-center gap-3">
-            <div className="text-2xl font-black text-white tracking-tight">
+            <div className={`text-2xl font-black tracking-tight transition-colors duration-500 ${
+              isSecretMode ? "text-red-500" : "text-white"
+            }`}>
               SAYKEE
             </div>
-            <button className="w-10 h-10 flex items-center justify-center hover:opacity-80 transition-opacity">
-              <img 
-                src="https://www.nicepng.com/png/detail/368-3689055_hsbcs-visa-platinum-credit-card-hsbc-cash-rewards.png" 
-                alt="Icon" 
-                className="w-full h-full object-contain"
-              />
+            <button 
+              onClick={(e) => {
+                e.preventDefault();
+                toggleSecretMode();
+              }}
+              className={`text-3xl transition-all duration-300 ${
+                isSecretMode 
+                  ? "hover:scale-125 animate-pulse" 
+                  : "hover:scale-110"
+              }`}
+              data-testid="secret-mode-toggle"
+              title={isSecretMode ? "Retour au mode normal" : "Accéder à la face cachée"}
+            >
+              🤡
             </button>
           </Link>
 

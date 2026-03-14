@@ -1,168 +1,99 @@
-# SayKee - Plateforme de Formation Trading & E-commerce
+# SayKee - Product Requirements Document
 
-## Vue d'ensemble
-Site web professionnel pour SayKee, entreprise d'Elias Benguezzou spécialisée dans les formations interactives en Trading et E-commerce.
+## Original Problem Statement
+Site web pour "SayKee" - plateforme de formation gratuite en trading et e-commerce. Design moderne, dark mode, ton confiant/arrogant reflétant le succès du créateur (10-45k€/mois).
 
-## Architecture
-- **Frontend**: React + Shadcn UI + Tailwind CSS
-- **Backend**: FastAPI + MongoDB (à implémenter)
-- **État actuel**: Frontend avec données mock
+## Target Audience
+- Débutants à avancés en trading/e-commerce
+- Personnes cherchant des formations gratuites et pratiques
 
-## Problème original
-Créer un site moderne et design pour SayKee avec:
-- Multi-pages bien structurées
-- Apprentissage interactif pour Trading et E-commerce
-- Design minimaliste et élégant (pas trop de couleurs)
-- Système complet avec authentification et suivi de progression
-- Public cible: Tous niveaux
+## Core Requirements
+1. **Pages principales** : Accueil, À propos, Trading, E-commerce, Contact
+2. **Système complet** : Inscription/connexion + suivi de progression
+3. **Ton** : Confiant, direct, résultats orientés
+4. **Design** : Dark mode moderne/élégant/impactant
 
-## Palette de couleurs
-- Base: Noir (#0a0a0a) / Blanc (#ffffff)
-- Gris: #1a1a1a, #2a2a2a, #f5f5f5
-- Accent principal: Bleu marine (#1e40af, #1e3a8a)
-- Accent secondaire: Or (#d4af37) pour CTAs
-- Police: Inter (Google Fonts)
+---
 
-## Pages implémentées (Phase 1 - Frontend)
-✅ **Page d'accueil** (`/`)
-- Hero section avec gradient
-- Section stats (2500+ étudiants, 50+ formations, 94% réussite)
-- Présentation Trading & E-commerce
-- Témoignages clients
-- CTA final
+## What's Been Implemented
 
-✅ **À propos** (`/about`)
-- Présentation Elias Benguezzou (fondateur)
-- Valeurs: Excellence, Accessibilité, Résultats, Passion
-- Histoire de SayKee
-- Statistiques
+### 14 Mars 2026 - Face Cachée Feature
+- **Bouton clown 🤡** dans le header qui déclenche le mode secret
+- **Page SecretHomePage** avec thème rouge/noir pour sensibilisation aux arnaques
+- **Transition fluide** entre mode normal et mode secret
+- **Contenu éducatif** : Types d'arnaques (Carding, Phishing, Faux sites, Usurpation), section "Mon parcours", conseils de protection, ressources utiles
 
-✅ **Formations Trading** (`/trading`)
-- 3 modules: Introduction, Analyse Technique, Gestion du Risque
-- Cartes interactives avec progression
-- Détails des sous-modules (vidéos, articles, quiz)
-- Section "Pourquoi le trading?"
+### Précédemment implémenté
+- Structure frontend React multi-pages
+- Design dark mode approuvé sur HomePage
+- Contenu homepage avec ton "arrogant" (sections Mes résultats, Pourquoi SayKee, etc.)
+- Header avec navigation responsive
+- Footer
 
-✅ **Formations E-commerce** (`/ecommerce`)
-- 3 modules: Créer sa boutique, Marketing Digital, Optimisation Conversions
-- Structure identique à Trading avec couleurs or/jaune
-- Section "Pourquoi l'e-commerce?"
+---
 
-✅ **Contact** (`/contact`)
-- Formulaire de contact fonctionnel (mock)
-- Informations: email, téléphone, adresse
-- Heures d'ouverture
-- FAQ section
+## Code Architecture
+```
+/app
+├── backend/
+│   ├── server.py (FastAPI - basique)
+│   └── .env
+└── frontend/
+    ├── src/
+    │   ├── context/
+    │   │   └── SecretModeContext.jsx (NEW)
+    │   ├── components/
+    │   │   ├── Header.jsx (updated with secret mode toggle)
+    │   │   └── Footer.jsx
+    │   ├── pages/
+    │   │   ├── HomePage.jsx
+    │   │   ├── SecretHomePage.jsx (NEW - face cachée)
+    │   │   ├── AboutPage.jsx
+    │   │   ├── TradingPage.jsx
+    │   │   ├── EcommercePage.jsx
+    │   │   ├── ContactPage.jsx
+    │   │   ├── LoginPage.jsx
+    │   │   └── DashboardPage.jsx
+    │   └── App.js (updated with SecretModeProvider)
+    └── package.json
+```
 
-✅ **Login/Register** (`/login`)
-- Tabs Connexion/Inscription
-- Formulaires fonctionnels avec localStorage
-- Redirection vers Dashboard après login
+---
 
-✅ **Dashboard** (`/dashboard`)
-- Stats utilisateur (modules complétés, en cours, points, temps)
-- Section "Continuer l'apprentissage"
-- Exploration de nouvelles formations
-- Protégé (redirection si non connecté)
+## Prioritized Backlog
 
-✅ **Détail Module** (`/module/:type/:id`)
-- Sidebar avec liste des leçons
-- Contenu interactif:
-  - Vidéos (mock player)
-  - Articles avec contenu éducatif
-  - Quiz avec correction automatique (70% requis)
-  - Exercices pratiques
-- Barre de progression
-- Accordion pour navigation
+### P0 - Haute priorité
+1. **Appliquer le design approuvé à toutes les pages**
+   - AboutPage, TradingPage, EcommercePage, ContactPage, LoginPage, DashboardPage
+   - Utiliser le même style dark mode que HomePage
 
-## Fonctionnalités interactives (Frontend)
-✅ Navigation multi-pages avec React Router
-✅ Authentification mock avec localStorage
-✅ Quiz interactifs avec scoring
-✅ Barres de progression
-✅ Toasts pour notifications (Sonner)
-✅ Accordions pour contenu
-✅ Tabs pour login/register
-✅ Hover effects et animations
-✅ Design responsive (mobile-first)
-✅ Header sticky avec menu mobile
+### P1 - Moyenne priorité  
+2. **Backend & Authentification**
+   - MongoDB models: users, courses, modules, user_progress
+   - API endpoints: /api/auth/register, /api/auth/login
+   - Connexion frontend au backend
 
-## Mock Data (`mockData.js`)
-- `tradingModules`: 3 modules trading avec sous-leçons
-- `ecommerceModules`: 3 modules e-commerce avec sous-leçons
-- `testimonials`: 3 témoignages clients
-- `quizQuestions`: Questions pour trading & e-commerce
-- `stats`: Statistiques globales
-- `mockUser`: Données utilisateur démo
+3. **Système de cours**
+   - CRUD API pour courses et modules
+   - Suivi de progression utilisateur
+   - Remplacer données mockées par données live
 
-## Composants créés
-- `Header.jsx`: Navigation principale
-- `Footer.jsx`: Footer avec liens et contact
-- Toutes les pages dans `/pages/`
-- Utilisation de Shadcn UI: Button, Card, Input, Textarea, Tabs, Badge, Progress, Accordion
+### P2 - Basse priorité
+4. **Contenu de la face cachée**
+   - Ajouter plus de détails sur le parcours personnel
+   - Enrichir les sections de sensibilisation
 
-## Phase 2 - Backend (À implémenter)
-### API Endpoints nécessaires
-- `POST /api/auth/register`: Inscription utilisateur
-- `POST /api/auth/login`: Connexion utilisateur
-- `GET /api/user/profile`: Profil utilisateur
-- `GET /api/modules/trading`: Liste modules trading
-- `GET /api/modules/ecommerce`: Liste modules e-commerce
-- `GET /api/modules/:id`: Détails d'un module
-- `POST /api/progress/update`: Mise à jour progression
-- `GET /api/progress/:userId`: Progression utilisateur
-- `POST /api/quiz/submit`: Soumettre quiz
-- `POST /api/contact`: Envoyer message contact
+5. **Améliorations UX**
+   - Animations de transition plus élaborées
+   - Responsive design affiné
 
-### Modèles MongoDB
-- **User**: id, name, email, password (hashed), joinedDate, completedModules[], inProgressModules[], totalPoints
-- **Module**: id, type (trading/ecommerce), title, description, level, duration, content[]
-- **Progress**: userId, moduleId, progress%, completedLessons[], quizScores[]
-- **Contact**: name, email, subject, message, date
+---
 
-### Intégrations futures
-- Système de paiement (Stripe)
-- Emails (notifications, confirmation)
-- Certificats de formation
-- Forum/communauté
-- Vidéos hébergées (Vimeo/YouTube)
+## Technical Notes
+- **Frontend**: React, Tailwind CSS, shadcn/ui, React Router
+- **Backend**: FastAPI, MongoDB
+- **État global**: SecretModeContext pour la face cachée
 
-## Prochaines tâches (Backlog)
-### P0 (Critique)
-- [ ] Implémenter backend FastAPI
-- [ ] Créer modèles MongoDB
-- [ ] Authentification JWT
-- [ ] Endpoints CRUD modules
-- [ ] Système de progression
-
-### P1 (Important)
-- [ ] Hébergement vidéos réelles
-- [ ] Plus de contenu de formation
-- [ ] Système de paiement
-- [ ] Certificats PDF
-- [ ] Email notifications
-
-### P2 (Nice to have)
-- [ ] Blog/articles
-- [ ] Forum communauté
-- [ ] Live chat support
-- [ ] Application mobile
-- [ ] Traduction multilingue
-
-## Date de création
-14 Mars 2025
-
-## État actuel
-✅ Frontend complet et fonctionnel avec mock data
-⏳ Backend à développer (Phase 2)
-
-## Technologies utilisées
-- React 19
-- React Router 7.5.1
-- Shadcn UI (Radix UI)
-- Tailwind CSS 3.4.17
-- Sonner (toasts)
-- Lucide React (icons)
-- Axios 1.8.4
-- FastAPI (backend à venir)
-- MongoDB (base de données à venir)
+## Mocked Data
+- Toutes les données sont actuellement mockées dans le frontend
+- Pas de backend fonctionnel pour l'authentification/cours

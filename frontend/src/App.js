@@ -3,6 +3,7 @@ import "@/App.css";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import axios from "axios";
 import HomePage from "./pages/HomePage";
+import SecretHomePage from "./pages/SecretHomePage";
 import AboutPage from "./pages/AboutPage";
 import TradingPage from "./pages/TradingPage";
 import EcommercePage from "./pages/EcommercePage";
@@ -13,11 +14,18 @@ import ModuleDetailPage from "./pages/ModuleDetailPage";
 import Header from "./components/Header";
 import Footer from "./components/Footer";
 import { Toaster } from "./components/ui/sonner";
+import { SecretModeProvider, useSecretMode } from "./context/SecretModeContext";
 
 const BACKEND_URL = process.env.REACT_APP_BACKEND_URL;
 const API = `${BACKEND_URL}/api`;
 
-function App() {
+// Component that handles conditional homepage rendering
+const ConditionalHomePage = () => {
+  const { isSecretMode } = useSecretMode();
+  return isSecretMode ? <SecretHomePage /> : <HomePage />;
+};
+
+function AppContent() {
   const helloWorldApi = async () => {
     try {
       const response = await axios.get(`${API}/`);
@@ -36,7 +44,7 @@ function App() {
       <BrowserRouter>
         <Header />
         <Routes>
-          <Route path="/" element={<HomePage />} />
+          <Route path="/" element={<ConditionalHomePage />} />
           <Route path="/about" element={<AboutPage />} />
           <Route path="/trading" element={<TradingPage />} />
           <Route path="/ecommerce" element={<EcommercePage />} />
@@ -49,6 +57,14 @@ function App() {
         <Toaster />
       </BrowserRouter>
     </div>
+  );
+}
+
+function App() {
+  return (
+    <SecretModeProvider>
+      <AppContent />
+    </SecretModeProvider>
   );
 }
 

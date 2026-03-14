@@ -11,6 +11,12 @@ body {
     -moz-osx-font-smoothing: grayscale;
     background-color: #000000;
     color: #ffffff;
+    transition: background-color 0.5s ease, color 0.5s ease;
+}
+
+/* Secret Mode Styles */
+body.secret-mode {
+    background-color: #0a0000;
 }
 
 @layer base {
@@ -45,4 +51,25 @@ body {
     body {
         @apply bg-background text-foreground;
     }
+}
+
+/* Secret Mode Transition Animation */
+@keyframes secretModeFlash {
+    0% { opacity: 0; }
+    50% { opacity: 1; }
+    100% { opacity: 0; }
+}
+
+.secret-transition-overlay {
+    animation: secretModeFlash 0.8s ease-in-out;
+}
+
+/* Glowing effect for secret mode elements */
+.secret-mode .glow-red {
+    box-shadow: 0 0 20px rgba(239, 68, 68, 0.3);
+}
+
+/* Smooth transitions for all interactive elements */
+button, a, .card-hover {
+    transition: all 0.3s ease;
 }
