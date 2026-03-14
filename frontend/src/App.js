@@ -11,6 +11,12 @@ import ContactPage from "./pages/ContactPage";
 import DashboardPage from "./pages/DashboardPage";
 import LoginPage from "./pages/LoginPage";
 import ModuleDetailPage from "./pages/ModuleDetailPage";
+// Secret pages
+import CardingPage from "./pages/secret/CardingPage";
+import SpooferPage from "./pages/secret/SpooferPage";
+import SpamPage from "./pages/secret/SpamPage";
+import SecretAboutPage from "./pages/secret/SecretAboutPage";
+
 import Header from "./components/Header";
 import Footer from "./components/Footer";
 import { Toaster } from "./components/ui/sonner";
@@ -44,6 +50,7 @@ function AppContent() {
       <BrowserRouter>
         <Header />
         <Routes>
+          {/* Main routes */}
           <Route path="/" element={<ConditionalHomePage />} />
           <Route path="/about" element={<AboutPage />} />
           <Route path="/trading" element={<TradingPage />} />
@@ -52,6 +59,12 @@ function AppContent() {
           <Route path="/dashboard" element={<DashboardPage />} />
           <Route path="/login" element={<LoginPage />} />
           <Route path="/module/:type/:id" element={<ModuleDetailPage />} />
+          
+          {/* Secret routes */}
+          <Route path="/secret/carding" element={<CardingPage />} />
+          <Route path="/secret/spoofer" element={<SpooferPage />} />
+          <Route path="/secret/spam" element={<SpamPage />} />
+          <Route path="/secret/about" element={<SecretAboutPage />} />
         </Routes>
         <Footer />
         <Toaster />
