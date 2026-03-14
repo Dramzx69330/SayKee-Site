@@ -162,38 +162,72 @@ export const HomePage = () => {
         </div>
       </section>
 
-      {/* Testimonials Section */}
+      {/* Results Section */}
       <section className="py-32 px-6 bg-neutral-900/30">
         <div className="max-w-7xl mx-auto">
           <div className="mb-20">
             <h2 className="text-5xl font-black text-white mb-4 tracking-tight">
-              Retours d'étudiants
+              Mes résultats
             </h2>
             <p className="text-xl text-neutral-400">
-              Ce qu'ils ont appris avec SayKee
+              Voilà ce que JE fais. Maintenant c'est ton tour.
             </p>
           </div>
 
           <div className="grid md:grid-cols-3 gap-8">
-            {testimonials.map((testimonial) => (
-              <div
-                key={testimonial.id}
-                className="bg-neutral-900 border border-neutral-800 p-8"
-              >
-                <div className="flex items-center gap-4 mb-6">
-                  <img
-                    src={testimonial.image}
-                    alt={testimonial.name}
-                    className="w-14 h-14 object-cover"
-                  />
-                  <div>
-                    <div className="font-bold text-white">{testimonial.name}</div>
-                    <div className="text-sm text-neutral-500">{testimonial.role}</div>
-                  </div>
-                </div>
-                <p className="text-neutral-300 leading-relaxed">{testimonial.content}</p>
+            {/* Revenue Card */}
+            <div className="bg-neutral-900 border border-neutral-800 p-10">
+              <div className="text-sm uppercase tracking-wider text-neutral-500 font-bold mb-3">
+                Revenus mensuels
               </div>
-            ))}
+              <div className="text-5xl font-black text-white mb-2">
+                10-45k€
+              </div>
+              <div className="text-neutral-400 text-sm">
+                Entre trading et e-commerce
+              </div>
+            </div>
+
+            {/* Trading Card */}
+            <div className="bg-neutral-900 border border-neutral-800 p-10">
+              <div className="text-sm uppercase tracking-wider text-neutral-500 font-bold mb-3">
+                Trading
+              </div>
+              <div className="text-5xl font-black text-blue-500 mb-2">
+                Actif
+              </div>
+              <div className="text-neutral-400 text-sm">
+                Analyse technique + gestion risque
+              </div>
+            </div>
+
+            {/* E-commerce Card */}
+            <div className="bg-neutral-900 border border-neutral-800 p-10">
+              <div className="text-sm uppercase tracking-wider text-neutral-500 font-bold mb-3">
+                E-commerce
+              </div>
+              <div className="text-5xl font-black text-emerald-500 mb-2">
+                Actif
+              </div>
+              <div className="text-neutral-400 text-sm">
+                Marketing + scaling boutiques
+              </div>
+            </div>
+          </div>
+
+          <div className="mt-16 bg-neutral-900 border border-neutral-800 p-10">
+            <div className="max-w-3xl">
+              <p className="text-xl text-white font-bold mb-4">
+                Pourquoi m'écouter ?
+              </p>
+              <p className="text-neutral-300 leading-relaxed mb-4">
+                Je ne vends rien. Ces formations sont gratuites. Je partage ce que j'utilise 
+                au quotidien pour générer 10-45k€/mois - pas de théorie, juste ce qui marche.
+              </p>
+              <p className="text-neutral-300 leading-relaxed">
+                Tu veux les mêmes résultats ? Applique ce que j'enseigne. Simple.
+              </p>
+            </div>
           </div>
         </div>
       </section>
