@@ -5,19 +5,28 @@ const SecretModeContext = createContext();
 export const SecretModeProvider = ({ children }) => {
   const [isSecretMode, setIsSecretMode] = useState(false);
   const [isTransitioning, setIsTransitioning] = useState(false);
+  const [showOverlay, setShowOverlay] = useState(false);
 
   const toggleSecretMode = () => {
-    setIsTransitioning(true);
+    if (isTransitioning) return;
     
-    // Start transition animation
+    setIsTransitioning(true);
+    setShowOverlay(true);
+    
+    // Switch content at peak of animation
     setTimeout(() => {
       setIsSecretMode(prev => !prev);
-    }, 300);
+    }, 350);
+    
+    // Hide overlay
+    setTimeout(() => {
+      setShowOverlay(false);
+    }, 700);
     
     // End transition
     setTimeout(() => {
       setIsTransitioning(false);
-    }, 800);
+    }, 750);
   };
 
   // Apply theme class to body
@@ -31,16 +40,40 @@ export const SecretModeProvider = ({ children }) => {
 
   return (
     <SecretModeContext.Provider value={{ isSecretMode, isTransitioning, toggleSecretMode }}>
-      {/* Transition overlay */}
-      {isTransitioning && (
-        <div className="fixed inset-0 z-[100] pointer-events-none">
-          <div className="absolute inset-0 bg-black animate-pulse" />
+      {/* Wipe Transition Overlay */}
+      <div 
+        className="fixed inset-0 z-[100] pointer-events-none overflow-hidden"
+        style={{ perspective: '1000px' }}
+      >
+        {/* Left panel */}
+        <div 
+          className="absolute top-0 left-0 w-1/2 h-full transition-transform duration-[350ms] ease-in-out"
+          style={{
+            background: 'linear-gradient(90deg, #000 0%, #1a0505 100%)',
+            transform: showOverlay ? 'translateX(0)' : 'translateX(-100%)',
+          }}
+        />
+        {/* Right panel */}
+        <div 
+          className="absolute top-0 right-0 w-1/2 h-full transition-transform duration-[350ms] ease-in-out"
+          style={{
+            background: 'linear-gradient(270deg, #000 0%, #1a0505 100%)',
+            transform: showOverlay ? 'translateX(0)' : 'translateX(100%)',
+          }}
+        />
+        {/* Center line glow */}
+        {showOverlay && (
           <div 
-            className={`absolute inset-0 ${isSecretMode ? 'bg-black' : 'bg-red-950'} transition-opacity duration-500`}
-            style={{ opacity: isTransitioning ? 1 : 0 }}
+            className="absolute top-0 left-1/2 -translate-x-1/2 w-1 h-full"
+            style={{
+              background: isSecretMode ? '#000' : '#dc2626',
+              boxShadow: isSecretMode 
+                ? '0 0 30px 10px rgba(0,0,0,0.8)' 
+                : '0 0 30px 10px rgba(220,38,38,0.6)',
+            }}
           />
-        </div>
-      )}
+        )}
+      </div>
       {children}
     </SecretModeContext.Provider>
   );
