@@ -11,6 +11,7 @@ import ContactPage from "./pages/ContactPage";
 import DashboardPage from "./pages/DashboardPage";
 import LoginPage from "./pages/LoginPage";
 import ModuleDetailPage from "./pages/ModuleDetailPage";
+import EbookReaderPage from "./pages/EbookReaderPage";
 // Secret pages
 import CardingPage from "./pages/secret/CardingPage";
 import SpooferPage from "./pages/secret/SpooferPage";
@@ -60,6 +61,7 @@ function AppContent() {
           <Route path="/dashboard" element={<DashboardPage />} />
           <Route path="/login" element={<LoginPage />} />
           <Route path="/module/:type/:id" element={<ModuleDetailPage />} />
+          <Route path="/ebook/:category/:ebookId" element={<EbookReaderPage />} />
           
           {/* Secret routes */}
           <Route path="/secret/carding" element={<CardingPage />} />

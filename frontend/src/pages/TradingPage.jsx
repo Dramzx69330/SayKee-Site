@@ -16,7 +16,7 @@ export const TradingPage = () => {
 
   const ebooks = [
     {
-      id: 1,
+      id: "bases-trading",
       title: "Les Bases du Trading",
       description: "T'y connais rien ? Pas de stress, on part de zéro. Je t'explique tout comme si on était potes.",
       level: "Débutant",
@@ -24,7 +24,7 @@ export const TradingPage = () => {
       color: "blue"
     },
     {
-      id: 2,
+      id: "analyse-technique",
       title: "Analyse Technique",
       description: "Les graphiques, les chandeliers, les patterns... Tout ce qu'il faut pour lire le marché comme un pro.",
       level: "Intermédiaire",
@@ -32,7 +32,7 @@ export const TradingPage = () => {
       color: "blue"
     },
     {
-      id: 3,
+      id: "gestion-risque",
       title: "Gestion du Risque",
       description: "Le truc que 90% des traders ignorent et qui les fait cramer leur compte. Spoiler : c'est le plus important.",
       level: "Tous niveaux",
@@ -123,6 +123,7 @@ export const TradingPage = () => {
                 Teste ton niveau
               </Button>
               <Button 
+                onClick={() => document.getElementById('ebooks-section').scrollIntoView({ behavior: 'smooth' })}
                 variant="outline"
                 className="border-neutral-700 hover:bg-neutral-900 text-white font-bold px-8 h-14 rounded-none"
               >
@@ -208,7 +209,7 @@ export const TradingPage = () => {
       )}
 
       {/* Ebooks Section */}
-      <section className="py-20 px-6 bg-neutral-900/30">
+      <section id="ebooks-section" className="py-20 px-6 bg-neutral-900/30">
         <div className="max-w-7xl mx-auto">
           <div className="mb-12">
             <h2 className="text-4xl font-black text-white mb-4">
@@ -248,10 +249,10 @@ export const TradingPage = () => {
                   
                   <Button 
                     className="w-full bg-blue-600 hover:bg-blue-700 rounded-none font-bold"
-                    onClick={() => !isLoggedIn && navigate("/login")}
+                    onClick={() => navigate(`/ebook/trading/${ebook.id}`)}
                   >
                     <Download className="mr-2" size={18} />
-                    {isLoggedIn ? "Télécharger" : "Connecte-toi pour télécharger"}
+                    Lire l'ebook
                   </Button>
                 </div>
               </div>
