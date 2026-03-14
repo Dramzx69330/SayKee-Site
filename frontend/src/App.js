@@ -1,0 +1,55 @@
+import { useEffect } from "react";
+import "@/App.css";
+import { BrowserRouter, Routes, Route } from "react-router-dom";
+import axios from "axios";
+import HomePage from "./pages/HomePage";
+import AboutPage from "./pages/AboutPage";
+import TradingPage from "./pages/TradingPage";
+import EcommercePage from "./pages/EcommercePage";
+import ContactPage from "./pages/ContactPage";
+import DashboardPage from "./pages/DashboardPage";
+import LoginPage from "./pages/LoginPage";
+import ModuleDetailPage from "./pages/ModuleDetailPage";
+import Header from "./components/Header";
+import Footer from "./components/Footer";
+import { Toaster } from "./components/ui/sonner";
+
+const BACKEND_URL = process.env.REACT_APP_BACKEND_URL;
+const API = `${BACKEND_URL}/api`;
+
+function App() {
+  const helloWorldApi = async () => {
+    try {
+      const response = await axios.get(`${API}/`);
+      console.log(response.data.message);
+    } catch (e) {
+      console.error(e, `errored out requesting / api`);
+    }
+  };
+
+  useEffect(() => {
+    helloWorldApi();
+  }, []);
+
+  return (
+    <div className="App">
+      <BrowserRouter>
+        <Header />
+        <Routes>
+          <Route path="/" element={<HomePage />} />
+          <Route path="/about" element={<AboutPage />} />
+          <Route path="/trading" element={<TradingPage />} />
+          <Route path="/ecommerce" element={<EcommercePage />} />
+          <Route path="/contact" element={<ContactPage />} />
+          <Route path="/dashboard" element={<DashboardPage />} />
+          <Route path="/login" element={<LoginPage />} />
+          <Route path="/module/:type/:id" element={<ModuleDetailPage />} />
+        </Routes>
+        <Footer />
+        <Toaster />
+      </BrowserRouter>
+    </div>
+  );
+}
+
+export default App;
