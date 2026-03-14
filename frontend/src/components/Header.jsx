@@ -15,29 +15,29 @@ export const Header = () => {
   };
 
   return (
-    <header className="fixed top-0 left-0 right-0 z-50 bg-zinc-950/80 backdrop-blur-md border-b border-zinc-800">
-      <div className="max-w-6xl mx-auto px-4">
-        <div className="flex justify-between items-center h-16">
+    <header className="fixed top-0 left-0 right-0 z-50 bg-black/70 backdrop-blur-xl border-b border-neutral-800">
+      <div className="max-w-7xl mx-auto px-6">
+        <div className="flex justify-between items-center h-20">
           {/* Logo */}
-          <Link to="/" className="text-xl font-bold text-white">
-            SayKee
+          <Link to="/" className="text-2xl font-black text-white tracking-tight">
+            SAYKEE
           </Link>
 
           {/* Desktop Navigation */}
-          <nav className="hidden md:flex items-center gap-8">
-            <Link to="/" className="text-sm text-zinc-400 hover:text-white transition-colors">
+          <nav className="hidden md:flex items-center gap-10">
+            <Link to="/" className="text-sm font-medium text-neutral-400 hover:text-white transition-colors">
               Accueil
             </Link>
-            <Link to="/about" className="text-sm text-zinc-400 hover:text-white transition-colors">
+            <Link to="/about" className="text-sm font-medium text-neutral-400 hover:text-white transition-colors">
               À propos
             </Link>
-            <Link to="/trading" className="text-sm text-zinc-400 hover:text-white transition-colors">
+            <Link to="/trading" className="text-sm font-medium text-neutral-400 hover:text-white transition-colors">
               Trading
             </Link>
-            <Link to="/ecommerce" className="text-sm text-zinc-400 hover:text-white transition-colors">
+            <Link to="/ecommerce" className="text-sm font-medium text-neutral-400 hover:text-white transition-colors">
               E-commerce
             </Link>
-            <Link to="/contact" className="text-sm text-zinc-400 hover:text-white transition-colors">
+            <Link to="/contact" className="text-sm font-medium text-neutral-400 hover:text-white transition-colors">
               Contact
             </Link>
           </nav>
@@ -46,15 +46,15 @@ export const Header = () => {
           <div className="hidden md:flex items-center gap-4">
             {isLoggedIn ? (
               <>
-                <Button onClick={() => navigate("/dashboard")} variant="ghost" className="text-zinc-400 hover:text-white hover:bg-zinc-900">
+                <Button onClick={() => navigate("/dashboard")} variant="ghost" className="text-neutral-400 hover:text-white hover:bg-neutral-900 font-semibold">
                   Dashboard
                 </Button>
-                <Button onClick={handleLogout} variant="outline" className="border-zinc-700 hover:bg-zinc-900 text-white">
+                <Button onClick={handleLogout} variant="outline" className="border-neutral-700 hover:bg-neutral-900 text-white font-semibold rounded-none">
                   Déconnexion
                 </Button>
               </>
             ) : (
-              <Button onClick={() => navigate("/login")} className="bg-white hover:bg-zinc-200 text-black font-semibold">
+              <Button onClick={() => navigate("/login")} className="bg-white hover:bg-neutral-100 text-black font-bold rounded-none">
                 Se connecter
               </Button>
             )}
@@ -65,60 +65,60 @@ export const Header = () => {
             onClick={() => setIsMenuOpen(!isMenuOpen)}
             className="md:hidden text-white p-2"
           >
-            {isMenuOpen ? <X size={20} /> : <Menu size={20} />}
+            {isMenuOpen ? <X size={22} /> : <Menu size={22} />}
           </button>
         </div>
 
         {/* Mobile Menu */}
         {isMenuOpen && (
-          <div className="md:hidden py-4 border-t border-zinc-800">
-            <nav className="flex flex-col gap-4">
+          <div className="md:hidden py-6 border-t border-neutral-800">
+            <nav className="flex flex-col gap-6">
               <Link
                 to="/"
-                className="text-sm text-zinc-400 hover:text-white transition-colors"
+                className="text-sm font-medium text-neutral-400 hover:text-white transition-colors"
                 onClick={() => setIsMenuOpen(false)}
               >
                 Accueil
               </Link>
               <Link
                 to="/about"
-                className="text-sm text-zinc-400 hover:text-white transition-colors"
+                className="text-sm font-medium text-neutral-400 hover:text-white transition-colors"
                 onClick={() => setIsMenuOpen(false)}
               >
                 À propos
               </Link>
               <Link
                 to="/trading"
-                className="text-sm text-zinc-400 hover:text-white transition-colors"
+                className="text-sm font-medium text-neutral-400 hover:text-white transition-colors"
                 onClick={() => setIsMenuOpen(false)}
               >
                 Trading
               </Link>
               <Link
                 to="/ecommerce"
-                className="text-sm text-zinc-400 hover:text-white transition-colors"
+                className="text-sm font-medium text-neutral-400 hover:text-white transition-colors"
                 onClick={() => setIsMenuOpen(false)}
               >
                 E-commerce
               </Link>
               <Link
                 to="/contact"
-                className="text-sm text-zinc-400 hover:text-white transition-colors"
+                className="text-sm font-medium text-neutral-400 hover:text-white transition-colors"
                 onClick={() => setIsMenuOpen(false)}
               >
                 Contact
               </Link>
               {isLoggedIn ? (
                 <>
-                  <Button onClick={() => { navigate("/dashboard"); setIsMenuOpen(false); }} variant="ghost" className="w-full justify-start">
+                  <Button onClick={() => { navigate("/dashboard"); setIsMenuOpen(false); }} variant="ghost" className="w-full justify-start font-semibold">
                     Dashboard
                   </Button>
-                  <Button onClick={handleLogout} variant="outline" className="w-full">
+                  <Button onClick={handleLogout} variant="outline" className="w-full font-semibold rounded-none">
                     Déconnexion
                   </Button>
                 </>
               ) : (
-                <Button onClick={() => { navigate("/login"); setIsMenuOpen(false); }} className="w-full bg-white hover:bg-zinc-200 text-black">
+                <Button onClick={() => { navigate("/login"); setIsMenuOpen(false); }} className="w-full bg-white hover:bg-neutral-100 text-black font-bold rounded-none">
                   Se connecter
                 </Button>
               )}

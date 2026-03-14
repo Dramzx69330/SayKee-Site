@@ -1,32 +1,32 @@
-/* SayKee - Design naturel et brut */
+/* SayKee - Design moderne et élégant */
 
 .App {
   min-height: 100vh;
-  background-color: #09090b;
+  background-color: #000000;
 }
 
 button {
-  transition: all 0.2s ease;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 button:hover {
-  transform: translateY(-1px);
-}
-
-.module-card {
-  transition: all 0.2s ease;
-}
-
-.module-card:hover {
   transform: translateY(-2px);
 }
 
+.card-hover {
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.card-hover:hover {
+  transform: translateY(-4px);
+}
+
 .section-spacing {
-  padding: 100px 0;
+  padding: 120px 0;
 }
 
 @media (max-width: 768px) {
   .section-spacing {
-    padding: 60px 0;
+    padding: 80px 0;
   }
 }
