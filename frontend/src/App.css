@@ -1,36 +1,40 @@
-/* SayKee Custom Styles - Clean & Professional */
+/* SayKee Custom Styles - Modern with Natural Colors */
 
 .App {
   min-height: 100vh;
-  background-color: #ffffff;
+  background-color: #fafafa;
 }
 
-/* Smooth transitions for interactive elements */
+/* Smooth transitions */
 button {
-  transition: all 0.2s ease;
+  transition: all 0.3s ease;
 }
 
 button:hover {
   transform: translateY(-1px);
 }
 
-button:active {
-  transform: translateY(0);
-}
-
-/* Link transitions */
-a {
-  transition: color 0.2s ease;
-}
-
-/* Card hover effects - subtle */
+/* Card hover effects */
 .module-card {
   transition: all 0.3s ease;
 }
 
 .module-card:hover {
-  transform: translateY(-2px);
-  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+  transform: translateY(-3px);
+  box-shadow: 0 12px 24px rgba(0, 0, 0, 0.1);
+}
+
+/* Gradient backgrounds - subtle and natural */
+.gradient-bg-blue {
+  background: linear-gradient(135deg, #eff6ff 0%, #dbeafe 100%);
+}
+
+.gradient-bg-green {
+  background: linear-gradient(135deg, #f0fdf4 0%, #dcfce7 100%);
+}
+
+.gradient-bg-orange {
+  background: linear-gradient(135deg, #fff7ed 0%, #ffedd5 100%);
 }
 
 /* Section spacing */
