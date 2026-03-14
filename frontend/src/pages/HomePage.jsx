@@ -1,7 +1,7 @@
 import { useNavigate } from "react-router-dom";
 import { Button } from "../components/ui/button";
-import { ArrowRight, TrendingUp, ShoppingCart } from "lucide-react";
-import { stats, testimonials } from "../mockData";
+import { ArrowRight, TrendingUp, ShoppingCart, Target, Zap, Brain, BarChart3, Users, BookOpen } from "lucide-react";
+import { stats } from "../mockData";
 
 export const HomePage = () => {
   const navigate = useNavigate();
@@ -62,8 +62,57 @@ export const HomePage = () => {
         </div>
       </section>
 
+      {/* Why Section */}
+      <section className="py-32 px-6">
+        <div className="max-w-7xl mx-auto">
+          <div className="mb-20">
+            <h2 className="text-5xl md:text-6xl font-black text-white mb-4 tracking-tight">
+              Pourquoi SayKee ?
+            </h2>
+            <p className="text-xl text-neutral-400 max-w-2xl">
+              Pas de bullshit. Juste ce qui marche.
+            </p>
+          </div>
+
+          <div className="grid md:grid-cols-3 gap-8">
+            <div className="bg-neutral-900 border border-neutral-800 p-10">
+              <div className="w-12 h-12 bg-blue-500 flex items-center justify-center mb-6">
+                <Target size={24} className="text-black" strokeWidth={2.5} />
+              </div>
+              <h3 className="text-2xl font-bold text-white mb-4">100% Gratuit</h3>
+              <p className="text-neutral-400 leading-relaxed">
+                Pas de vente, pas d'arnaque. Tout le contenu est accessible gratuitement. 
+                Je partage ce que j'utilise réellement.
+              </p>
+            </div>
+
+            <div className="bg-neutral-900 border border-neutral-800 p-10">
+              <div className="w-12 h-12 bg-emerald-500 flex items-center justify-center mb-6">
+                <Brain size={24} className="text-black" strokeWidth={2.5} />
+              </div>
+              <h3 className="text-2xl font-bold text-white mb-4">Méthodes testées</h3>
+              <p className="text-neutral-400 leading-relaxed">
+                Chaque stratégie enseignée est utilisée quotidiennement pour générer 
+                entre 10 et 45k€ par mois.
+              </p>
+            </div>
+
+            <div className="bg-neutral-900 border border-neutral-800 p-10">
+              <div className="w-12 h-12 bg-white flex items-center justify-center mb-6">
+                <Zap size={24} className="text-black" strokeWidth={2.5} />
+              </div>
+              <h3 className="text-2xl font-bold text-white mb-4">Sans théorie inutile</h3>
+              <p className="text-neutral-400 leading-relaxed">
+                Zéro blabla. Que du concret et du pratique. Tu appliques, tu vois 
+                les résultats.
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+
       {/* Services Section */}
-      <section className="section-spacing px-6">
+      <section className="py-32 px-6 bg-neutral-900/30">
         <div className="max-w-7xl mx-auto">
           <div className="mb-20">
             <h2 className="text-5xl md:text-6xl font-black text-white mb-4 tracking-tight">
@@ -162,6 +211,52 @@ export const HomePage = () => {
         </div>
       </section>
 
+      {/* Learning Path Section */}
+      <section className="py-32 px-6">
+        <div className="max-w-7xl mx-auto">
+          <div className="mb-20">
+            <h2 className="text-5xl md:text-6xl font-black text-white mb-4 tracking-tight">
+              Comment ça marche
+            </h2>
+            <p className="text-xl text-neutral-400">
+              Simple et direct
+            </p>
+          </div>
+
+          <div className="grid md:grid-cols-3 gap-8">
+            <div className="relative">
+              <div className="text-8xl font-black text-neutral-900 absolute -top-6 -left-2">01</div>
+              <div className="relative pt-12">
+                <h3 className="text-2xl font-black text-white mb-4">Inscris-toi</h3>
+                <p className="text-neutral-400 leading-relaxed">
+                  Crée ton compte gratuitement. Pas de carte bancaire, pas de bullshit.
+                </p>
+              </div>
+            </div>
+
+            <div className="relative">
+              <div className="text-8xl font-black text-neutral-900 absolute -top-6 -left-2">02</div>
+              <div className="relative pt-12">
+                <h3 className="text-2xl font-black text-white mb-4">Apprends</h3>
+                <p className="text-neutral-400 leading-relaxed">
+                  Suis les modules à ton rythme. Vidéos, quiz, exercices pratiques.
+                </p>
+              </div>
+            </div>
+
+            <div className="relative">
+              <div className="text-8xl font-black text-neutral-900 absolute -top-6 -left-2">03</div>
+              <div className="relative pt-12">
+                <h3 className="text-2xl font-black text-white mb-4">Applique</h3>
+                <p className="text-neutral-400 leading-relaxed">
+                  Utilise ce que tu apprends immédiatement. C'est là que ça compte.
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
       {/* Results Section */}
       <section className="py-32 px-6 bg-neutral-900/30">
         <div className="max-w-7xl mx-auto">
@@ -227,6 +322,74 @@ export const HomePage = () => {
               <p className="text-neutral-300 leading-relaxed">
                 Tu veux les mêmes résultats ? Applique ce que j'enseigne. Simple.
               </p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* For Who Section */}
+      <section className="py-32 px-6">
+        <div className="max-w-7xl mx-auto">
+          <div className="mb-20">
+            <h2 className="text-5xl md:text-6xl font-black text-white mb-4 tracking-tight">
+              C'est pour toi si...
+            </h2>
+            <p className="text-xl text-neutral-400">
+              Pas de prérequis, juste de la motivation
+            </p>
+          </div>
+
+          <div className="grid md:grid-cols-2 gap-8">
+            <div className="bg-neutral-900 border border-neutral-800 p-10">
+              <div className="flex items-start gap-4 mb-6">
+                <Users size={24} className="text-blue-500 flex-shrink-0 mt-1" strokeWidth={2.5} />
+                <div>
+                  <h3 className="text-xl font-bold text-white mb-3">Tu débutes de zéro</h3>
+                  <p className="text-neutral-400 leading-relaxed">
+                    Pas de problème. Les formations partent de la base. Tu comprends les 
+                    concepts avant d'attaquer le concret.
+                  </p>
+                </div>
+              </div>
+            </div>
+
+            <div className="bg-neutral-900 border border-neutral-800 p-10">
+              <div className="flex items-start gap-4 mb-6">
+                <BarChart3 size={24} className="text-emerald-500 flex-shrink-0 mt-1" strokeWidth={2.5} />
+                <div>
+                  <h3 className="text-xl font-bold text-white mb-3">Tu veux progresser</h3>
+                  <p className="text-neutral-400 leading-relaxed">
+                    Déjà actif mais tu stagnes ? Les modules avancés vont débloquer 
+                    ton niveau supérieur.
+                  </p>
+                </div>
+              </div>
+            </div>
+
+            <div className="bg-neutral-900 border border-neutral-800 p-10">
+              <div className="flex items-start gap-4 mb-6">
+                <BookOpen size={24} className="text-white flex-shrink-0 mt-1" strokeWidth={2.5} />
+                <div>
+                  <h3 className="text-xl font-bold text-white mb-3">Tu cherches du concret</h3>
+                  <p className="text-neutral-400 leading-relaxed">
+                    Marre de la théorie sans application ? Ici c'est 100% pratique et 
+                    stratégies testées.
+                  </p>
+                </div>
+              </div>
+            </div>
+
+            <div className="bg-neutral-900 border border-neutral-800 p-10">
+              <div className="flex items-start gap-4 mb-6">
+                <Target size={24} className="text-blue-500 flex-shrink-0 mt-1" strokeWidth={2.5} />
+                <div>
+                  <h3 className="text-xl font-bold text-white mb-3">Tu veux des résultats</h3>
+                  <p className="text-neutral-400 leading-relaxed">
+                    Pas là pour perdre du temps ? Parfait. Applique ce que tu apprends 
+                    et tu verras les résultats.
+                  </p>
+                </div>
+              </div>
             </div>
           </div>
         </div>
