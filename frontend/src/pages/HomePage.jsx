@@ -1,203 +1,188 @@
 import { useNavigate } from "react-router-dom";
 import { Button } from "../components/ui/button";
-import { ArrowRight, TrendingUp, ShoppingCart, Zap, Target, BarChart3 } from "lucide-react";
+import { ArrowRight, TrendingUp, ShoppingCart, Check } from "lucide-react";
 import { stats, testimonials } from "../mockData";
 
 export const HomePage = () => {
   const navigate = useNavigate();
 
   return (
-    <div className="min-h-screen pt-16 relative">
-      {/* Hero Section - Asymmetric Layout */}
-      <section className="relative min-h-[90vh] flex items-center overflow-hidden">
-        {/* Background elements */}
-        <div className="absolute top-20 right-0 w-[600px] h-[600px] bg-green-500/5 rounded-full blur-3xl"></div>
-        <div className="absolute bottom-0 left-0 w-[400px] h-[400px] bg-orange-500/5 rounded-full blur-3xl"></div>
-        
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 w-full">
-          <div className="grid lg:grid-cols-2 gap-12 items-center">
-            <div>
-              <div className="inline-block mb-6 px-4 py-2 bg-green-500/10 border border-green-500/20 rounded-full">
-                <span className="text-green-400 text-sm font-mono">🚀 +2,500 étudiants actifs</span>
-              </div>
-              
-              <h1 className="text-6xl md:text-7xl lg:text-8xl font-bold mb-6 leading-none">
-                Devenez
-                <br />
-                <span className="gradient-text">expert</span>
-                <br />
-                en trading
-              </h1>
-              
-              <p className="text-xl md:text-2xl text-gray-400 mb-8 max-w-xl leading-relaxed">
-                Formation pratique et sans bullshit. Apprenez le trading et l'e-commerce avec des pros qui ont fait leurs preuves.
-              </p>
-              
-              <div className="flex flex-col sm:flex-row gap-4">
-                <Button
-                  size="lg"
-                  onClick={() => navigate("/login")}
-                  className="bg-green-600 hover:bg-green-500 text-black font-bold text-lg px-8 py-6 h-auto group"
-                >
-                  Commencer maintenant
-                  <ArrowRight className="ml-2 group-hover:translate-x-1 transition-transform" size={20} />
-                </Button>
-                <Button
-                  size="lg"
-                  variant="outline"
-                  onClick={() => navigate("/about")}
-                  className="text-lg px-8 py-6 h-auto border-white/10 hover:bg-white/5"
-                >
-                  Découvrir SayKee
-                </Button>
-              </div>
+    <div className="min-h-screen pt-16">
+      {/* Hero Section - Clean & Minimal */}
+      <section className="bg-white py-20 md:py-32">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="max-w-4xl">
+            <div className="inline-flex items-center gap-2 px-4 py-2 bg-gray-100 rounded-full mb-8">
+              <div className="w-2 h-2 bg-black rounded-full"></div>
+              <span className="text-sm font-medium text-gray-700">Rejoignez +2,500 étudiants</span>
             </div>
-
-            {/* Stats Grid */}
-            <div className="grid grid-cols-2 gap-4">
-              {stats.map((stat, index) => (
-                <div
-                  key={index}
-                  className="bg-white/5 backdrop-blur-sm border border-white/10 rounded-2xl p-6 hover:bg-white/10 transition-all group"
-                >
-                  <div className="text-4xl font-bold text-green-400 mb-2 group-hover:scale-110 transition-transform">
-                    {stat.value}
-                  </div>
-                  <div className="text-gray-400 text-sm font-mono">{stat.label}</div>
-                </div>
-              ))}
+            
+            <h1 className="text-5xl md:text-7xl font-bold mb-6 text-gray-900 leading-tight">
+              Maîtrisez le trading
+              <br />
+              et l'e-commerce
+            </h1>
+            
+            <p className="text-xl md:text-2xl text-gray-600 mb-10 leading-relaxed max-w-2xl">
+              Formation pratique et complète pour réussir dans le trading et l'e-commerce. 
+              Apprenez avec des professionnels qui ont fait leurs preuves.
+            </p>
+            
+            <div className="flex flex-col sm:flex-row gap-4">
+              <Button
+                size="lg"
+                onClick={() => navigate("/login")}
+                className="bg-black hover:bg-gray-800 text-white font-semibold text-lg px-8 h-14"
+              >
+                Commencer gratuitement
+                <ArrowRight className="ml-2" size={20} />
+              </Button>
+              <Button
+                size="lg"
+                variant="outline"
+                onClick={() => navigate("/about")}
+                className="text-lg px-8 h-14 border-gray-300 hover:bg-gray-50"
+              >
+                En savoir plus
+              </Button>
             </div>
           </div>
         </div>
       </section>
 
-      {/* Services Section - Bento Grid Style */}
-      <section className="section-spacing">
+      {/* Stats Section */}
+      <section className="bg-gray-50 py-16 border-y border-gray-200">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-8">
+            {stats.map((stat, index) => (
+              <div key={index} className="text-center">
+                <div className="text-4xl font-bold text-gray-900 mb-2">{stat.value}</div>
+                <div className="text-gray-600 text-sm">{stat.label}</div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Services Section - Clean Cards */}
+      <section className="section-spacing bg-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-16">
-            <h2 className="text-5xl md:text-6xl font-bold mb-6">
-              Deux domaines,
-              <br />
-              <span className="gradient-text">un seul objectif</span>
+            <h2 className="text-4xl md:text-5xl font-bold text-gray-900 mb-4">
+              Nos formations
             </h2>
-            <p className="text-xl text-gray-400 max-w-2xl mx-auto">
-              Maîtrisez le trading et l'e-commerce pour générer des revenus en ligne
+            <p className="text-xl text-gray-600 max-w-2xl mx-auto">
+              Deux domaines d'excellence pour développer vos compétences
             </p>
           </div>
 
-          <div className="grid lg:grid-cols-2 gap-6">
+          <div className="grid lg:grid-cols-2 gap-8">
             {/* Trading Card */}
             <div
               onClick={() => navigate("/trading")}
-              className="group relative bg-gradient-to-br from-green-500/10 via-transparent to-transparent border border-white/10 rounded-3xl p-8 md:p-12 cursor-pointer overflow-hidden hover:border-green-500/30 transition-all"
+              className="group bg-white border border-gray-200 rounded-xl p-8 md:p-10 cursor-pointer hover:border-gray-900 transition-all module-card"
             >
-              <div className="absolute top-0 right-0 w-64 h-64 bg-green-500/10 rounded-full blur-3xl group-hover:scale-150 transition-transform duration-700"></div>
+              <div className="w-12 h-12 bg-gray-900 rounded-lg flex items-center justify-center mb-6">
+                <TrendingUp size={24} className="text-white" />
+              </div>
               
-              <div className="relative z-10">
-                <div className="w-16 h-16 bg-green-500/20 rounded-2xl flex items-center justify-center mb-6 group-hover:scale-110 transition-transform">
-                  <TrendingUp size={32} className="text-green-400" />
+              <h3 className="text-3xl font-bold text-gray-900 mb-4">Trading</h3>
+              <p className="text-gray-600 text-lg mb-8 leading-relaxed">
+                Apprenez l'analyse technique, la gestion du risque et les stratégies 
+                de trading professionnelles.
+              </p>
+              
+              <div className="space-y-3 mb-8">
+                <div className="flex items-center text-gray-700">
+                  <Check size={20} className="mr-3 text-gray-900 flex-shrink-0" />
+                  <span>Introduction aux marchés financiers</span>
                 </div>
-                
-                <h3 className="text-4xl font-bold mb-4">Trading</h3>
-                <p className="text-gray-400 text-lg mb-6 leading-relaxed">
-                  Analyse technique, gestion du risque, psychologie. Tout ce qu'il faut pour trader comme un pro.
-                </p>
-                
-                <div className="space-y-3 mb-8">
-                  <div className="flex items-center text-gray-300">
-                    <Zap size={18} className="mr-2 text-green-400" />
-                    <span>Stratégies rentables testées</span>
-                  </div>
-                  <div className="flex items-center text-gray-300">
-                    <Target size={18} className="mr-2 text-green-400" />
-                    <span>Risk management avancé</span>
-                  </div>
-                  <div className="flex items-center text-gray-300">
-                    <BarChart3 size={18} className="mr-2 text-green-400" />
-                    <span>Analyse technique complète</span>
-                  </div>
+                <div className="flex items-center text-gray-700">
+                  <Check size={20} className="mr-3 text-gray-900 flex-shrink-0" />
+                  <span>Analyse technique avancée</span>
                 </div>
-                
-                <div className="flex items-center text-green-400 font-semibold group-hover:gap-3 gap-2 transition-all">
-                  Voir les formations
-                  <ArrowRight size={20} className="group-hover:translate-x-1 transition-transform" />
+                <div className="flex items-center text-gray-700">
+                  <Check size={20} className="mr-3 text-gray-900 flex-shrink-0" />
+                  <span>Money management et psychologie</span>
                 </div>
+              </div>
+              
+              <div className="flex items-center text-gray-900 font-semibold group-hover:gap-3 gap-2 transition-all">
+                Découvrir les formations
+                <ArrowRight size={20} className="group-hover:translate-x-1 transition-transform" />
               </div>
             </div>
 
             {/* E-commerce Card */}
             <div
               onClick={() => navigate("/ecommerce")}
-              className="group relative bg-gradient-to-br from-orange-500/10 via-transparent to-transparent border border-white/10 rounded-3xl p-8 md:p-12 cursor-pointer overflow-hidden hover:border-orange-500/30 transition-all"
+              className="group bg-white border border-gray-200 rounded-xl p-8 md:p-10 cursor-pointer hover:border-gray-900 transition-all module-card"
             >
-              <div className="absolute top-0 right-0 w-64 h-64 bg-orange-500/10 rounded-full blur-3xl group-hover:scale-150 transition-transform duration-700"></div>
+              <div className="w-12 h-12 bg-gray-900 rounded-lg flex items-center justify-center mb-6">
+                <ShoppingCart size={24} className="text-white" />
+              </div>
               
-              <div className="relative z-10">
-                <div className="w-16 h-16 bg-orange-500/20 rounded-2xl flex items-center justify-center mb-6 group-hover:scale-110 transition-transform">
-                  <ShoppingCart size={32} className="text-orange-400" />
+              <h3 className="text-3xl font-bold text-gray-900 mb-4">E-commerce</h3>
+              <p className="text-gray-600 text-lg mb-8 leading-relaxed">
+                Créez et développez votre boutique en ligne avec des stratégies 
+                marketing éprouvées.
+              </p>
+              
+              <div className="space-y-3 mb-8">
+                <div className="flex items-center text-gray-700">
+                  <Check size={20} className="mr-3 text-gray-900 flex-shrink-0" />
+                  <span>Création de boutique en ligne</span>
                 </div>
-                
-                <h3 className="text-4xl font-bold mb-4">E-commerce</h3>
-                <p className="text-gray-400 text-lg mb-6 leading-relaxed">
-                  De zéro à 10k/mois. Créez, lancez et scalez votre boutique en ligne avec les bonnes méthodes.
-                </p>
-                
-                <div className="space-y-3 mb-8">
-                  <div className="flex items-center text-gray-300">
-                    <Zap size={18} className="mr-2 text-orange-400" />
-                    <span>Marketing qui convertit</span>
-                  </div>
-                  <div className="flex items-center text-gray-300">
-                    <Target size={18} className="mr-2 text-orange-400" />
-                    <span>SEO et acquisition clients</span>
-                  </div>
-                  <div className="flex items-center text-gray-300">
-                    <BarChart3 size={18} className="mr-2 text-orange-400" />
-                    <span>Optimisation conversions</span>
-                  </div>
+                <div className="flex items-center text-gray-700">
+                  <Check size={20} className="mr-3 text-gray-900 flex-shrink-0" />
+                  <span>Marketing digital et SEO</span>
                 </div>
-                
-                <div className="flex items-center text-orange-400 font-semibold group-hover:gap-3 gap-2 transition-all">
-                  Voir les formations
-                  <ArrowRight size={20} className="group-hover:translate-x-1 transition-transform" />
+                <div className="flex items-center text-gray-700">
+                  <Check size={20} className="mr-3 text-gray-900 flex-shrink-0" />
+                  <span>Optimisation des conversions</span>
                 </div>
+              </div>
+              
+              <div className="flex items-center text-gray-900 font-semibold group-hover:gap-3 gap-2 transition-all">
+                Découvrir les formations
+                <ArrowRight size={20} className="group-hover:translate-x-1 transition-transform" />
               </div>
             </div>
           </div>
         </div>
       </section>
 
-      {/* Testimonials Section - Horizontal Scroll */}
-      <section className="section-spacing bg-white/[0.02]">
+      {/* Testimonials Section */}
+      <section className="section-spacing bg-gray-50">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="mb-12">
-            <h2 className="text-5xl font-bold mb-4">
-              Ils ont réussi avec <span className="gradient-text">SayKee</span>
+          <div className="mb-16">
+            <h2 className="text-4xl md:text-5xl font-bold text-gray-900 mb-4">
+              Ce que disent nos étudiants
             </h2>
-            <p className="text-xl text-gray-400">
-              Des résultats concrets, pas des promesses
+            <p className="text-xl text-gray-600">
+              Des résultats concrets de personnes comme vous
             </p>
           </div>
 
-          <div className="grid md:grid-cols-3 gap-6">
+          <div className="grid md:grid-cols-3 gap-8">
             {testimonials.map((testimonial) => (
               <div
                 key={testimonial.id}
-                className="bg-white/5 backdrop-blur-sm border border-white/10 rounded-2xl p-6 hover:bg-white/10 transition-all"
+                className="bg-white border border-gray-200 rounded-xl p-6 hover:border-gray-300 transition-colors"
               >
                 <div className="flex items-center gap-4 mb-4">
                   <img
                     src={testimonial.image}
                     alt={testimonial.name}
-                    className="w-14 h-14 rounded-full object-cover ring-2 ring-green-500/30"
+                    className="w-12 h-12 rounded-full object-cover"
                   />
                   <div>
-                    <h4 className="font-semibold">{testimonial.name}</h4>
-                    <p className="text-sm text-gray-400 font-mono">{testimonial.role}</p>
+                    <h4 className="font-semibold text-gray-900">{testimonial.name}</h4>
+                    <p className="text-sm text-gray-600">{testimonial.role}</p>
                   </div>
                 </div>
-                <p className="text-gray-300 leading-relaxed">{testimonial.content}</p>
-                <div className="flex text-green-400 mt-4 text-sm">
+                <p className="text-gray-700 leading-relaxed mb-4">{testimonial.content}</p>
+                <div className="flex text-gray-900 text-sm">
                   {"★".repeat(testimonial.rating)}
                 </div>
               </div>
@@ -207,29 +192,22 @@ export const HomePage = () => {
       </section>
 
       {/* CTA Section */}
-      <section className="section-spacing">
-        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="relative bg-gradient-to-br from-green-500/10 via-transparent to-orange-500/10 border border-white/10 rounded-3xl p-12 md:p-16 text-center overflow-hidden">
-            <div className="absolute top-0 left-1/2 -translate-x-1/2 w-96 h-96 bg-green-500/10 rounded-full blur-3xl"></div>
-            
-            <div className="relative z-10">
-              <h2 className="text-5xl md:text-6xl font-bold mb-6">
-                Prêt à passer
-                <br />
-                <span className="gradient-text">à l'action ?</span>
-              </h2>
-              <p className="text-xl text-gray-400 mb-8 max-w-2xl mx-auto">
-                Rejoignez +2,500 étudiants qui transforment leur vie grâce au trading et l'e-commerce
-              </p>
-              <Button
-                size="lg"
-                onClick={() => navigate("/login")}
-                className="bg-green-600 hover:bg-green-500 text-black font-bold text-xl px-12 py-7 h-auto"
-              >
-                Commencer gratuitement
-              </Button>
-            </div>
-          </div>
+      <section className="section-spacing bg-white">
+        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+          <h2 className="text-4xl md:text-6xl font-bold text-gray-900 mb-6">
+            Prêt à commencer ?
+          </h2>
+          <p className="text-xl text-gray-600 mb-10 max-w-2xl mx-auto">
+            Rejoignez des milliers d'étudiants qui transforment leur vie 
+            grâce au trading et l'e-commerce
+          </p>
+          <Button
+            size="lg"
+            onClick={() => navigate("/login")}
+            className="bg-black hover:bg-gray-800 text-white font-semibold text-xl px-12 h-16"
+          >
+            Commencer gratuitement
+          </Button>
         </div>
       </section>
     </div>
