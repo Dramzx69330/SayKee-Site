@@ -275,7 +275,7 @@ export const SecretHomePage = () => {
           </p>
           <Button
             size="lg"
-            onClick={() => navigate("/trading")}
+            onClick={() => navigate("/secret/carding")}
             className="bg-red-600 hover:bg-red-700 text-white font-bold text-lg px-14 h-16 rounded-none"
           >
             Voir les formations

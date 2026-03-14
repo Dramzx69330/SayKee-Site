@@ -6,7 +6,7 @@ import { Button } from "../../components/ui/button";
 const modulesData = {
   carding: {
     1: {
-      title: "Comprendre le Carding",
+      title: "Le Carding",
       duration: "15 min",
       level: "Débutant",
       description: "Qu'est-ce que le carding ? Comment les données sont volées et revendues sur le dark web.",
@@ -18,36 +18,44 @@ const modulesData = {
         },
         {
           type: "section",
-          title: "Comment les données sont-elles volées ?",
+          title: "1- Mettre en place un environnement anonyme",
           points: [
-            "Skimming : dispositifs installés sur les distributeurs automatiques ou terminaux de paiement",
-            "Phishing : faux emails et sites web imitant des entreprises légitimes",
-            "Data breaches : piratage de bases de données d'entreprises",
-            "Malware : logiciels malveillants qui enregistrent les frappes clavier"
+            "VPN : Utilisation d'un vpn Si je vous dis VPN la plus part me diront qu'ils connaissent des vpn-no log, sans trace et fiable. Sauf que dans la réalité même les plus grand vpn (Proton notamment) gardes des logs sur leurs serveurs, donc minimise l'anonymat pour certains. Dans notre cas on va utiliser sois un VPN sous VPS basé chez nos confrères hackeur les Russes. Sois utiliser un Vpn qui fera très bien le taff Mullvad (NO LOG). Une fois le VPN installé nos passons au proxy.",
+            "Browser and Proxy : Même en utilisant un vpn, vous n'êtes pas à l'abris de laisser des traces, c'est pour ca que nous allons utiliser une VM avec le naviguateur Brave ou TOR et l'intstallation de proxy socks 5. Néanmoins parler de la partie technique du proxy étant un ptit peu long, je vous laisse vous renseigner. ",
+            "CCleaner : CCleaner est la référence numéro 1 sur le nettoyage de cookies, pisteur etc.. Pour mener à bien votre card veuillez utiliser l'option NETTOYEUR pour supprimer l'ensembles de petis fichiers traqueurs.",
+            "RDP : (Remote Desktop Protocol) c'est un pc a distance, ca vous permettras de ne rien stocker sur votre pc en cas de probleme ou autre. vous pourrez le contrôler comme si vous étiez physiquement devant."
           ]
         },
         {
           type: "section",
-          title: "Le Dark Web et la revente",
+          title: "-2 LE SPAM",
           points: [
-            "Les données volées sont vendues sur des marchés clandestins",
-            "Prix variables selon la qualité des données (CVV, date d'expiration, etc.)",
-            "Fullz : packages complets incluant nom, adresse, numéro de sécurité sociale",
-            "Les vendeurs offrent parfois des 'garanties' sur les cartes actives"
+          "<strong>Le spam c’est quoi ?</strong> : On va la faire bref de fou, en gros l’idée est d’envoyer en masse un SMS à des milliers de numéros en même temps. En supposant une raison quelconque à la victime d’aller sur votre site et d’y déposer des informations personnelles.",
+            "<strong>Pour quoi faire ?</strong> : Spam a simplement pour but de récupérer des informations personnelles (Ccs, Log banque, Log améli, compte Netflix ou Spotify, etc.)",
           ]
         },
-        {
-          type: "warning",
-          title: "Rappel légal",
-          text: "Le carding est un délit pénal grave passible de plusieurs années de prison et d'amendes importantes. Cette formation est uniquement éducative pour vous aider à vous protéger."
-        }
+{
+  type: "warning",
+  title: "Lexique",
+  text: `CC = Carte de crédit
+PPL = PayPal
+LOG = Compte (avec / Sans historique)
+CNI = Carte Nationale d’Identité
+Scam = Arnaque
+Scammeur = Arnaqueur
+Autoshop = Site d’achat de CC, PPL, LOG
+VBV = Vérification de sécurité pour valider un paiement
+Site NoVBV = Site sans vérification
+Allo = Appel à une victime pour obtenir une validation
+Drop = Adresse utilisée pour recevoir une commande`
+}
       ]
     },
     2: {
-      title: "Les Techniques Utilisées",
+      title: "LE MATERIEL",
       duration: "20 min",
       level: "Intermédiaire",
-      description: "Skimming, phishing, data breaches - les méthodes les plus courantes expliquées.",
+      description: "Voici le matériel nécessaire pour lancer un spam ainsi que les fournisseurs que je peux conseiller et leur prix",
       content: [
         {
           type: "intro",
@@ -56,30 +64,29 @@ const modulesData = {
         },
         {
           type: "section",
-          title: "1. Le Skimming",
+          title: "ETAPE 1 : LE MATERIEL",
           points: [
-            "Dispositifs physiques placés sur les DAB et terminaux",
-            "Caméras cachées pour capturer le code PIN",
-            "Overlays sur les claviers pour enregistrer les touches",
-            "Comment détecter : vérifiez toujours le lecteur avant insertion"
+            "Un hebergeur : Je conseille un plesk",
+            "Un nom de domaine : → je conseille de le prendre sur https://www.namesilo.com car facile d’utilisation et paiement en crypto possible. (Pensez à prendre un nom de domaine qui est crédible, .com ou . Fr obligatoire, à la limite un .net Exemples de NDD crédibles : www.verif-sante.com www.verif-compte.com www.authentificationcompte.com et tous ces genres de NDD)",
+            "Un site qui ressemble à l’original : qu’on voudrait attaquer, autrement appelée une SCAMA",
+            "Un sender : Un site ou une api qui enverra les sms à notre place",
+            "Une liste de numéro de téléphone, dites NL (NumList)",
+            "Et pour finir, une adresse mail Yandex. Donc par évidence sur le site : www.mail.yandex.com/en"
           ]
         },
         {
           type: "section",
-          title: "2. Le Phishing",
+          title: "ETAPE 2 : LA LIAISON ENTRE L’HEBERGEUR ET LE NOM DE DOMAINE (NDD)",
           points: [
-            "Emails imitant votre banque ou des services connus",
-            "Sites web clonés avec des URLs similaires",
-            "SMS frauduleux (smishing)",
-            "Appels téléphoniques (vishing)"
+            "On va se rendre sur le plesk afin de récupérer l’adresse IP ( sans les ports) de notre hébergeur fouillez un peu vous devriez trouver, on la garde de côté on va l’utiliser plus tard. On va se rendre sur le fournisseur de NDD afin de créer un DNS dédié à notre hébergeur. Pour se faire, trouvez la catégorie « Update DNS » ou bien « configuration dns » supprimez tous les DNS déjà crées car ils nous seront pas utiles. Créer un DNS de type « A » et non un autre. Il va falloir en créer deux telegram : @Loukra ( si besoin d'aide )",
           ]
         },
         {
-          type: "section",
+          type: "",
           title: "3. Les Data Breaches",
           points: [
-            "Piratage de grandes entreprises (retailers, hôtels, etc.)",
-            "Exploitation de failles de sécurité",
+            "Scamma : Scamma avec AB a jour ( pas de leak ) ! risque rez stealer et de red en plein spam si utilisation de scamma leak",
+            "Letter : Si spam mail, letter pas flag (risque de red en plein spam si flag )",
             "Données revendues en masse sur le dark web",
             "Vérifiez sur haveibeenpwned.com si vos données ont fuité"
           ]
@@ -87,93 +94,83 @@ const modulesData = {
       ]
     },
     3: {
-      title: "Se Protéger Efficacement",
+      title: "Achat De Prérequis",
       duration: "25 min",
       level: "Tous niveaux",
-      description: "Mesures concrètes pour sécuriser vos transactions et vos données bancaires.",
+      description: "Nous proposons a la vente, les prérequis pour bien debuter.",
       content: [
         {
           type: "intro",
           title: "La protection au quotidien",
-          text: "La majorité des fraudes peuvent être évitées avec quelques précautions simples. Voici les mesures essentielles à mettre en place."
+          text: "Ce contenu est éducatif. L'escroquerie est un délit pénal grave. Protégez-vous et protégez les autres."
         },
         {
           type: "section",
-          title: "Protégez vos cartes physiques",
+          title: "Annonymat",
           points: [
-            "Ne perdez jamais votre carte de vue lors d'un paiement",
-            "Vérifiez les DAB avant d'insérer votre carte",
-            "Couvrez le clavier lors de la saisie du PIN",
-            "Utilisez le paiement sans contact quand possible"
+            "VPN NO LOG = 10€",
+            "Proxy = 1GB 3€",
+            "RDP = 15€",
           ]
         },
         {
           type: "section",
-          title: "Sécurisez vos achats en ligne",
+          title: "SPAM",
           points: [
-            "Vérifiez le HTTPS et le cadenas dans la barre d'adresse",
-            "Utilisez une carte virtuelle pour les achats en ligne",
-            "Activez les notifications de transaction",
-            "Ne sauvegardez pas vos données de carte sur les sites"
+            "Scamma sur mesure : 250€",
+            "Sender Mail ( AWS / SMTP ) = 50 - 250€",
+            "Sender SMS License = 250€",
+            "ML = 5€/k",
+            "NL = 10€/k"
           ]
         },
         {
           type: "section",
-          title: "Outils recommandés",
+          title: "Allo",
           points: [
-            "Cartes virtuelles : proposées par la plupart des banques",
-            "Authentification 3D Secure",
-            "Applications bancaires avec alertes temps réel",
-            "Gestionnaire de mots de passe"
+            "Foma Allo = 600€",
+            "Spoofer ( License ) = 200€",
+            "Site Recent Ship = 25/u"
           ]
         }
       ]
     },
     4: {
-      title: "Que Faire en Cas de Fraude",
+      title: "Nos Services",
       duration: "10 min",
       level: "Urgent",
-      description: "Les étapes à suivre immédiatement si vous êtes victime d'une fraude bancaire.",
+      description: "Nous proposons differents services",
       content: [
         {
           type: "intro",
-          title: "Réagir rapidement",
-          text: "Si vous suspectez une fraude, chaque minute compte. Voici les étapes à suivre immédiatement."
+          title: "Allez bekter bande de singes",
+          text: "Toujours dans le partages et la bonne humeur :)"
         },
         {
           type: "section",
-          title: "Étape 1 : Bloquer la carte",
+          title: "RC",
           points: [
-            "Appelez immédiatement votre banque (numéro au dos de la carte)",
-            "Utilisez l'application bancaire pour bloquer instantanément",
-            "En France : 0 892 705 705 (serveur interbancaire)",
-            "Notez l'heure et le numéro de référence de l'opposition"
+    
           ]
         },
         {
           type: "section",
-          title: "Étape 2 : Documenter et signaler",
+          title: "Shooter",
           points: [
-            "Rassemblez toutes les preuves (relevés, emails suspects)",
-            "Déposez plainte en ligne sur pre-plainte-en-ligne.gouv.fr",
-            "Ou rendez-vous au commissariat/gendarmerie",
-            "Signalez sur Perceval (service-public.fr)"
+
           ]
         },
         {
           type: "section",
-          title: "Étape 3 : Demander remboursement",
+          title: "Décaisse",
           points: [
-            "Contactez votre banque par écrit (lettre recommandée)",
-            "Délai légal de remboursement : 1 jour ouvré",
-            "Franchise maximum : 50€ (sauf négligence grave)",
-            "Conservez tous les documents pendant 5 ans"
+
           ]
         },
         {
           type: "warning",
           title: "Important",
-          text: "Vous avez 13 mois pour contester une opération frauduleuse auprès de votre banque. N'attendez pas !"
+          text: "Je suis pas responsable de vous, cette face a uniquement pour but de vous faire connaitre se monde la"
         }
       ]
     }
@@ -331,8 +328,11 @@ export const SecretModuleDetailPage = () => {
                         <div className="w-6 h-6 bg-red-950 border border-red-900/50 flex items-center justify-center flex-shrink-0 mt-0.5">
                           <CheckCircle size={14} className="text-red-500" />
                         </div>
-                        <p className="text-neutral-300">{point}</p>
-                      </div>
+                        <p 
+                        className="text-neutral-300 whitespace-pre-line"
+                        dangerouslySetInnerHTML={{ __html: point }}
+                        ></p>                      
+                        </div>
                     ))}
                   </div>
                 </div>
@@ -340,15 +340,15 @@ export const SecretModuleDetailPage = () => {
               
               {section.type === "warning" && (
                 <div className="bg-red-950/30 border border-red-900/50 p-8">
-                  <div className="flex items-center gap-3 mb-4">
-                    <AlertTriangle className="text-red-500" size={24} />
-                    <h2 className="text-xl font-bold text-red-500">{section.title}</h2>
-                  </div>
-                  <p className="text-neutral-300 leading-relaxed">
-                    {section.text}
-                  </p>
+                <div className="flex items-center gap-3 mb-4">
+                  <AlertTriangle className="text-red-500" size={24} />
+                <h2 className="text-xl font-bold text-red-500">{section.title}</h2>
                 </div>
-              )}
+                <p className="text-neutral-300 leading-relaxed whitespace-pre-line">
+      {section.text}
+    </p>
+  </div>
+)}
             </div>
           ))}
         </div>

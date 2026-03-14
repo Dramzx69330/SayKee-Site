@@ -45,7 +45,7 @@ export const Header = () => {
       <div className="max-w-7xl mx-auto px-6">
         <div className="flex justify-between items-center h-20">
           {/* Logo */}
-          <Link to="/" className="flex items-center gap-3">
+          <Link to="/" className="flex items-center gap-2">
             <div className={`text-2xl font-black tracking-tight transition-all duration-500 ${
               isSecretMode ? "text-red-500" : "text-white"
             }`}>
@@ -56,15 +56,15 @@ export const Header = () => {
                 e.preventDefault();
                 toggleSecretMode();
               }}
-              className={`text-3xl transition-all duration-300 ${
+              className={`text-xs opacity-30 hover:opacity-100 transition-all duration-300 ${
                 isSecretMode 
-                  ? "hover:scale-125 hover:rotate-12" 
-                  : "hover:scale-110"
+                  ? "hover:scale-150" 
+                  : "hover:scale-125"
               }`}
               data-testid="secret-mode-toggle"
-              title={isSecretMode ? "Retour au mode normal" : "Accéder à la face cachée"}
+              title=""
             >
-              🤡
+              •
             </button>
           </Link>
 

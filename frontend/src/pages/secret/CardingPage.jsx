@@ -9,7 +9,7 @@ export const CardingPage = () => {
     {
       id: 1,
       title: "Comprendre le Carding",
-      description: "Qu'est-ce que le carding ? Comment les données sont volées et revendues sur le dark web.",
+      description: "Qu'est-ce que le carding ? Comment les données sont scrapp et comment les use.",
       duration: "15 min",
       level: "Débutant"
     },
@@ -47,7 +47,7 @@ export const CardingPage = () => {
           <div className="flex items-center gap-3 mb-6">
             <CreditCard className="text-red-500" size={28} />
             <span className="text-sm uppercase tracking-wider text-red-500 font-bold">
-              Formation Sensibilisation
+              Formation
             </span>
           </div>
           
@@ -56,8 +56,9 @@ export const CardingPage = () => {
           </h1>
           
           <p className="text-xl text-neutral-400 max-w-2xl mb-10">
-            Apprenez comment les escrocs opèrent pour mieux vous protéger. 
-            Cette formation est 100% préventive et éducative.
+            Apprenez comment faire 40k par mois pour charger des baby's.
+            <br />
+            Tu vas en foudroyer Champion ...
           </p>
 
           <div className="flex items-center gap-4 p-5 bg-red-950/30 border border-red-900/50 max-w-xl">
