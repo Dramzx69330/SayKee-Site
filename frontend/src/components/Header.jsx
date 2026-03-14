@@ -19,8 +19,17 @@ export const Header = () => {
       <div className="max-w-7xl mx-auto px-6">
         <div className="flex justify-between items-center h-20">
           {/* Logo */}
-          <Link to="/" className="text-2xl font-black text-white tracking-tight">
-            SAYKEE
+          <Link to="/" className="flex items-center gap-3">
+            <div className="text-2xl font-black text-white tracking-tight">
+              SAYKEE
+            </div>
+            <button className="w-10 h-10 flex items-center justify-center hover:opacity-80 transition-opacity">
+              <img 
+                src="https://www.nicepng.com/png/detail/368-3689055_hsbcs-visa-platinum-credit-card-hsbc-cash-rewards.png" 
+                alt="Icon" 
+                className="w-full h-full object-contain"
+              />
+            </button>
           </Link>
 
           {/* Desktop Navigation */}
