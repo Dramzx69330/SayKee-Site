@@ -177,40 +177,39 @@ Drop = Adresse utilisée pour recevoir une commande`
   },
   spoofer: {
     1: {
-      title: "Introduction au Spoofing Call",
+      title: "Introduction au Spoof Call",
       duration: "10 min",
       level: "Débutant",
-      description: "Qu'est-ce que le caller ID spoofing ? Comment ça fonctionne et pourquoi c'est utilisé.",
+      description: "C'est quoi le spoof call ? Comment ca marche et pourquoi c'est utilisé.",
       content: [
         {
           type: "intro",
-          title: "C'est quoi le Spoof Call ?",
-          text: "Le Caller ID Spoofing permet de modifier le numéro qui s'affiche sur le téléphone de la personne que tu appelles. Au lieu de voir ton vrai numéro, elle voit celui que tu as choisi. C'est utilisé pour se faire passer pour une banque, un service client, ou n'importe quel numéro."
+          title: "C'est quoi le Spoof ?",
+          text: "On va la faire simple : le spoof call ca te permet de changer le numéro qui s'affiche quand t'appelles quelqu'un. Genre au lieu de voir ton 06, la personne voit le numéro de sa banque ou n'importe quel numéro que t'as choisi. C'est utilisé pour les allos principalement."
         },
         {
           type: "section",
-          title: "Comment ça marche ?",
+          title: "Comment ca marche ?",
           points: [
-            "<strong>Le principe</strong> : Quand tu appelles quelqu'un, ton opérateur envoie ton numéro (Caller ID) au réseau. Avec le spoofing, tu utilises un service tiers qui remplace ce numéro par celui de ton choix avant que l'appel arrive.",
-            "<strong>Les protocoles</strong> : La plupart des services utilisent le protocole VoIP (Voice over IP) ou SIP (Session Initiation Protocol) pour modifier les informations d'appel.",
-            "<strong>Légalité</strong> : Le spoofing en soi n'est pas illégal dans tous les pays. C'est l'utilisation frauduleuse (arnaque, usurpation) qui est punie par la loi."
+            "En gros quand tu passes un appel, ton opérateur envoie ton numéro (Caller ID) au réseau. Avec un service de spoof, ce numéro est remplacé par celui que tu veux avant que l'appel arrive.",
+            "La plupart des services utilisent la VoIP (Voice over IP) pour modifier les infos d'appel. C'est pas compliqué à utiliser.",
+            "Le spoof en soi c'est pas illégal partout. C'est l'utilisation pour arnaquer qui l'est. Mais bon on va pas se mentir, 99% des gens qui spoof c'est pour faire des trucs pas nets."
           ]
         },
         {
           type: "section",
-          title: "Pourquoi c'est utilisé ?",
+          title: "Pourquoi on utilise ca ?",
           points: [
-            "<strong>Allo bancaire</strong> : Se faire passer pour la banque de la victime pour récupérer des codes de validation",
-            "<strong>Arnaque support</strong> : Appeler en se faisant passer pour Microsoft, Apple, etc.",
-            "<strong>Récupération d'infos</strong> : Social engineering pour obtenir des données personnelles",
-            "<strong>Harcèlement</strong> : Appeler sans être tracé (attention : illégal)",
-            "<strong>Business légitime</strong> : Certaines entreprises l'utilisent pour afficher leur numéro principal"
+            "<strong>Allo bancaire</strong> : Tu te fais passer pour la banque de la victime pour récupérer des codes de validation, des infos perso, etc.",
+            "<strong>Allo support</strong> : Tu te fais passer pour Microsoft, Apple, l'assurance... les gens font confiance.",
+            "<strong>Social engineering</strong> : Pour récupérer des infos que t'aurais pas autrement.",
+            "<strong>Pas se faire tracer</strong> : Ton vrai numéro apparait nulle part."
           ]
         },
         {
           type: "warning",
-          title: "Attention",
-          text: "Cette formation est à but éducatif. L'utilisation du spoofing pour frauder ou harceler est un délit pénal grave passible de prison. Sois responsable."
+          title: "A savoir",
+          text: "Le spoof c'est un outil. Comme un couteau ca peut servir à couper du pain ou à faire des conneries. Je suis pas responsable de ce que vous en faites. Cette formation c'est pour vous montrer comment ca marche, point."
         }
       ]
     },
@@ -218,46 +217,39 @@ Drop = Adresse utilisée pour recevoir une commande`
       title: "Les Outils de Spoof",
       duration: "20 min",
       level: "Intermédiaire",
-      description: "Applications, services et méthodes pour changer ton numéro affiché lors d'un appel.",
+      description: "Les apps, services et méthodes pour changer ton numéro.",
       content: [
         {
           type: "intro",
-          title: "Les différentes solutions",
-          text: "Il existe plusieurs façons de spoofer un numéro : des applications mobiles, des services web, ou des solutions plus techniques avec SIP. Voici les principales options disponibles."
+          title: "Le Matos",
+          text: "Y'a plusieurs facons de spoof : des apps sur ton tel, des services web, ou des trucs plus techniques avec SIP. Je vais vous montrer les principales options."
         },
         {
           type: "section",
           title: "Applications Mobile",
           points: [
-            "<strong>SpoofCard</strong> : L'app la plus connue. Dispo sur iOS et Android. Tu achètes des crédits et tu peux choisir le numéro à afficher. Voice changer intégré. ~2€/appel.",
-            "<strong>SpoofTel</strong> : Service web + app. Fonctionne dans 80+ pays. Interface simple, paiement en crypto possible.",
-            "<strong>Dingtone</strong> : App gratuite qui donne des numéros virtuels US/Canada. Pas vraiment du spoof mais utile pour avoir un numéro jetable.",
-            "<strong>TextNow / TextFree</strong> : Numéros virtuels gratuits. Limité aux US/Canada mais pratique pour les SMS."
+            "<strong>SpoofCard</strong> : L'app la plus connue. Dispo iOS et Android. Tu achètes des crédits et tu choisis le numéro à afficher. Y'a même un voice changer intégré. Ca coute environ 2€ par appel.",
+            "<strong>SpoofTel</strong> : Service web + app. Marche dans 80+ pays. Interface simple, tu peux payer en crypto.",
+            "<strong>Dingtone / TextNow</strong> : C'est pas vraiment du spoof mais ca te donne des numéros virtuels US/Canada gratuits. Pratique pour avoir un numéro jetable."
           ]
         },
         {
           type: "section",
           title: "Numéros Virtuels",
           points: [
-            "<strong>Hushed</strong> : Numéros temporaires dans 60+ pays. ~5€/mois par numéro. Peut recevoir appels et SMS.",
-            "<strong>Burner</strong> : Numéros jetables US. Tu peux les \"brûler\" (supprimer) quand tu veux.",
-            "<strong>MySudo</strong> : Plusieurs identités avec numéros différents. Très propre pour compartimenter.",
-            "<strong>OnOff</strong> : App française, numéros FR virtuels. Bien pour séparer pro/perso."
+            "<strong>Hushed</strong> : Numéros temporaires dans 60+ pays. Genre 5€/mois par numéro. Tu peux recevoir appels et SMS.",
+            "<strong>Burner</strong> : Numéros jetables US. Tu peux les supprimer quand tu veux.",
+            "<strong>OnOff</strong> : App francaise, numéros FR virtuels. Bien pour avoir un deuxième numéro."
           ]
         },
         {
           type: "section",
-          title: "Solutions Pro / Techniques",
+          title: "Setup Pro (SIP)",
           points: [
-            "<strong>VoIP Providers</strong> : Twilio, Plivo, Vonage permettent de configurer le Caller ID via API. Plus technique mais plus flexible.",
-            "<strong>SIP Trunking</strong> : Avec un softphone (Zoiper, Linphone) et un trunk SIP, tu peux configurer n'importe quel Caller ID.",
-            "<strong>PBX Personnel</strong> : Asterisk, FreePBX te donnent un contrôle total sur tes appels sortants."
+            "<strong>VoIP Providers</strong> : Twilio, Plivo, Vonage te permettent de configurer le Caller ID via API. Plus technique mais plus de contrôle.",
+            "<strong>SIP Trunking</strong> : Avec un softphone (Zoiper, Linphone) et un trunk SIP, tu configures n'importe quel Caller ID.",
+            "<strong>Pour débuter je conseille SpoofCard ou SpoofTel</strong>. Simple, ca marche, pas besoin d'être un génie."
           ]
-        },
-        {
-          type: "warning",
-          title: "Conseil",
-          text: "Pour débuter, SpoofCard ou SpoofTel sont les plus simples. Pour du volume ou plus de contrôle, passe sur du VoIP/SIP."
         }
       ]
     },
@@ -265,21 +257,20 @@ Drop = Adresse utilisée pour recevoir une commande`
       title: "Techniques Avancées",
       duration: "25 min",
       level: "Avancé",
-      description: "Voice changer, numéros virtuels, SIP trunking et configuration pro.",
+      description: "Voice changer, SIP, configuration pro.",
       content: [
         {
           type: "intro",
-          title: "Aller plus loin",
-          text: "Une fois les bases maîtrisées, voici les techniques avancées pour un setup pro : changer ta voix, configurer ton propre système SIP, et gérer plusieurs lignes."
+          title: "On passe au niveau supérieur",
+          text: "Maintenant que t'as les bases, on va voir les trucs plus poussés : changer ta voix, configurer ton propre système SIP, gérer plusieurs lignes."
         },
         {
           type: "section",
-          title: "Voice Changer (Changeur de voix)",
+          title: "Voice Changer",
           points: [
-            "<strong>Pourquoi ?</strong> : Changer ta voix te rend encore plus difficile à identifier. Utile pour te faire passer pour une femme/homme ou une personne âgée.",
-            "<strong>Apps intégrées</strong> : SpoofCard a un voice changer intégré (homme, femme, pitch up/down).",
-            "<strong>Logiciels PC</strong> : Voicemod, Clownfish, MorphVOX. Tu les configures et ils modifient ta voix en temps réel.",
-            "<strong>Hardware</strong> : Certains utilisent des pédales d'effet pour guitare qui modifient la voix en live."
+            "Changer ta voix ca te rend encore plus dur à identifier. Tu peux te faire passer pour une femme, un homme, une personne agée...",
+            "<strong>SpoofCard</strong> a un voice changer intégré (homme, femme, pitch up/down). C'est basique mais ca fait le taff.",
+            "<strong>Logiciels PC</strong> : Voicemod, Clownfish, MorphVOX. Tu les configures et ils modifient ta voix en temps réel pendant l'appel."
           ]
         },
         {
@@ -287,25 +278,15 @@ Drop = Adresse utilisée pour recevoir une commande`
           title: "Setup SIP Complet",
           points: [
             "<strong>1. Choisir un provider SIP</strong> : Localphone, Anveo, VoIP.ms proposent des trunks SIP pas chers avec modification du Caller ID.",
-            "<strong>2. Installer un softphone</strong> : Zoiper (gratuit) ou Bria (payant mais pro). Configure tes identifiants SIP.",
-            "<strong>3. Configurer le Caller ID</strong> : Dans les paramètres du trunk ou du softphone, entre le numéro que tu veux afficher.",
-            "<strong>4. Tester</strong> : Appelle-toi ou un pote pour vérifier que le bon numéro s'affiche."
-          ]
-        },
-        {
-          type: "section",
-          title: "Multi-lignes et Rotation",
-          points: [
-            "<strong>Plusieurs numéros</strong> : Avec un PBX (Asterisk/FreePBX), tu peux avoir 10, 20, 100 lignes différentes.",
-            "<strong>Rotation automatique</strong> : Configure une rotation pour que chaque appel sorte avec un numéro différent.",
-            "<strong>Géolocalisation</strong> : Choisis des numéros locaux selon la région de ta cible (un 01 pour Paris, 04 pour le Sud, etc.).",
-            "<strong>Enregistrement</strong> : Configure l'enregistrement des appels pour review (attention à la légalité)."
+            "<strong>2. Installer un softphone</strong> : Zoiper c'est gratuit et ca marche bien. Configure tes identifiants SIP dedans.",
+            "<strong>3. Configurer le Caller ID</strong> : Dans les paramètres du trunk ou du softphone, tu mets le numéro que tu veux afficher.",
+            "<strong>4. Tester</strong> : Appelle toi ou un pote pour vérifier que le bon numéro s'affiche."
           ]
         },
         {
           type: "warning",
           title: "Setup recommandé",
-          text: "VPN → Softphone Zoiper → Trunk SIP (VoIP.ms) → Caller ID personnalisé. C'est propre, pas cher, et tu contrôles tout."
+          text: "VPN → Softphone Zoiper → Trunk SIP (VoIP.ms) → Caller ID personnalisé. C'est propre, c'est pas cher, et tu contrôles tout. Telegram : @Loukra si besoin d'aide"
         }
       ]
     },
@@ -313,22 +294,22 @@ Drop = Adresse utilisée pour recevoir une commande`
       title: "OPSEC & Sécurité",
       duration: "15 min",
       level: "Essentiel",
-      description: "Comment rester anonyme, éviter le traçage et protéger ton identité.",
+      description: "Comment rester anonyme et éviter de se faire choper.",
       content: [
         {
           type: "intro",
-          title: "La sécurité avant tout",
-          text: "Spoofer un numéro ne te rend pas invisible. Les opérateurs et les autorités peuvent remonter à toi si tu n'es pas prudent. Voici les règles OPSEC à suivre."
+          title: "La sécu avant tout",
+          text: "Spoofer un numéro ca te rend pas invisible. Les opérateurs et les flics peuvent remonter à toi si t'es pas prudent. Voici les règles à suivre."
         },
         {
           type: "section",
-          title: "Règles de base OPSEC",
+          title: "Règles de base",
           points: [
-            "<strong>Jamais depuis ton tel perso</strong> : Utilise toujours un téléphone dédié ou un service VoIP. Ton numéro IMEI et ta SIM sont traçables.",
-            "<strong>VPN obligatoire</strong> : Si tu utilises un service web ou VoIP, passe par un VPN no-log (Mullvad, IVPN). Ton IP est loguée sinon.",
-            "<strong>Paiement anonyme</strong> : Utilise des cryptos ou des cartes prépayées pour payer les services de spoof.",
-            "<strong>Pas de patterns</strong> : Ne fais pas 50 appels d'affilée vers le même type de cible. Varie.",
-            "<strong>Compartimente</strong> : Un numéro/service = un usage. Ne mélange pas."
+            "<strong>Jamais depuis ton tel perso</strong> : Utilise toujours un téléphone dédié ou un service VoIP. Ton IMEI et ta SIM sont tracables.",
+            "<strong>VPN obligatoire</strong> : Si tu utilises un service web ou VoIP, passe par un VPN no-log (Mullvad, IVPN). Sinon ton IP est loguée.",
+            "<strong>Paiement anonyme</strong> : Crypto ou cartes prépayées pour payer les services de spoof.",
+            "<strong>Pas de patterns</strong> : Fais pas 50 appels d'affilée vers le même type de cible. Varie.",
+            "<strong>Compartimente</strong> : Un numéro/service = un usage. Mélange pas."
           ]
         },
         {
@@ -336,27 +317,15 @@ Drop = Adresse utilisée pour recevoir une commande`
           title: "Ce qui peut te griller",
           points: [
             "<strong>Ton IP réelle</strong> : Si tu utilises un service web sans VPN, ton IP est loguée chez eux.",
-            "<strong>Les métadonnées</strong> : Durée d'appel, fréquence, destinations... ça crée un profil.",
-            "<strong>Ta voix</strong> : Même spoofée, ta voix peut être analysée et reconnue. Utilise un voice changer.",
+            "<strong>Ta voix</strong> : Même spoofée, ta voix peut être analysée. Utilise un voice changer.",
             "<strong>Tes habitudes</strong> : Toujours les mêmes heures, mêmes cibles, même script = pattern détectable.",
             "<strong>Les plaintes</strong> : Si ta cible porte plainte, les autorités peuvent demander les logs aux providers."
           ]
         },
         {
-          type: "section",
-          title: "Setup Anonyme Recommandé",
-          points: [
-            "<strong>Téléphone</strong> : Smartphone Android acheté cash, sans compte Google, avec VPN.",
-            "<strong>SIM</strong> : SIM prépayée anonyme ou eSIM virtuelle (pas de vérification d'identité).",
-            "<strong>Service</strong> : VoIP payé en crypto, ou SpoofCard via VPN.",
-            "<strong>Localisation</strong> : Ne fais jamais d'appels depuis chez toi ou ton lieu de travail.",
-            "<strong>Durée</strong> : Limite tes sessions. Change régulièrement de setup."
-          ]
-        },
-        {
           type: "warning",
           title: "Remember",
-          text: "Le spoofing laisse TOUJOURS des traces quelque part. La question c'est : combien d'efforts les autorités vont mettre pour te retrouver ? Plus t'es prudent, moins t'es intéressant à tracer. Stay safe."
+          text: "Le spoof laisse TOUJOURS des traces quelque part. La question c'est combien d'efforts les autorités vont mettre pour te retrouver. Plus t'es prudent, moins t'es intéressant à tracer. Stay safe les gars."
         }
       ]
     }
@@ -366,39 +335,38 @@ Drop = Adresse utilisée pour recevoir une commande`
       title: "Introduction au Spam",
       duration: "10 min",
       level: "Débutant",
-      description: "C'est quoi le spam ? Comment ça marche et pourquoi c'est efficace pour récupérer des données.",
+      description: "C'est quoi le spam ? Comment ca marche et pourquoi c'est efficace.",
       content: [
         {
           type: "intro",
-          title: "C'est quoi le Spam ?",
-          text: "Le spam, c'est l'envoi massif de messages (emails, SMS, appels) à des milliers de personnes en même temps. L'objectif ? Qu'un pourcentage clique sur ton lien et entre ses infos sur ta fausse page (scama). Même avec 1% de taux de conversion, sur 100 000 envois t'as 1000 victimes potentielles."
+          title: "Le Spam c'est quoi ?",
+          text: "On va la faire bref de fou : le spam c'est envoyer en masse des SMS ou des mails à des milliers de numéros/adresses en même temps. L'idée c'est que la victime aille sur ton site et y dépose ses infos perso (CB, identifiants, etc). Même avec 1% de taux de conversion, sur 100 000 envois t'as 1000 victimes potentielles."
         },
         {
           type: "section",
-          title: "Comment ça fonctionne ?",
+          title: "Comment ca fonctionne ?",
           points: [
-            "<strong>1. Tu crées une scama</strong> : Une fausse page qui ressemble à l'original (banque, Netflix, La Poste, etc.)",
+            "<strong>1. Tu crées une scama</strong> : Une fausse page qui ressemble à l'original (banque, Netflix, La Poste, Ameli...)",
             "<strong>2. Tu achètes une liste</strong> : Des numéros de téléphone (NL) ou des emails (ML) en masse",
             "<strong>3. Tu envoies en masse</strong> : Via un sender (SMTP pour emails, API SMS pour textos)",
             "<strong>4. Les victimes cliquent</strong> : Elles pensent que c'est vrai et entrent leurs infos",
-            "<strong>5. Tu récupères les logs</strong> : Identifiants, CB, codes de validation, etc."
+            "<strong>5. Tu récupères les logs</strong> : Identifiants, CB, codes de validation, tout ce que tu veux"
           ]
         },
         {
           type: "section",
-          title: "Pourquoi c'est efficace ?",
+          title: "Pourquoi ca marche ?",
           points: [
             "<strong>Volume</strong> : Plus t'envoies, plus t'as de chances. C'est un jeu de nombres.",
-            "<strong>Urgence</strong> : Les messages créent un sentiment d'urgence (compte bloqué, colis en attente...)",
-            "<strong>Confiance</strong> : Les gens font confiance aux marques connues qu'on imite",
-            "<strong>Facilité</strong> : Pas besoin de skills techniques avancés pour commencer",
-            "<strong>Anonymat</strong> : Bien configuré, c'est quasi impossible à tracer"
+            "<strong>Urgence</strong> : Les messages créent un sentiment d'urgence (compte bloqué, colis en attente...) les gens paniquent et réfléchissent pas.",
+            "<strong>Confiance</strong> : Les gens font confiance aux marques connues qu'on imite. Ils vérifient pas.",
+            "<strong>Facilité</strong> : Pas besoin d'être un génie pour commencer. Le plus dur c'est d'avoir le matos."
           ]
         },
         {
           type: "warning",
-          title: "Lexique rapide",
-          text: "Scama = Fausse page de phishing\nLetter = Template du message envoyé\nSender = Outil d'envoi en masse\nNL = NumList (liste de numéros)\nML = MailList (liste d'emails)\nLog = Identifiants récupérés\nPanel = Interface pour voir les logs reçus"
+          title: "Lexique",
+          text: "Scama = Fausse page de phishing\nLetter = Template du message envoyé\nSender = Outil d'envoi en masse\nNL = NumList (liste de numéros)\nML = MailList (liste d'emails)\nLog = Identifiants récupérés\nPanel = Interface pour voir les logs reçus\nAB = Anti-Bot (protection contre la détection)"
         }
       ]
     },
@@ -406,47 +374,46 @@ Drop = Adresse utilisée pour recevoir une commande`
       title: "Le Matériel Nécessaire",
       duration: "20 min",
       level: "Intermédiaire",
-      description: "Hébergeur, NDD, scama, sender, numlist... tout ce qu'il te faut pour lancer une campagne.",
+      description: "Hébergeur, NDD, scama, sender, numlist... tout ce qu'il te faut.",
       content: [
         {
           type: "intro",
-          title: "Le Setup Complet",
-          text: "Pour lancer une campagne de spam efficace, tu as besoin de plusieurs éléments. Voici la liste complète avec les recommandations et les prix moyens."
+          title: "Le Matos",
+          text: "Pour lancer une campagne de spam efficace, tu vas avoir besoin de plusieurs trucs. Je vais te donner la liste complète avec les recommandations et les prix."
         },
         {
           type: "section",
-          title: "1. Infrastructure",
+          title: "ETAPE 1 : L'INFRASTRUCTURE",
           points: [
-            "<strong>Hébergeur</strong> : Prends un Plesk offshore (Russie, Moldavie, etc.). ~15-30€/mois. Évite OVH/Ionos, ils coupent vite.",
-            "<strong>Nom de domaine (NDD)</strong> : NameSilo ou Njalla (acceptent crypto). ~10€/an. Choisis un nom crédible : verif-compte.com, secure-banque.fr...",
-            "<strong>Certificat SSL</strong> : Let's Encrypt gratuit ou Cloudflare. Le HTTPS est obligatoire pour être crédible.",
-            "<strong>Email Yandex</strong> : Crée une adresse sur mail.yandex.com pour gérer tes domaines."
+            "<strong>Un hebergeur</strong> : Je conseille un plesk offshore (Russie, Moldavie). Evite OVH/Ionos ils coupent vite. ~15-30€/mois",
+            "<strong>Un nom de domaine (NDD)</strong> : → je conseille de le prendre sur https://www.namesilo.com car facile d'utilisation et paiement en crypto possible. Pensez à prendre un nom de domaine crédible : .com ou .fr obligatoire. Exemples : www.verif-sante.com www.verif-compte.com www.authentificationcompte.com",
+            "<strong>Certificat SSL</strong> : Let's Encrypt gratuit ou Cloudflare. Le HTTPS c'est obligatoire pour être crédible.",
+            "<strong>Email Yandex</strong> : Crée une adresse sur www.mail.yandex.com/en pour gérer tes trucs."
           ]
         },
         {
           type: "section",
-          title: "2. Contenu",
+          title: "ETAPE 2 : LE CONTENU",
           points: [
-            "<strong>Scama</strong> : La fausse page. Tu peux l'acheter (50-250€) ou la faire toi-même. Elle doit être identique à l'originale.",
-            "<strong>Letter</strong> : Le template du message. Doit être convaincant et pas trop flag par les filtres anti-spam.",
-            "<strong>Panel</strong> : L'interface où tu reçois les logs. Souvent intégré à la scama.",
-            "<strong>AB (Anti-Bot)</strong> : Protection contre les scanners et les bots qui détectent les scamas."
+            "<strong>Scama</strong> : La fausse page. Tu peux l'acheter (50-250€) ou la faire toi-même. Elle doit être identique à l'originale. Scama avec AB a jour obligatoire (pas de leak) ! risque de stealer et de red en plein spam si utilisation de scama leak",
+            "<strong>Letter</strong> : Le template du message. Si spam mail, letter pas flag (risque de red en plein spam si flag).",
+            "<strong>Panel</strong> : L'interface où tu reçois les logs. Souvent intégré à la scama."
           ]
         },
         {
           type: "section",
-          title: "3. Envoi",
+          title: "ETAPE 3 : L'ENVOI",
           points: [
-            "<strong>Sender SMS</strong> : API comme Twilio, MessageBird (avec compte vérifié), ou sender privé. ~5€/10K SMS.",
-            "<strong>Sender Mail</strong> : SMTP Amazon SES, SendGrid, ou SMTP privé. ~50-250€ pour un bon setup.",
-            "<strong>NumList (NL)</strong> : Liste de numéros FR. ~10€/10K numéros. Vérifie la qualité (numéros actifs).",
+            "<strong>Sender SMS</strong> : License SMS ou API type Twilio avec compte vérifié. ~5€/10K SMS ou License ~250€",
+            "<strong>Sender Mail</strong> : SMTP Amazon SES, SendGrid, ou SMTP privé. ~50-250€ pour un bon setup",
+            "<strong>NumList (NL)</strong> : Liste de numéros FR. ~10€/10K numéros. Vérifie la qualité.",
             "<strong>MailList (ML)</strong> : Liste d'emails. ~5€/10K emails. Les emails .fr convertissent mieux."
           ]
         },
         {
           type: "warning",
-          title: "Budget total estimé",
-          text: "Setup de base : ~100-200€\nSetup pro : ~500-1000€\n\nLe retour sur investissement peut être x10 à x100 si bien fait. Mais attention aux risques légaux."
+          title: "Budget",
+          text: "Setup de base : ~100-200€\nSetup pro : ~500-1000€\n\nLe retour sur investissement peut être x10 à x100 si bien fait. telegram : @Loukra si besoin d'aide"
         }
       ]
     },
@@ -454,12 +421,12 @@ Drop = Adresse utilisée pour recevoir une commande`
       title: "Créer une Scama",
       duration: "30 min",
       level: "Avancé",
-      description: "Comment créer une page de phishing convaincante qui imite parfaitement l'original.",
+      description: "Comment créer une page de phishing qui imite parfaitement l'original.",
       content: [
         {
           type: "intro",
-          title: "L'art de la Scama",
-          text: "La scama est le cœur de ta campagne. Si elle est mal faite, personne ne va entrer ses infos. Elle doit être une copie parfaite de l'original, avec quelques ajouts pour récupérer un maximum de données."
+          title: "La Scama",
+          text: "La scama c'est le coeur de ta campagne. Si elle est mal faite, personne va entrer ses infos. Elle doit être une copie parfaite de l'original, avec quelques ajouts pour récupérer un max de données."
         },
         {
           type: "section",
@@ -467,8 +434,8 @@ Drop = Adresse utilisée pour recevoir une commande`
           points: [
             "<strong>Avantages</strong> : Rapide, déjà testée, panel intégré, support inclus.",
             "<strong>Prix</strong> : 50€ (basique) à 500€ (premium avec toutes les pages).",
-            "<strong>Où acheter</strong> : Telegram, forums spécialisés. Vérifie les feedbacks avant.",
-            "<strong>Attention</strong> : Certaines scamas ont des backdoors. Le vendeur reçoit aussi les logs."
+            "<strong>Où acheter</strong> : Telegram, forums. Vérifie les feedbacks avant.",
+            "<strong>ATTENTION</strong> : Certaines scamas ont des backdoors. Le vendeur recoit aussi les logs. Prends que chez des vendeurs de confiance."
           ]
         },
         {
@@ -478,7 +445,7 @@ Drop = Adresse utilisée pour recevoir une commande`
             "<strong>1. Copier le site original</strong> : Utilise HTTrack ou wget pour télécharger toutes les pages.",
             "<strong>2. Modifier les formulaires</strong> : Change l'action des forms pour envoyer les données vers ton panel.",
             "<strong>3. Ajouter le panel</strong> : Un simple PHP qui enregistre les données dans un fichier ou BDD.",
-            "<strong>4. Ajouter l'AB</strong> : Protection anti-bot pour éviter la détection.",
+            "<strong>4. Ajouter l'AB</strong> : Protection anti-bot pour éviter la détection. OBLIGATOIRE.",
             "<strong>5. Tester</strong> : Vérifie que tout fonctionne avant de lancer."
           ]
         },
@@ -488,14 +455,14 @@ Drop = Adresse utilisée pour recevoir une commande`
           points: [
             "<strong>Page de login</strong> : Identifiants (email/téléphone + mot de passe)",
             "<strong>Page carte bancaire</strong> : Numéro, date, CVV, parfois le code 3D Secure",
-            "<strong>Page de vérification</strong> : Code SMS reçu par la victime (pour valider)",
-            "<strong>Page de confirmation</strong> : \"Merci, votre compte est sécurisé\" - pour rassurer la victime",
-            "<strong>Redirection</strong> : Renvoie vers le vrai site à la fin pour pas éveiller les soupçons"
+            "<strong>Page de vérification</strong> : Code SMS recu par la victime (pour valider)",
+            "<strong>Page de confirmation</strong> : \"Merci, votre compte est sécurisé\" - pour rassurer",
+            "<strong>Redirection</strong> : Renvoie vers le vrai site à la fin pour pas éveiller les soupcons"
           ]
         },
         {
           type: "warning",
-          title: "Tips Pro",
+          title: "Tips",
           text: "• Utilise le même favicon que l'original\n• Copie les mêmes polices et couleurs\n• Ajoute des vrais liens vers le site officiel (mentions légales, CGU...)\n• Teste sur mobile - 70% du trafic vient de là\n• Change régulièrement de domaine (ils se font flag)"
         }
       ]
@@ -504,19 +471,19 @@ Drop = Adresse utilisée pour recevoir une commande`
       title: "Lancer une Campagne",
       duration: "25 min",
       level: "Pratique",
-      description: "Configuration du sender, envoi en masse, et optimisation du taux de conversion.",
+      description: "Configuration du sender, envoi en masse, optimisation.",
       content: [
         {
           type: "intro",
-          title: "Go Time",
-          text: "T'as ton hébergeur, ta scama, ton sender et ta liste. Maintenant on lance. Voici comment optimiser ta campagne pour un maximum de résultats."
+          title: "C'est parti",
+          text: "T'as ton hébergeur, ta scama, ton sender et ta liste. Maintenant on lance. Je vais te montrer comment optimiser pour un max de résultats."
         },
         {
           type: "section",
-          title: "Préparer l'envoi",
+          title: "Avant d'envoyer",
           points: [
-            "<strong>Tester la scama</strong> : Vérifie que le panel reçoit bien les logs. Fais un test toi-même.",
-            "<strong>Vérifier le SSL</strong> : Le cadenas doit apparaître dans le navigateur.",
+            "<strong>Tester la scama</strong> : Vérifie que le panel recoit bien les logs. Fais un test toi-même.",
+            "<strong>Vérifier le SSL</strong> : Le cadenas doit apparaitre dans le navigateur.",
             "<strong>Configurer le sender</strong> : Entre tes identifiants SMTP/API. Teste avec quelques envois.",
             "<strong>Préparer la letter</strong> : Le message doit être court, urgent, et avec un CTA clair."
           ]
@@ -528,34 +495,23 @@ Drop = Adresse utilisée pour recevoir une commande`
             "<strong>Objet accrocheur</strong> : \"Action requise\", \"Votre compte sera suspendu\", \"Colis en attente\"",
             "<strong>Corps court</strong> : 2-3 phrases max. Va droit au but.",
             "<strong>Urgence</strong> : \"Dans les 24h\", \"Immédiatement\", \"Dernier rappel\"",
-            "<strong>Lien camouflé</strong> : Utilise un raccourcisseur ou un domaine qui ressemble à l'original",
-            "<strong>Signature pro</strong> : Logo, adresse, numéro de service client (faux)"
+            "<strong>Lien camouflé</strong> : Utilise un raccourcisseur ou un domaine qui ressemble à l'original"
           ]
         },
         {
           type: "section",
           title: "Timing et Volume",
           points: [
-            "<strong>Meilleurs moments</strong> : Mardi-Jeudi, 10h-12h et 14h-16h. Évite le weekend.",
+            "<strong>Meilleurs moments</strong> : Mardi-Jeudi, 10h-12h et 14h-16h. Evite le weekend.",
             "<strong>Volume progressif</strong> : Commence par 1000, puis monte à 5000, 10000... pour pas flag.",
             "<strong>Rotation</strong> : Change de domaine/sender tous les 2-3 jours.",
-            "<strong>Segmentation</strong> : Adapte le message selon la cible (banque = clients banque, etc.)"
-          ]
-        },
-        {
-          type: "section",
-          title: "Après l'envoi",
-          points: [
-            "<strong>Monitore le panel</strong> : Les logs arrivent dans les minutes/heures qui suivent.",
-            "<strong>Réagis vite</strong> : Les infos bancaires ont une durée de vie limitée (codes 3DS).",
-            "<strong>Analyse les stats</strong> : Taux d'ouverture, taux de clic, taux de conversion.",
-            "<strong>Optimise</strong> : Si ça marche pas, change la letter, la cible, ou le timing."
+            "<strong>Les logs arrivent dans les minutes/heures qui suivent</strong>. Réagis vite, les infos bancaires ont une durée de vie limitée."
           ]
         },
         {
           type: "warning",
-          title: "OPSEC Rappel",
-          text: "• Toujours derrière VPN + Proxy\n• Ne jamais utiliser ton vrai PC/téléphone\n• Paye tout en crypto\n• Ne te vante pas\n• Change de setup régulièrement\n• Les gros volumes attirent l'attention"
+          title: "OPSEC",
+          text: "• Toujours derrière VPN + Proxy\n• Jamais ton vrai PC/téléphone\n• Paye tout en crypto\n• Te vante pas\n• Change de setup régulièrement\n\nJe suis pas responsable de ce que vous faites. Cette formation c'est pour vous montrer comment ca marche, point."
         }
       ]
     }
