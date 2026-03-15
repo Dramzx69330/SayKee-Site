@@ -21,27 +21,27 @@ export const EcommercePage = () => {
 
   const ebooks = [
     {
-      id: 1,
+      id: "lancer-boutique",
       title: "Lancer sa Boutique",
-      description: "De zéro à ta première vente. Je te montre tout : choix de niche, création de boutique, premiers produits.",
+      description: "De zéro à ta première vente. Je te montre tout : choix de niche, création de boutique, paiements, livraison et aspects légaux. Le guide complet pour démarrer sans bullshit.",
       level: "Débutant",
-      chapters: ["Trouver ta niche", "Shopify vs WooCommerce", "Créer ta boutique", "Tes premiers produits"],
+      chapters: ["Trouver ta niche", "Shopify vs alternatives", "Créer ta boutique", "Configurer les paiements", "Livraison et logistique", "Les aspects légaux"],
       color: "emerald"
     },
     {
-      id: 2,
+      id: "produits-gagnants",
       title: "Trouver des Produits Gagnants",
-      description: "Le secret c'est le produit. Je te donne mes méthodes pour trouver des winners à tous les coups.",
+      description: "Le secret c'est le produit. Je te donne mes méthodes exactes pour trouver des winners. Les critères, où chercher, comment analyser la concurrence et tester sans te ruiner.",
       level: "Intermédiaire",
-      chapters: ["Les critères d'un winner", "Où chercher", "Analyser la concurrence", "Tester sans se ruiner"],
+      chapters: ["Les critères d'un winner", "Où trouver des produits", "Analyser la concurrence", "Tester sans se ruiner", "Créer une fiche produit qui vend", "Valider avant de commander du stock"],
       color: "emerald"
     },
     {
-      id: 3,
+      id: "facebook-ads",
       title: "Facebook Ads Masterclass",
-      description: "Les pubs Facebook, c'est l'arme fatale du e-commerce. Apprends à créer des pubs qui convertissent.",
+      description: "Les pubs Facebook, c'est l'arme fatale du e-commerce. Structure de campagne, audiences, créatifs qui convertissent et techniques de scaling. Tout ce que j'aurais voulu savoir au début.",
       level: "Avancé",
-      chapters: ["Structure de campagne", "Ciblage qui marche", "Créatifs qui convertissent", "Scaler sans tout cramer"],
+      chapters: ["Comprendre Facebook Ads", "Créer sa première campagne", "Les audiences qui marchent", "Créer des créatifs qui convertissent", "Optimiser et analyser", "Scaler ses campagnes"],
       color: "emerald"
     }
   ];
@@ -356,10 +356,10 @@ export const EcommercePage = () => {
                   
                   <Button 
                     className="w-full bg-emerald-600 hover:bg-emerald-700 rounded-none font-bold"
-                    onClick={() => !isLoggedIn && navigate("/login")}
+                    onClick={() => navigate(`/ebook/ecommerce/${ebook.id}`)}
                   >
                     <Download className="mr-2" size={18} />
-                    {isLoggedIn ? "Télécharger" : "Connecte-toi pour télécharger"}
+                    Lire l'ebook
                   </Button>
                 </div>
               </div>
