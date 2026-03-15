@@ -363,36 +363,199 @@ Drop = Adresse utilisée pour recevoir une commande`
   },
   spam: {
     1: {
-      title: "Identifier le Phishing",
-      duration: "15 min",
+      title: "Introduction au Spam",
+      duration: "10 min",
       level: "Débutant",
-      description: "Apprenez à reconnaître les emails de phishing en quelques secondes.",
+      description: "C'est quoi le spam ? Comment ça marche et pourquoi c'est efficace pour récupérer des données.",
       content: [
         {
           type: "intro",
-          title: "Les signes révélateurs",
-          text: "94% des malwares sont distribués par email. Apprendre à identifier le phishing est essentiel pour votre sécurité numérique."
+          title: "C'est quoi le Spam ?",
+          text: "Le spam, c'est l'envoi massif de messages (emails, SMS, appels) à des milliers de personnes en même temps. L'objectif ? Qu'un pourcentage clique sur ton lien et entre ses infos sur ta fausse page (scama). Même avec 1% de taux de conversion, sur 100 000 envois t'as 1000 victimes potentielles."
         },
         {
           type: "section",
-          title: "Red flags à surveiller",
+          title: "Comment ça fonctionne ?",
           points: [
-            "Adresse email de l'expéditeur suspecte",
-            "Fautes d'orthographe et de grammaire",
-            "Urgence excessive dans le message",
-            "Liens raccourcis ou avec des caractères étranges",
-            "Demande d'informations personnelles"
+            "<strong>1. Tu crées une scama</strong> : Une fausse page qui ressemble à l'original (banque, Netflix, La Poste, etc.)",
+            "<strong>2. Tu achètes une liste</strong> : Des numéros de téléphone (NL) ou des emails (ML) en masse",
+            "<strong>3. Tu envoies en masse</strong> : Via un sender (SMTP pour emails, API SMS pour textos)",
+            "<strong>4. Les victimes cliquent</strong> : Elles pensent que c'est vrai et entrent leurs infos",
+            "<strong>5. Tu récupères les logs</strong> : Identifiants, CB, codes de validation, etc."
           ]
         },
         {
           type: "section",
-          title: "Bonnes pratiques",
+          title: "Pourquoi c'est efficace ?",
           points: [
-            "Ne cliquez jamais sur les liens suspects",
-            "Vérifiez l'URL en passant la souris dessus",
-            "Contactez directement l'entreprise via son site officiel",
-            "Signalez les emails suspects à signal-spam.fr"
+            "<strong>Volume</strong> : Plus t'envoies, plus t'as de chances. C'est un jeu de nombres.",
+            "<strong>Urgence</strong> : Les messages créent un sentiment d'urgence (compte bloqué, colis en attente...)",
+            "<strong>Confiance</strong> : Les gens font confiance aux marques connues qu'on imite",
+            "<strong>Facilité</strong> : Pas besoin de skills techniques avancés pour commencer",
+            "<strong>Anonymat</strong> : Bien configuré, c'est quasi impossible à tracer"
           ]
+        },
+        {
+          type: "warning",
+          title: "Lexique rapide",
+          text: "Scama = Fausse page de phishing\nLetter = Template du message envoyé\nSender = Outil d'envoi en masse\nNL = NumList (liste de numéros)\nML = MailList (liste d'emails)\nLog = Identifiants récupérés\nPanel = Interface pour voir les logs reçus"
+        }
+      ]
+    },
+    2: {
+      title: "Le Matériel Nécessaire",
+      duration: "20 min",
+      level: "Intermédiaire",
+      description: "Hébergeur, NDD, scama, sender, numlist... tout ce qu'il te faut pour lancer une campagne.",
+      content: [
+        {
+          type: "intro",
+          title: "Le Setup Complet",
+          text: "Pour lancer une campagne de spam efficace, tu as besoin de plusieurs éléments. Voici la liste complète avec les recommandations et les prix moyens."
+        },
+        {
+          type: "section",
+          title: "1. Infrastructure",
+          points: [
+            "<strong>Hébergeur</strong> : Prends un Plesk offshore (Russie, Moldavie, etc.). ~15-30€/mois. Évite OVH/Ionos, ils coupent vite.",
+            "<strong>Nom de domaine (NDD)</strong> : NameSilo ou Njalla (acceptent crypto). ~10€/an. Choisis un nom crédible : verif-compte.com, secure-banque.fr...",
+            "<strong>Certificat SSL</strong> : Let's Encrypt gratuit ou Cloudflare. Le HTTPS est obligatoire pour être crédible.",
+            "<strong>Email Yandex</strong> : Crée une adresse sur mail.yandex.com pour gérer tes domaines."
+          ]
+        },
+        {
+          type: "section",
+          title: "2. Contenu",
+          points: [
+            "<strong>Scama</strong> : La fausse page. Tu peux l'acheter (50-250€) ou la faire toi-même. Elle doit être identique à l'originale.",
+            "<strong>Letter</strong> : Le template du message. Doit être convaincant et pas trop flag par les filtres anti-spam.",
+            "<strong>Panel</strong> : L'interface où tu reçois les logs. Souvent intégré à la scama.",
+            "<strong>AB (Anti-Bot)</strong> : Protection contre les scanners et les bots qui détectent les scamas."
+          ]
+        },
+        {
+          type: "section",
+          title: "3. Envoi",
+          points: [
+            "<strong>Sender SMS</strong> : API comme Twilio, MessageBird (avec compte vérifié), ou sender privé. ~5€/10K SMS.",
+            "<strong>Sender Mail</strong> : SMTP Amazon SES, SendGrid, ou SMTP privé. ~50-250€ pour un bon setup.",
+            "<strong>NumList (NL)</strong> : Liste de numéros FR. ~10€/10K numéros. Vérifie la qualité (numéros actifs).",
+            "<strong>MailList (ML)</strong> : Liste d'emails. ~5€/10K emails. Les emails .fr convertissent mieux."
+          ]
+        },
+        {
+          type: "warning",
+          title: "Budget total estimé",
+          text: "Setup de base : ~100-200€\nSetup pro : ~500-1000€\n\nLe retour sur investissement peut être x10 à x100 si bien fait. Mais attention aux risques légaux."
+        }
+      ]
+    },
+    3: {
+      title: "Créer une Scama",
+      duration: "30 min",
+      level: "Avancé",
+      description: "Comment créer une page de phishing convaincante qui imite parfaitement l'original.",
+      content: [
+        {
+          type: "intro",
+          title: "L'art de la Scama",
+          text: "La scama est le cœur de ta campagne. Si elle est mal faite, personne ne va entrer ses infos. Elle doit être une copie parfaite de l'original, avec quelques ajouts pour récupérer un maximum de données."
+        },
+        {
+          type: "section",
+          title: "Méthode 1 : Acheter une Scama",
+          points: [
+            "<strong>Avantages</strong> : Rapide, déjà testée, panel intégré, support inclus.",
+            "<strong>Prix</strong> : 50€ (basique) à 500€ (premium avec toutes les pages).",
+            "<strong>Où acheter</strong> : Telegram, forums spécialisés. Vérifie les feedbacks avant.",
+            "<strong>Attention</strong> : Certaines scamas ont des backdoors. Le vendeur reçoit aussi les logs."
+          ]
+        },
+        {
+          type: "section",
+          title: "Méthode 2 : Créer soi-même",
+          points: [
+            "<strong>1. Copier le site original</strong> : Utilise HTTrack ou wget pour télécharger toutes les pages.",
+            "<strong>2. Modifier les formulaires</strong> : Change l'action des forms pour envoyer les données vers ton panel.",
+            "<strong>3. Ajouter le panel</strong> : Un simple PHP qui enregistre les données dans un fichier ou BDD.",
+            "<strong>4. Ajouter l'AB</strong> : Protection anti-bot pour éviter la détection.",
+            "<strong>5. Tester</strong> : Vérifie que tout fonctionne avant de lancer."
+          ]
+        },
+        {
+          type: "section",
+          title: "Les pages essentielles",
+          points: [
+            "<strong>Page de login</strong> : Identifiants (email/téléphone + mot de passe)",
+            "<strong>Page carte bancaire</strong> : Numéro, date, CVV, parfois le code 3D Secure",
+            "<strong>Page de vérification</strong> : Code SMS reçu par la victime (pour valider)",
+            "<strong>Page de confirmation</strong> : \"Merci, votre compte est sécurisé\" - pour rassurer la victime",
+            "<strong>Redirection</strong> : Renvoie vers le vrai site à la fin pour pas éveiller les soupçons"
+          ]
+        },
+        {
+          type: "warning",
+          title: "Tips Pro",
+          text: "• Utilise le même favicon que l'original\n• Copie les mêmes polices et couleurs\n• Ajoute des vrais liens vers le site officiel (mentions légales, CGU...)\n• Teste sur mobile - 70% du trafic vient de là\n• Change régulièrement de domaine (ils se font flag)"
+        }
+      ]
+    },
+    4: {
+      title: "Lancer une Campagne",
+      duration: "25 min",
+      level: "Pratique",
+      description: "Configuration du sender, envoi en masse, et optimisation du taux de conversion.",
+      content: [
+        {
+          type: "intro",
+          title: "Go Time",
+          text: "T'as ton hébergeur, ta scama, ton sender et ta liste. Maintenant on lance. Voici comment optimiser ta campagne pour un maximum de résultats."
+        },
+        {
+          type: "section",
+          title: "Préparer l'envoi",
+          points: [
+            "<strong>Tester la scama</strong> : Vérifie que le panel reçoit bien les logs. Fais un test toi-même.",
+            "<strong>Vérifier le SSL</strong> : Le cadenas doit apparaître dans le navigateur.",
+            "<strong>Configurer le sender</strong> : Entre tes identifiants SMTP/API. Teste avec quelques envois.",
+            "<strong>Préparer la letter</strong> : Le message doit être court, urgent, et avec un CTA clair."
+          ]
+        },
+        {
+          type: "section",
+          title: "La Letter parfaite",
+          points: [
+            "<strong>Objet accrocheur</strong> : \"Action requise\", \"Votre compte sera suspendu\", \"Colis en attente\"",
+            "<strong>Corps court</strong> : 2-3 phrases max. Va droit au but.",
+            "<strong>Urgence</strong> : \"Dans les 24h\", \"Immédiatement\", \"Dernier rappel\"",
+            "<strong>Lien camouflé</strong> : Utilise un raccourcisseur ou un domaine qui ressemble à l'original",
+            "<strong>Signature pro</strong> : Logo, adresse, numéro de service client (faux)"
+          ]
+        },
+        {
+          type: "section",
+          title: "Timing et Volume",
+          points: [
+            "<strong>Meilleurs moments</strong> : Mardi-Jeudi, 10h-12h et 14h-16h. Évite le weekend.",
+            "<strong>Volume progressif</strong> : Commence par 1000, puis monte à 5000, 10000... pour pas flag.",
+            "<strong>Rotation</strong> : Change de domaine/sender tous les 2-3 jours.",
+            "<strong>Segmentation</strong> : Adapte le message selon la cible (banque = clients banque, etc.)"
+          ]
+        },
+        {
+          type: "section",
+          title: "Après l'envoi",
+          points: [
+            "<strong>Monitore le panel</strong> : Les logs arrivent dans les minutes/heures qui suivent.",
+            "<strong>Réagis vite</strong> : Les infos bancaires ont une durée de vie limitée (codes 3DS).",
+            "<strong>Analyse les stats</strong> : Taux d'ouverture, taux de clic, taux de conversion.",
+            "<strong>Optimise</strong> : Si ça marche pas, change la letter, la cible, ou le timing."
+          ]
+        },
+        {
+          type: "warning",
+          title: "OPSEC Rappel",
+          text: "• Toujours derrière VPN + Proxy\n• Ne jamais utiliser ton vrai PC/téléphone\n• Paye tout en crypto\n• Ne te vante pas\n• Change de setup régulièrement\n• Les gros volumes attirent l'attention"
         }
       ]
     }
