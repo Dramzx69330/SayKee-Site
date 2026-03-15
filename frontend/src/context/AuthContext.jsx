@@ -12,6 +12,17 @@ export const useAuth = () => {
   return context;
 };
 
+// Helper function to safely parse JSON response
+const safeJsonParse = async (response) => {
+  try {
+    const text = await response.text();
+    return JSON.parse(text);
+  } catch (error) {
+    console.error('JSON parse error:', error);
+    throw new Error('Erreur de parsing de la réponse');
+  }
+};
+
 export const AuthProvider = ({ children }) => {
   const [user, setUser] = useState(null);
   const [token, setToken] = useState(localStorage.getItem('token'));
@@ -29,7 +40,7 @@ export const AuthProvider = ({ children }) => {
             }
           });
           if (response.ok) {
-            const userData = await response.json();
+            const userData = await safeJsonParse(response);
             setUser(userData);
             setToken(storedToken);
           } else {
@@ -60,16 +71,7 @@ export const AuthProvider = ({ children }) => {
         body: JSON.stringify({ pseudo, email, password })
       });
       
-      // Clone response to avoid "body stream already read" error
-      const responseClone = response.clone();
-      
-      let data;
-      try {
-        data = await response.json();
-      } catch (e) {
-        // If first attempt fails, try with clone
-        data = await responseClone.json();
-      }
+      const data = await safeJsonParse(response);
       
       if (!response.ok) {
         throw new Error(data.detail || 'Erreur lors de l\'inscription');
@@ -96,16 +98,7 @@ export const AuthProvider = ({ children }) => {
         body: JSON.stringify({ email, password })
       });
       
-      // Clone response to avoid "body stream already read" error
-      const responseClone = response.clone();
-      
-      let data;
-      try {
-        data = await response.json();
-      } catch (e) {
-        // If first attempt fails, try with clone
-        data = await responseClone.json();
-      }
+      const data = await safeJsonParse(response);
       
       if (!response.ok) {
         throw new Error(data.detail || 'Identifiants incorrects');
