@@ -177,35 +177,186 @@ Drop = Adresse utilisée pour recevoir une commande`
   },
   spoofer: {
     1: {
-      title: "IP Spoofing",
-      duration: "15 min",
-      level: "Intermédiaire",
-      description: "Comment les attaquants masquent leur identité en falsifiant leur adresse IP.",
+      title: "Introduction au Spoofing Call",
+      duration: "10 min",
+      level: "Débutant",
+      description: "Qu'est-ce que le caller ID spoofing ? Comment ça fonctionne et pourquoi c'est utilisé.",
       content: [
         {
           type: "intro",
-          title: "Qu'est-ce que l'IP Spoofing ?",
-          text: "L'IP spoofing consiste à envoyer des paquets réseau avec une adresse IP source falsifiée, permettant à l'attaquant de masquer son identité ou d'usurper celle d'un autre."
+          title: "C'est quoi le Spoof Call ?",
+          text: "Le Caller ID Spoofing permet de modifier le numéro qui s'affiche sur le téléphone de la personne que tu appelles. Au lieu de voir ton vrai numéro, elle voit celui que tu as choisi. C'est utilisé pour se faire passer pour une banque, un service client, ou n'importe quel numéro."
         },
         {
           type: "section",
-          title: "Utilisations malveillantes",
+          title: "Comment ça marche ?",
           points: [
-            "Attaques DDoS amplifiées",
-            "Contournement des pare-feu",
-            "Man-in-the-middle attacks",
-            "Session hijacking"
+            "<strong>Le principe</strong> : Quand tu appelles quelqu'un, ton opérateur envoie ton numéro (Caller ID) au réseau. Avec le spoofing, tu utilises un service tiers qui remplace ce numéro par celui de ton choix avant que l'appel arrive.",
+            "<strong>Les protocoles</strong> : La plupart des services utilisent le protocole VoIP (Voice over IP) ou SIP (Session Initiation Protocol) pour modifier les informations d'appel.",
+            "<strong>Légalité</strong> : Le spoofing en soi n'est pas illégal dans tous les pays. C'est l'utilisation frauduleuse (arnaque, usurpation) qui est punie par la loi."
           ]
         },
         {
           type: "section",
-          title: "Comment se protéger",
+          title: "Pourquoi c'est utilisé ?",
           points: [
-            "Utilisez des connexions chiffrées (HTTPS, VPN)",
-            "Configurez le filtrage d'entrée sur votre réseau",
-            "Activez les protections anti-spoofing de votre routeur",
-            "Surveillez les logs réseau pour détecter les anomalies"
+            "<strong>Allo bancaire</strong> : Se faire passer pour la banque de la victime pour récupérer des codes de validation",
+            "<strong>Arnaque support</strong> : Appeler en se faisant passer pour Microsoft, Apple, etc.",
+            "<strong>Récupération d'infos</strong> : Social engineering pour obtenir des données personnelles",
+            "<strong>Harcèlement</strong> : Appeler sans être tracé (attention : illégal)",
+            "<strong>Business légitime</strong> : Certaines entreprises l'utilisent pour afficher leur numéro principal"
           ]
+        },
+        {
+          type: "warning",
+          title: "Attention",
+          text: "Cette formation est à but éducatif. L'utilisation du spoofing pour frauder ou harceler est un délit pénal grave passible de prison. Sois responsable."
+        }
+      ]
+    },
+    2: {
+      title: "Les Outils de Spoof",
+      duration: "20 min",
+      level: "Intermédiaire",
+      description: "Applications, services et méthodes pour changer ton numéro affiché lors d'un appel.",
+      content: [
+        {
+          type: "intro",
+          title: "Les différentes solutions",
+          text: "Il existe plusieurs façons de spoofer un numéro : des applications mobiles, des services web, ou des solutions plus techniques avec SIP. Voici les principales options disponibles."
+        },
+        {
+          type: "section",
+          title: "Applications Mobile",
+          points: [
+            "<strong>SpoofCard</strong> : L'app la plus connue. Dispo sur iOS et Android. Tu achètes des crédits et tu peux choisir le numéro à afficher. Voice changer intégré. ~2€/appel.",
+            "<strong>SpoofTel</strong> : Service web + app. Fonctionne dans 80+ pays. Interface simple, paiement en crypto possible.",
+            "<strong>Dingtone</strong> : App gratuite qui donne des numéros virtuels US/Canada. Pas vraiment du spoof mais utile pour avoir un numéro jetable.",
+            "<strong>TextNow / TextFree</strong> : Numéros virtuels gratuits. Limité aux US/Canada mais pratique pour les SMS."
+          ]
+        },
+        {
+          type: "section",
+          title: "Numéros Virtuels",
+          points: [
+            "<strong>Hushed</strong> : Numéros temporaires dans 60+ pays. ~5€/mois par numéro. Peut recevoir appels et SMS.",
+            "<strong>Burner</strong> : Numéros jetables US. Tu peux les \"brûler\" (supprimer) quand tu veux.",
+            "<strong>MySudo</strong> : Plusieurs identités avec numéros différents. Très propre pour compartimenter.",
+            "<strong>OnOff</strong> : App française, numéros FR virtuels. Bien pour séparer pro/perso."
+          ]
+        },
+        {
+          type: "section",
+          title: "Solutions Pro / Techniques",
+          points: [
+            "<strong>VoIP Providers</strong> : Twilio, Plivo, Vonage permettent de configurer le Caller ID via API. Plus technique mais plus flexible.",
+            "<strong>SIP Trunking</strong> : Avec un softphone (Zoiper, Linphone) et un trunk SIP, tu peux configurer n'importe quel Caller ID.",
+            "<strong>PBX Personnel</strong> : Asterisk, FreePBX te donnent un contrôle total sur tes appels sortants."
+          ]
+        },
+        {
+          type: "warning",
+          title: "Conseil",
+          text: "Pour débuter, SpoofCard ou SpoofTel sont les plus simples. Pour du volume ou plus de contrôle, passe sur du VoIP/SIP."
+        }
+      ]
+    },
+    3: {
+      title: "Techniques Avancées",
+      duration: "25 min",
+      level: "Avancé",
+      description: "Voice changer, numéros virtuels, SIP trunking et configuration pro.",
+      content: [
+        {
+          type: "intro",
+          title: "Aller plus loin",
+          text: "Une fois les bases maîtrisées, voici les techniques avancées pour un setup pro : changer ta voix, configurer ton propre système SIP, et gérer plusieurs lignes."
+        },
+        {
+          type: "section",
+          title: "Voice Changer (Changeur de voix)",
+          points: [
+            "<strong>Pourquoi ?</strong> : Changer ta voix te rend encore plus difficile à identifier. Utile pour te faire passer pour une femme/homme ou une personne âgée.",
+            "<strong>Apps intégrées</strong> : SpoofCard a un voice changer intégré (homme, femme, pitch up/down).",
+            "<strong>Logiciels PC</strong> : Voicemod, Clownfish, MorphVOX. Tu les configures et ils modifient ta voix en temps réel.",
+            "<strong>Hardware</strong> : Certains utilisent des pédales d'effet pour guitare qui modifient la voix en live."
+          ]
+        },
+        {
+          type: "section",
+          title: "Setup SIP Complet",
+          points: [
+            "<strong>1. Choisir un provider SIP</strong> : Localphone, Anveo, VoIP.ms proposent des trunks SIP pas chers avec modification du Caller ID.",
+            "<strong>2. Installer un softphone</strong> : Zoiper (gratuit) ou Bria (payant mais pro). Configure tes identifiants SIP.",
+            "<strong>3. Configurer le Caller ID</strong> : Dans les paramètres du trunk ou du softphone, entre le numéro que tu veux afficher.",
+            "<strong>4. Tester</strong> : Appelle-toi ou un pote pour vérifier que le bon numéro s'affiche."
+          ]
+        },
+        {
+          type: "section",
+          title: "Multi-lignes et Rotation",
+          points: [
+            "<strong>Plusieurs numéros</strong> : Avec un PBX (Asterisk/FreePBX), tu peux avoir 10, 20, 100 lignes différentes.",
+            "<strong>Rotation automatique</strong> : Configure une rotation pour que chaque appel sorte avec un numéro différent.",
+            "<strong>Géolocalisation</strong> : Choisis des numéros locaux selon la région de ta cible (un 01 pour Paris, 04 pour le Sud, etc.).",
+            "<strong>Enregistrement</strong> : Configure l'enregistrement des appels pour review (attention à la légalité)."
+          ]
+        },
+        {
+          type: "warning",
+          title: "Setup recommandé",
+          text: "VPN → Softphone Zoiper → Trunk SIP (VoIP.ms) → Caller ID personnalisé. C'est propre, pas cher, et tu contrôles tout."
+        }
+      ]
+    },
+    4: {
+      title: "OPSEC & Sécurité",
+      duration: "15 min",
+      level: "Essentiel",
+      description: "Comment rester anonyme, éviter le traçage et protéger ton identité.",
+      content: [
+        {
+          type: "intro",
+          title: "La sécurité avant tout",
+          text: "Spoofer un numéro ne te rend pas invisible. Les opérateurs et les autorités peuvent remonter à toi si tu n'es pas prudent. Voici les règles OPSEC à suivre."
+        },
+        {
+          type: "section",
+          title: "Règles de base OPSEC",
+          points: [
+            "<strong>Jamais depuis ton tel perso</strong> : Utilise toujours un téléphone dédié ou un service VoIP. Ton numéro IMEI et ta SIM sont traçables.",
+            "<strong>VPN obligatoire</strong> : Si tu utilises un service web ou VoIP, passe par un VPN no-log (Mullvad, IVPN). Ton IP est loguée sinon.",
+            "<strong>Paiement anonyme</strong> : Utilise des cryptos ou des cartes prépayées pour payer les services de spoof.",
+            "<strong>Pas de patterns</strong> : Ne fais pas 50 appels d'affilée vers le même type de cible. Varie.",
+            "<strong>Compartimente</strong> : Un numéro/service = un usage. Ne mélange pas."
+          ]
+        },
+        {
+          type: "section",
+          title: "Ce qui peut te griller",
+          points: [
+            "<strong>Ton IP réelle</strong> : Si tu utilises un service web sans VPN, ton IP est loguée chez eux.",
+            "<strong>Les métadonnées</strong> : Durée d'appel, fréquence, destinations... ça crée un profil.",
+            "<strong>Ta voix</strong> : Même spoofée, ta voix peut être analysée et reconnue. Utilise un voice changer.",
+            "<strong>Tes habitudes</strong> : Toujours les mêmes heures, mêmes cibles, même script = pattern détectable.",
+            "<strong>Les plaintes</strong> : Si ta cible porte plainte, les autorités peuvent demander les logs aux providers."
+          ]
+        },
+        {
+          type: "section",
+          title: "Setup Anonyme Recommandé",
+          points: [
+            "<strong>Téléphone</strong> : Smartphone Android acheté cash, sans compte Google, avec VPN.",
+            "<strong>SIM</strong> : SIM prépayée anonyme ou eSIM virtuelle (pas de vérification d'identité).",
+            "<strong>Service</strong> : VoIP payé en crypto, ou SpoofCard via VPN.",
+            "<strong>Localisation</strong> : Ne fais jamais d'appels depuis chez toi ou ton lieu de travail.",
+            "<strong>Durée</strong> : Limite tes sessions. Change régulièrement de setup."
+          ]
+        },
+        {
+          type: "warning",
+          title: "Remember",
+          text: "Le spoofing laisse TOUJOURS des traces quelque part. La question c'est : combien d'efforts les autorités vont mettre pour te retrouver ? Plus t'es prudent, moins t'es intéressant à tracer. Stay safe."
         }
       ]
     }
