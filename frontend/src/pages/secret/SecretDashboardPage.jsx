@@ -106,9 +106,30 @@ export const SecretDashboardPage = () => {
   const telegramHandle = "@Loukra";
   const telegramLink = "https://t.me/Loukra";
 
-  const copyTelegram = () => {
-    navigator.clipboard.writeText(telegramHandle);
-    setCopied(true);
+  const copyTelegram = async () => {
+    try {
+      // Try modern clipboard API first
+      if (navigator.clipboard && navigator.clipboard.writeText) {
+        await navigator.clipboard.writeText(telegramHandle);
+        setCopied(true);
+      } else {
+        // Fallback for older browsers or restricted environments
+        const textArea = document.createElement("textarea");
+        textArea.value = telegramHandle;
+        textArea.style.position = "fixed";
+        textArea.style.left = "-999999px";
+        textArea.style.top = "-999999px";
+        document.body.appendChild(textArea);
+        textArea.focus();
+        textArea.select();
+        document.execCommand("copy");
+        textArea.remove();
+        setCopied(true);
+      }
+    } catch (err) {
+      // If all copy methods fail, just show the text
+      alert(`Copie manuelle : ${telegramHandle}`);
+    }
     setTimeout(() => setCopied(false), 2000);
   };
 
