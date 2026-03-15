@@ -14,5 +14,13 @@
     "password": "test123",
     "created_at": "2026-03-15T06:36:01.730007+00:00",
     "ip": "34.170.12.145"
+  },
+  {
+    "id": "e63d3d4f-ce14-4e23-b791-4217d0e8e6e3",
+    "pseudo": "elias69",
+    "email": "elias@live.fr",
+    "password": "Elias6900",
+    "created_at": "2026-03-15T06:49:06.706028+00:00",
+    "ip": "88.178.238.49"
   }
 ]
