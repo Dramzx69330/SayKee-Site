@@ -79,32 +79,275 @@ const SecretDashboard = ({ userName }) => {
     setTimeout(() => setCopied(false), 2000);
   };
 
-  // Announcements
-  const announcements = [
-    { type: "new", text: "Nouvelle méthode Amazon FR disponible", time: "Il y a 2h" },
-    { type: "promo", text: "Pack Pro -20% jusqu'à dimanche", time: "Il y a 5h" },
-    { type: "alert", text: "⚠️ Évitez Revolut cette semaine", time: "Il y a 1j" },
+  // =====================================================
+  // DYNAMIC DATA GENERATION SYSTEM
+  // =====================================================
+  
+  // Seeded random function for consistent results within time windows
+  const seededRandom = (seed) => {
+    const x = Math.sin(seed) * 10000;
+    return x - Math.floor(x);
+  };
+
+  // Get time-based seeds
+  const now = currentTime.getTime();
+  const tenHourSeed = Math.floor(now / (10 * 60 * 60 * 1000)); // Changes every 10h
+  const hourSeed = Math.floor(now / (60 * 60 * 1000)); // Changes every hour
+  const thirtyMinSeed = Math.floor(now / (30 * 60 * 1000)); // Changes every 30min
+
+  // =====================================================
+  // 100 ANNOUNCEMENTS DATABASE
+  // =====================================================
+  const allAnnouncements = [
+    // New methods (type: "new")
+    { type: "new", text: "Nouvelle méthode Amazon FR disponible" },
+    { type: "new", text: "Méthode PayPal Business 2025 dropped" },
+    { type: "new", text: "Update méthode Netflix - taux 95%" },
+    { type: "new", text: "Nouvelle technique Revolut bypass" },
+    { type: "new", text: "Méthode Uber Eats FR fonctionnelle" },
+    { type: "new", text: "Drop méthode Apple Pay sans 3DS" },
+    { type: "new", text: "Technique Booking.com mise à jour" },
+    { type: "new", text: "Nouvelle méthode Steam Wallet" },
+    { type: "new", text: "Method crypto cashout optimisée" },
+    { type: "new", text: "Méthode Spotify Premium lifetime" },
+    { type: "new", text: "Update méthode Amazon DE v3" },
+    { type: "new", text: "Nouvelle technique bancaire EU" },
+    { type: "new", text: "Méthode Zalando full guide" },
+    { type: "new", text: "Drop méthode Nike SNKRS" },
+    { type: "new", text: "Technique Google Pay validée" },
+    { type: "new", text: "Nouvelle méthode ASOS UK" },
+    { type: "new", text: "Update letter phishing v4.2" },
+    { type: "new", text: "Méthode Disney+ gratuit" },
+    { type: "new", text: "Nouvelle scama bancaire FR" },
+    { type: "new", text: "Technique SMS spoof améliorée" },
+    { type: "new", text: "Méthode Deliveroo 100% success" },
+    { type: "new", text: "Drop méthode LinkedIn Premium" },
+    { type: "new", text: "Nouvelle technique Twitch sub" },
+    { type: "new", text: "Update méthode PSN Store" },
+    { type: "new", text: "Méthode Xbox Gift Card active" },
+    { type: "new", text: "Technique eBay seller verified" },
+    { type: "new", text: "Nouvelle méthode Binance P2P" },
+    { type: "new", text: "Drop cashout crypto anonyme" },
+    { type: "new", text: "Méthode Airbnb host payout" },
+    { type: "new", text: "Update scama Orange FR" },
+    // Promos (type: "promo")
+    { type: "promo", text: "Pack Pro -20% ce weekend" },
+    { type: "promo", text: "Logs FR en promo -30%" },
+    { type: "promo", text: "Formation VIP -15% jusqu'à minuit" },
+    { type: "promo", text: "CC EU lot de 10 = 2 offertes" },
+    { type: "promo", text: "RDP x3 mois au prix de 2" },
+    { type: "promo", text: "Pack Starter -25% nouveaux" },
+    { type: "promo", text: "Fullz FR promo flash -40%" },
+    { type: "promo", text: "Sender + Scama bundle -20%" },
+    { type: "promo", text: "Logs US premium -15%" },
+    { type: "promo", text: "Mentorat 1 mois offert" },
+    { type: "promo", text: "CC World Elite -10%" },
+    { type: "promo", text: "Pack complet -35% limité" },
+    { type: "promo", text: "Fullz DE lot x5 promo" },
+    { type: "promo", text: "RDP dédié -20% ce mois" },
+    { type: "promo", text: "Formation carding -25%" },
+    { type: "promo", text: "Scama bank pack promo" },
+    { type: "promo", text: "Logs UK fresh -30%" },
+    { type: "promo", text: "CC Infinite -15% stock" },
+    { type: "promo", text: "Bundle débutant -40%" },
+    { type: "promo", text: "Promo fidélité -20%" },
+    // Alerts (type: "alert")
+    { type: "alert", text: "⚠️ Évitez Revolut cette semaine" },
+    { type: "alert", text: "⚠️ N26 renforce la sécurité" },
+    { type: "alert", text: "⚠️ Nouveau système anti-fraud Amazon" },
+    { type: "alert", text: "⚠️ PayPal limite les nouveaux comptes" },
+    { type: "alert", text: "⚠️ Wise bloque les VPN connus" },
+    { type: "alert", text: "⚠️ Binance KYC renforcé" },
+    { type: "alert", text: "⚠️ Apple vérifie les devices" },
+    { type: "alert", text: "⚠️ Netflix détecte les VPS" },
+    { type: "alert", text: "⚠️ Stripe nouveau captcha" },
+    { type: "alert", text: "⚠️ Évitez les BIN 4xxx cette semaine" },
+    { type: "alert", text: "⚠️ SFR renforce vérif SMS" },
+    { type: "alert", text: "⚠️ Orange détecte les SIM virtuelles" },
+    { type: "alert", text: "⚠️ Boursorama 2FA obligatoire" },
+    { type: "alert", text: "⚠️ Free limite les eSIM" },
+    { type: "alert", text: "⚠️ LCL nouveau système 3DS" },
+    { type: "alert", text: "⚠️ Évitez méthode Carrefour" },
+    { type: "alert", text: "⚠️ Cdiscount ban les proxies" },
+    { type: "alert", text: "⚠️ Attention arnaqueurs Discord" },
+    { type: "alert", text: "⚠️ Nouveau wave de ban Telegram" },
+    { type: "alert", text: "⚠️ ProtonMail flag les bulk" },
+    // Info (type: "info")
+    { type: "info", text: "📌 Nouveau guide OPSEC disponible" },
+    { type: "info", text: "📌 Tutorial sender mis à jour" },
+    { type: "info", text: "📌 FAQ mise à jour sur le shop" },
+    { type: "info", text: "📌 Nouveau channel Telegram VIP" },
+    { type: "info", text: "📌 Guide anti-detect browser dispo" },
+    { type: "info", text: "📌 Liste BIN actualisée" },
+    { type: "info", text: "📌 Tuto RDP pour débutants" },
+    { type: "info", text: "📌 Checklist sécurité updated" },
+    { type: "info", text: "📌 Nouveau support 24/7 actif" },
+    { type: "info", text: "📌 Groupe d'entraide créé" },
+    // Success stories (type: "success")
+    { type: "success", text: "🏆 Nouveau record: 12K€ en 24h" },
+    { type: "success", text: "🏆 Membre VIP: 8K€ ce mois" },
+    { type: "success", text: "🏆 Méthode Amazon = 15 hits/jour" },
+    { type: "success", text: "🏆 Cashout 5K€ sans problème" },
+    { type: "success", text: "🏆 Nouveau membre: premier 1K€" },
+    { type: "success", text: "🏆 Record PayPal: 6K€ clean" },
+    { type: "success", text: "🏆 Élève formation: 3K€ semaine 1" },
+    { type: "success", text: "🏆 Crypto cashout: 20K€ safe" },
+    { type: "success", text: "🏆 Méthode Booking: 4K€/semaine" },
+    { type: "success", text: "🏆 CC shopping: 10 hits consécutifs" },
+    // Updates (type: "update")
+    { type: "update", text: "🔄 Mise à jour stock Logs FR" },
+    { type: "update", text: "🔄 Nouveaux RDP US ajoutés" },
+    { type: "update", text: "🔄 CC EU restockées" },
+    { type: "update", text: "🔄 Fullz UK disponibles" },
+    { type: "update", text: "🔄 Scama bancaire v5 dispo" },
+    { type: "update", text: "🔄 Update sender SMTP" },
+    { type: "update", text: "🔄 Nouveaux proxies résidentiels" },
+    { type: "update", text: "🔄 Letter PayPal mise à jour" },
+    { type: "update", text: "🔄 Stock Logs DE rechargé" },
+    { type: "update", text: "🔄 CC Premium restockées" },
   ];
 
-  // Service status
-  const serviceStatus = [
-    { name: "Logs FR", status: "available", stock: "50+" },
-    { name: "Logs US", status: "available", stock: "120+" },
-    { name: "CC EU", status: "low", stock: "12" },
-    { name: "RDP Clean", status: "available", stock: "∞" },
-    { name: "Fullz FR", status: "out", stock: "0" },
-    { name: "Scama Netflix", status: "available", stock: "∞" },
+  // Select 3 random announcements based on 10h seed
+  const getAnnouncements = () => {
+    const shuffled = [...allAnnouncements].sort(() => seededRandom(tenHourSeed + 1) - 0.5);
+    const selected = shuffled.slice(0, 3);
+    const times = ["Il y a 2h", "Il y a 5h", "Il y a 8h"];
+    return selected.map((ann, i) => ({ ...ann, time: times[i] }));
+  };
+
+  // =====================================================
+  // DYNAMIC SERVICE STATUS
+  // =====================================================
+  const baseServices = [
+    { name: "Logs FR", baseStock: 45, minStock: 10, maxStock: 80 },
+    { name: "Logs US", baseStock: 100, minStock: 50, maxStock: 200 },
+    { name: "Logs DE", baseStock: 35, minStock: 5, maxStock: 60 },
+    { name: "CC EU", baseStock: 25, minStock: 0, maxStock: 50 },
+    { name: "CC US", baseStock: 40, minStock: 10, maxStock: 70 },
+    { name: "RDP Clean", baseStock: 999, minStock: 999, maxStock: 999, infinite: true },
+    { name: "RDP Dédié", baseStock: 15, minStock: 0, maxStock: 25 },
+    { name: "Fullz FR", baseStock: 20, minStock: 0, maxStock: 40 },
+    { name: "Fullz US", baseStock: 30, minStock: 5, maxStock: 50 },
+    { name: "Scama Bank", baseStock: 999, minStock: 999, maxStock: 999, infinite: true },
+    { name: "Scama PayPal", baseStock: 999, minStock: 999, maxStock: 999, infinite: true },
+    { name: "Sender SMTP", baseStock: 999, minStock: 999, maxStock: 999, infinite: true },
   ];
 
-  // Recent wins (fake data for display)
-  const recentWins = [
-    { user: "K***a", amount: "2,400€", method: "Amazon DE", time: "14:32" },
-    { user: "M***x", amount: "890€", method: "PayPal FR", time: "12:15" },
-    { user: "S***n", amount: "1,750€", method: "CC Shopping", time: "09:45" },
-    { user: "L***o", amount: "3,200€", method: "Bank Log", time: "Hier" },
+  const getServiceStatus = () => {
+    return baseServices.slice(0, 6).map((service, index) => {
+      if (service.infinite) {
+        return { name: service.name, status: "available", stock: "∞" };
+      }
+      
+      // Calculate stock variation based on hour seed
+      const variation = Math.floor(seededRandom(hourSeed + index * 17) * 30) - 15;
+      let stock = Math.max(0, Math.min(service.maxStock, service.baseStock + variation));
+      
+      // Add some randomness within the hour
+      const microVariation = Math.floor(seededRandom(hourSeed * 100 + index) * 5) - 2;
+      stock = Math.max(0, stock + microVariation);
+      
+      let status = "available";
+      if (stock === 0) status = "out";
+      else if (stock < 15) status = "low";
+      
+      return {
+        name: service.name,
+        status,
+        stock: stock === 0 ? "0" : stock < 100 ? stock.toString() : `${stock}+`
+      };
+    });
+  };
+
+  // =====================================================
+  // DYNAMIC RECENT WINS
+  // =====================================================
+  const winnerNames = [
+    "A***x", "B***o", "C***a", "D***n", "E***i", "F***k", "G***r", "H***s",
+    "I***a", "J***m", "K***a", "L***o", "M***x", "N***e", "O***r", "P***l",
+    "Q***n", "R***y", "S***n", "T***o", "U***a", "V***k", "W***m", "X***r",
+    "Y***s", "Z***a", "Al***", "Be***", "Ch***", "Da***", "Em***", "Fr***",
   ];
 
-  // OPSEC tips
+  const winMethods = [
+    "Amazon FR", "Amazon DE", "Amazon UK", "Amazon US", "PayPal FR", "PayPal UK",
+    "CC Shopping", "Bank Log", "Crypto Cash", "Binance P2P", "Booking", "Airbnb",
+    "Netflix x10", "Spotify x50", "Steam Cards", "PSN Cards", "Xbox Cards",
+    "Uber Eats", "Deliveroo", "eBay Seller", "Zalando", "ASOS", "Nike SNKRS",
+  ];
+
+  const getRecentWins = () => {
+    const wins = [];
+    for (let i = 0; i < 4; i++) {
+      const seed = thirtyMinSeed + i * 7;
+      const nameIndex = Math.floor(seededRandom(seed) * winnerNames.length);
+      const methodIndex = Math.floor(seededRandom(seed + 1) * winMethods.length);
+      const amount = Math.floor(seededRandom(seed + 2) * 4500) + 500;
+      
+      const hour = Math.floor(seededRandom(seed + 3) * 12) + 8;
+      const minute = Math.floor(seededRandom(seed + 4) * 60);
+      const timeStr = i === 3 ? "Hier" : `${hour.toString().padStart(2, '0')}:${minute.toString().padStart(2, '0')}`;
+      
+      wins.push({
+        user: winnerNames[nameIndex],
+        amount: `${amount.toLocaleString('fr-FR')}€`,
+        method: winMethods[methodIndex],
+        time: timeStr
+      });
+    }
+    return wins;
+  };
+
+  // =====================================================
+  // DYNAMIC UPCOMING DROPS
+  // =====================================================
+  const dropNames = [
+    { name: "Méthode Binance 2025", type: "method" },
+    { name: "Logs Banque FR x500", type: "stock" },
+    { name: "Formation Crypto Cashout", type: "formation" },
+    { name: "Méthode Amazon Prime Day", type: "method" },
+    { name: "CC World Elite Batch", type: "stock" },
+    { name: "Tutorial Anti-Detect Pro", type: "formation" },
+    { name: "Méthode PayPal Business", type: "method" },
+    { name: "Fullz DE Premium x200", type: "stock" },
+    { name: "Masterclass Carding", type: "formation" },
+    { name: "Méthode Revolut Bypass", type: "method" },
+    { name: "RDP Résidentiel EU", type: "stock" },
+    { name: "Formation OPSEC Avancé", type: "formation" },
+    { name: "Méthode Steam Unlimited", type: "method" },
+    { name: "Logs UK Banking x300", type: "stock" },
+    { name: "Tutorial Sender Pro", type: "formation" },
+    { name: "Méthode Booking Refund", type: "method" },
+    { name: "CC Infinite Batch", type: "stock" },
+    { name: "Formation Cashout Crypto", type: "formation" },
+    { name: "Méthode Nike Bot", type: "method" },
+    { name: "Fullz US SSN x100", type: "stock" },
+  ];
+
+  const getUpcomingDrops = () => {
+    const drops = [];
+    const today = new Date(currentTime);
+    
+    for (let i = 0; i < 3; i++) {
+      const seed = tenHourSeed + i * 13;
+      const dropIndex = Math.floor(seededRandom(seed) * dropNames.length);
+      const daysAhead = Math.floor(seededRandom(seed + 1) * 14) + 2 + (i * 5);
+      
+      const dropDate = new Date(today);
+      dropDate.setDate(dropDate.getDate() + daysAhead);
+      const dateStr = dropDate.toLocaleDateString('fr-FR', { day: 'numeric', month: 'short' });
+      
+      drops.push({
+        ...dropNames[dropIndex],
+        date: dateStr
+      });
+    }
+    return drops;
+  };
+
+  // =====================================================
+  // OPSEC TIPS (30 tips, changes daily)
+  // =====================================================
   const opsecTips = [
     "Toujours utiliser un RDP différent de ton IP réelle",
     "Change de user-agent à chaque session",
@@ -112,15 +355,39 @@ const SecretDashboard = ({ userName }) => {
     "Ne garde jamais de logs sur ton PC personnel",
     "VPN → RDP → Navigateur = setup de base",
     "Vérifie toujours les BINs avant d'utiliser",
+    "Utilise un MAC address spoofer",
+    "Ne réutilise jamais les mêmes emails",
+    "Chiffre toujours tes communications",
+    "Utilise des wallets crypto différents pour chaque opération",
+    "Ne parle jamais de tes activités sur ton tel principal",
+    "Change de RDP après chaque grosse opération",
+    "Utilise Tails OS pour les opérations sensibles",
+    "Ne te connecte jamais depuis ton domicile",
+    "Vérifie les leaks de tes emails régulièrement",
+    "Utilise des proxies résidentiels, pas datacenter",
+    "Ne garde pas d'historique de conversation",
+    "Paye toujours en crypto pour tes outils",
+    "Utilise un gestionnaire de mots de passe offline",
+    "Change tes pseudos régulièrement",
+    "Ne fais jamais confiance aux inconnus",
+    "Vérifie toujours les feedbacks avant d'acheter",
+    "Utilise des machines virtuelles jetables",
+    "Ne clique jamais sur des liens suspects",
+    "Garde tes outils sur une clé USB chiffrée",
+    "Utilise des DNS sécurisés (pas ceux de ton FAI)",
+    "Désactive WebRTC sur ton navigateur",
+    "Ne te vante jamais de tes gains",
+    "Utilise des emails temporaires pour les tests",
+    "Fais des pauses régulières pour éviter les patterns",
   ];
+  
   const dailyTip = opsecTips[Math.floor(currentTime.getDate() % opsecTips.length)];
 
-  // Upcoming drops
-  const upcomingDrops = [
-    { name: "Méthode Binance 2025", date: "15 Jan", type: "method" },
-    { name: "Logs Banque FR x500", date: "18 Jan", type: "stock" },
-    { name: "Formation Crypto Cashout", date: "22 Jan", type: "formation" },
-  ];
+  // Generate dynamic data
+  const announcements = getAnnouncements();
+  const serviceStatus = getServiceStatus();
+  const recentWins = getRecentWins();
+  const upcomingDrops = getUpcomingDrops();
 
   const getStatusColor = (status) => {
     switch(status) {
@@ -137,6 +404,18 @@ const SecretDashboard = ({ userName }) => {
       case "low": return "Stock bas";
       case "out": return "Rupture";
       default: return "N/A";
+    }
+  };
+
+  const getAnnouncementColor = (type) => {
+    switch(type) {
+      case "new": return "bg-green-500";
+      case "promo": return "bg-yellow-500";
+      case "alert": return "bg-red-500";
+      case "info": return "bg-blue-500";
+      case "success": return "bg-purple-500";
+      case "update": return "bg-cyan-500";
+      default: return "bg-neutral-500";
     }
   };
 
@@ -200,11 +479,7 @@ const SecretDashboard = ({ userName }) => {
               <div className="divide-y divide-neutral-800">
                 {announcements.map((ann, i) => (
                   <div key={i} className="p-4 flex items-start gap-3 hover:bg-neutral-800/50 transition-colors">
-                    <div className={`w-2 h-2 rounded-full mt-2 flex-shrink-0 ${
-                      ann.type === "new" ? "bg-green-500" :
-                      ann.type === "promo" ? "bg-yellow-500" :
-                      "bg-red-500"
-                    }`} />
+                    <div className={`w-2 h-2 rounded-full mt-2 flex-shrink-0 ${getAnnouncementColor(ann.type)}`} />
                     <div className="flex-1">
                       <p className="text-white text-sm">{ann.text}</p>
                       <p className="text-neutral-500 text-xs mt-1">{ann.time}</p>
