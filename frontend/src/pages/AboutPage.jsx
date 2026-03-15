@@ -29,24 +29,24 @@ export const AboutPage = () => {
       </section>
 
       {/* Stats */}
-      <section className="py-16 px-6 bg-blue-950/20 border-y border-blue-900/30">
-        <div className="max-w-7xl mx-auto">
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-8">
-            <div className="text-center">
-              <div className="text-4xl md:text-5xl font-black text-white mb-2">5+ ans</div>
-              <div className="text-sm text-neutral-400">Expérience</div>
+      <section className="py-20 px-6 bg-gradient-to-b from-blue-950/10 to-black border-y border-blue-900/20">
+        <div className="max-w-6xl mx-auto">
+          <div className="grid grid-cols-2 lg:grid-cols-4 gap-12 lg:gap-16">
+            <div className="flex flex-col items-center justify-center">
+              <div className="text-5xl lg:text-6xl font-extrabold text-white mb-3 tracking-tight">5+</div>
+              <div className="text-sm lg:text-base text-neutral-400 uppercase tracking-wider font-medium">Années d'expérience</div>
             </div>
-            <div className="text-center">
-              <div className="text-4xl md:text-5xl font-black text-blue-500 mb-2">100%</div>
-              <div className="text-sm text-neutral-400">Autodidacte</div>
+            <div className="flex flex-col items-center justify-center">
+              <div className="text-5xl lg:text-6xl font-extrabold text-blue-400 mb-3 tracking-tight">100%</div>
+              <div className="text-sm lg:text-base text-neutral-400 uppercase tracking-wider font-medium">Autodidacte</div>
             </div>
-            <div className="text-center">
-              <div className="text-4xl md:text-5xl font-black text-white mb-2">2,500+</div>
-              <div className="text-sm text-neutral-400">Étudiants</div>
+            <div className="flex flex-col items-center justify-center">
+              <div className="text-5xl lg:text-6xl font-extrabold text-white mb-3 tracking-tight">2,500+</div>
+              <div className="text-sm lg:text-base text-neutral-400 uppercase tracking-wider font-medium">Étudiants formés</div>
             </div>
-            <div className="text-center">
-              <div className="text-4xl md:text-5xl font-black text-blue-500 mb-2">0€</div>
-              <div className="text-sm text-neutral-400">Formations payantes</div>
+            <div className="flex flex-col items-center justify-center">
+              <div className="text-5xl lg:text-6xl font-extrabold text-blue-400 mb-3 tracking-tight">100%</div>
+              <div className="text-sm lg:text-base text-neutral-400 uppercase tracking-wider font-medium">Gratuit</div>
             </div>
           </div>
         </div>
