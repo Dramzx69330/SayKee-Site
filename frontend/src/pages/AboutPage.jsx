@@ -29,9 +29,9 @@ export const AboutPage = () => {
       </section>
 
       {/* Stats */}
-      <section className="py-20 px-6 bg-gradient-to-b from-blue-950/10 to-black border-y border-blue-900/20">
+      <section className="py-12 px-6 bg-gradient-to-b from-blue-950/10 to-black border-y border-blue-900/20">
         <div className="max-w-6xl mx-auto">
-          <div className="grid grid-cols-2 lg:grid-cols-4 gap-12 lg:gap-16">
+          <div className="grid grid-cols-2 lg:grid-cols-4 gap-8 lg:gap-12">
             <div className="flex flex-col items-center justify-center">
               <div className="text-4xl lg:text-5xl font-bold text-white mb-2 tracking-tight">5+</div>
               <div className="text-sm lg:text-base text-neutral-400 uppercase tracking-wide font-medium">Années d'expérience</div>
