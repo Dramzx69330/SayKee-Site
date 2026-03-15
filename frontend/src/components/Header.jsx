@@ -30,6 +30,7 @@ export const Header = () => {
   // Navigation secrète
   const secretNavLinks = [
     { to: "/", label: "Accueil" },
+    { to: "/secret/shop", label: "Shop" },
     { to: "/secret/carding", label: "Formation Carding" },
     { to: "/secret/spoofer", label: "Spoofer" },
     { to: "/secret/spam", label: "Spam" },

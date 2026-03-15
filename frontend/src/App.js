@@ -20,6 +20,7 @@ import SpooferPage from "./pages/secret/SpooferPage";
 import SpamPage from "./pages/secret/SpamPage";
 import SecretAboutPage from "./pages/secret/SecretAboutPage";
 import SecretModuleDetailPage from "./pages/secret/SecretModuleDetailPage";
+import SecretDashboardPage from "./pages/secret/SecretDashboardPage";
 
 import Header from "./components/Header";
 import Footer from "./components/Footer";
@@ -72,6 +73,7 @@ function AppContent() {
           <Route path="/secret/spoofer" element={<SpooferPage />} />
           <Route path="/secret/spam" element={<SpamPage />} />
           <Route path="/secret/about" element={<SecretAboutPage />} />
+          <Route path="/secret/shop" element={<SecretDashboardPage />} />
           <Route path="/secret/module/:type/:id" element={<SecretModuleDetailPage />} />
         </Routes>
         <Footer />
