@@ -49,7 +49,7 @@ const ChatWidget = () => {
         "Pour l'instant je fais pas de coaching payant. Tout est dans les formations gratuites. Si t'as des questions spécifiques, contacte moi sur Telegram.",
     },
     {
-      question: "C'est qui Dora ?",
+      question: "C'est qui Elias Benguezzou ?",
       answer:
         "C'est moi ! J'ai fais +200K€ en trading et e-commerce. J'ai commencé de zéro, sans diplôme, sans réseau. Aujourd'hui je partage ce que j'ai appris. Check la page À propos pour en savoir plus.",
     },
@@ -136,10 +136,11 @@ const ChatWidget = () => {
           response = faqData.find((f) => f.question.includes("formations dispo"))?.answer;
         } else if (
           lowerQuestion.includes("qui") ||
-          lowerQuestion.includes("dora") ||
+          lowerQuestion.includes("elias") ||
+          lowerQuestion.includes("benguezzou") ||
           lowerQuestion.includes("toi")
         ) {
-          response = faqData.find((f) => f.question.includes("Dora"))?.answer;
+          response = faqData.find((f) => f.question.includes("Elias"))?.answer;
         } else if (
           lowerQuestion.includes("saykee") ||
           lowerQuestion.includes("site") ||
@@ -259,7 +260,7 @@ const ChatWidget = () => {
             className="flex items-center justify-center gap-2 bg-neutral-800 hover:bg-neutral-700 text-neutral-300 py-3 text-sm transition-colors"
           >
             <ExternalLink size={16} />
-            Parler à Dora sur Telegram
+            Parler à Elias sur Telegram
           </a>
         </div>
       )}

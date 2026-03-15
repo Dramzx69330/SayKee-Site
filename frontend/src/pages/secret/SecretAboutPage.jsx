@@ -21,7 +21,7 @@ export const SecretAboutPage = () => {
           </div>
           
           <h1 className="text-5xl md:text-7xl font-black text-white mb-6 tracking-tight">
-            Yo, c'est <span className="text-red-500">Dora</span>
+            Yo, c'est <span className="text-red-500">Elias Benguezzou</span>
           </h1>
           
           <p className="text-xl text-neutral-400 max-w-2xl">
