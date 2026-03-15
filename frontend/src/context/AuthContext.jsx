@@ -1,4 +1,5 @@
 import React, { createContext, useContext, useState, useEffect } from 'react';
+import axios from 'axios';
 
 const BACKEND_URL = process.env.REACT_APP_BACKEND_URL;
 
@@ -23,21 +24,13 @@ export const AuthProvider = ({ children }) => {
       const storedToken = localStorage.getItem('token');
       if (storedToken) {
         try {
-          const response = await fetch(`${BACKEND_URL}/api/auth/me`, {
+          const response = await axios.get(`${BACKEND_URL}/api/auth/me`, {
             headers: {
               'Authorization': `Bearer ${storedToken}`
             }
           });
-          if (response.ok) {
-            const text = await response.text();
-            const userData = JSON.parse(text);
-            setUser(userData);
-            setToken(storedToken);
-          } else {
-            localStorage.removeItem('token');
-            setToken(null);
-            setUser(null);
-          }
+          setUser(response.data);
+          setToken(storedToken);
         } catch (error) {
           console.error('Erreur de vérification du token:', error);
           localStorage.removeItem('token');
@@ -52,80 +45,44 @@ export const AuthProvider = ({ children }) => {
 
   const register = async (pseudo, email, password) => {
     try {
-      const response = await fetch(`${BACKEND_URL}/api/auth/register`, {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json'
-        },
-        body: JSON.stringify({ pseudo, email, password })
+      const response = await axios.post(`${BACKEND_URL}/api/auth/register`, {
+        pseudo,
+        email,
+        password
       });
       
-      const text = await response.text();
-      console.log('Register response text:', text);
+      const data = response.data;
       
-      let data;
-      try {
-        data = JSON.parse(text);
-      } catch (parseError) {
-        console.error('Parse error:', parseError, 'Text was:', text);
-        throw new Error('Réponse invalide du serveur');
-      }
-      
-      if (!response.ok) {
-        throw new Error(data.detail || 'Erreur lors de l\'inscription');
-      }
-      
+      // Stocker le token et l'utilisateur
       localStorage.setItem('token', data.token);
       setToken(data.token);
       setUser(data.user);
       
       return { success: true, message: data.message };
     } catch (error) {
-      console.error('Register error:', error);
-      return { success: false, message: error.message };
+      const message = error.response?.data?.detail || error.message || 'Erreur lors de l\'inscription';
+      return { success: false, message };
     }
   };
 
   const login = async (email, password) => {
     try {
-      console.log('Login starting...', { email, url: `${BACKEND_URL}/api/auth/login` });
-      
-      const response = await fetch(`${BACKEND_URL}/api/auth/login`, {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json'
-        },
-        body: JSON.stringify({ email, password })
+      const response = await axios.post(`${BACKEND_URL}/api/auth/login`, {
+        email,
+        password
       });
       
-      console.log('Response received, status:', response.status);
+      const data = response.data;
       
-      const text = await response.text();
-      console.log('Response text:', text.substring(0, 200));
-      
-      let data;
-      try {
-        data = JSON.parse(text);
-      } catch (parseError) {
-        console.error('JSON Parse error:', parseError);
-        console.error('Raw text was:', text);
-        throw new Error('Réponse invalide du serveur');
-      }
-      
-      console.log('Parsed data:', data);
-      
-      if (!response.ok) {
-        throw new Error(data.detail || 'Identifiants incorrects');
-      }
-      
+      // Stocker le token et l'utilisateur
       localStorage.setItem('token', data.token);
       setToken(data.token);
       setUser(data.user);
       
       return { success: true, message: data.message };
     } catch (error) {
-      console.error('Login error:', error);
-      return { success: false, message: error.message };
+      const message = error.response?.data?.detail || error.message || 'Identifiants incorrects';
+      return { success: false, message };
     }
   };
 
