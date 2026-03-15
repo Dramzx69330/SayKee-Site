@@ -5,7 +5,7 @@ import sys
 from datetime import datetime
 
 # Backend URL from frontend .env
-BACKEND_URL = "https://affiche-staging.preview.emergentagent.com/api"
+BACKEND_URL = "https://preview-redesign.preview.emergentagent.com/api"
 
 class AuthenticationTester:
     def __init__(self):
