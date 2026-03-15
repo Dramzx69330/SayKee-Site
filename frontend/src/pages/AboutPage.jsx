@@ -29,24 +29,24 @@ export const AboutPage = () => {
       </section>
 
       {/* Stats */}
-      <section className="py-12 px-6 bg-gradient-to-b from-blue-950/10 to-black border-y border-blue-900/20">
+      <section className="py-8 px-6 bg-gradient-to-b from-blue-950/10 to-black border-y border-blue-900/20">
         <div className="max-w-6xl mx-auto">
-          <div className="grid grid-cols-2 lg:grid-cols-4 gap-8 lg:gap-12">
+          <div className="grid grid-cols-2 lg:grid-cols-4 gap-6 lg:gap-10">
             <div className="flex flex-col items-center justify-center">
-              <div className="text-4xl lg:text-5xl font-bold text-white mb-2 tracking-tight">5+</div>
-              <div className="text-sm lg:text-base text-neutral-400 uppercase tracking-wide font-medium">Années d'expérience</div>
+              <div className="text-3xl lg:text-4xl font-bold text-white mb-1.5 tracking-tight">5+</div>
+              <div className="text-xs lg:text-sm text-neutral-400 uppercase tracking-wide font-medium">Années d'expérience</div>
             </div>
             <div className="flex flex-col items-center justify-center">
-              <div className="text-4xl lg:text-5xl font-bold text-blue-400 mb-2 tracking-tight">100%</div>
-              <div className="text-sm lg:text-base text-neutral-400 uppercase tracking-wide font-medium">Autodidacte</div>
+              <div className="text-3xl lg:text-4xl font-bold text-blue-400 mb-1.5 tracking-tight">100%</div>
+              <div className="text-xs lg:text-sm text-neutral-400 uppercase tracking-wide font-medium">Autodidacte</div>
             </div>
             <div className="flex flex-col items-center justify-center">
-              <div className="text-4xl lg:text-5xl font-bold text-white mb-2 tracking-tight">2,500+</div>
-              <div className="text-sm lg:text-base text-neutral-400 uppercase tracking-wide font-medium">Étudiants formés</div>
+              <div className="text-3xl lg:text-4xl font-bold text-white mb-1.5 tracking-tight">2,500+</div>
+              <div className="text-xs lg:text-sm text-neutral-400 uppercase tracking-wide font-medium">Étudiants formés</div>
             </div>
             <div className="flex flex-col items-center justify-center">
-              <div className="text-4xl lg:text-5xl font-bold text-blue-400 mb-2 tracking-tight">100%</div>
-              <div className="text-sm lg:text-base text-neutral-400 uppercase tracking-wide font-medium">Gratuit</div>
+              <div className="text-3xl lg:text-4xl font-bold text-blue-400 mb-1.5 tracking-tight">100%</div>
+              <div className="text-xs lg:text-sm text-neutral-400 uppercase tracking-wide font-medium">Gratuit</div>
             </div>
           </div>
         </div>
