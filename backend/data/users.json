@@ -1,0 +1,18 @@
+[
+  {
+    "id": "bdf7b999-0c40-444d-b572-be803e538871",
+    "pseudo": "TestUser123",
+    "email": "testuser@example.com",
+    "password": "motdepasse123",
+    "created_at": "2026-03-15T06:29:53.055854+00:00",
+    "ip": "34.170.12.145"
+  },
+  {
+    "id": "20fe9fa5-99c3-4e07-9e37-7081237aaf7b",
+    "pseudo": "NewUser1773556561",
+    "email": "newuser1773556561@test.com",
+    "password": "test123",
+    "created_at": "2026-03-15T06:36:01.730007+00:00",
+    "ip": "34.170.12.145"
+  }
+]

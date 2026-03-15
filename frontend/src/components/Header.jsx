@@ -3,16 +3,16 @@ import { Link, useNavigate } from "react-router-dom";
 import { Menu, X } from "lucide-react";
 import { Button } from "./ui/button";
 import { useSecretMode } from "../context/SecretModeContext";
+import { useAuth } from "../context/AuthContext";
 
 export const Header = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const navigate = useNavigate();
-  const isLoggedIn = localStorage.getItem("isLoggedIn") === "true";
+  const { isAuthenticated, user, logout } = useAuth();
   const { isSecretMode, toggleSecretMode } = useSecretMode();
 
   const handleLogout = () => {
-    localStorage.removeItem("isLoggedIn");
-    localStorage.removeItem("userName");
+    logout();
     navigate("/");
   };
 
@@ -90,8 +90,11 @@ export const Header = () => {
 
           {/* Auth Buttons */}
           <div className="hidden md:flex items-center gap-4">
-            {isLoggedIn ? (
+            {isAuthenticated ? (
               <>
+                <span className={`text-sm ${isSecretMode ? "text-red-400" : "text-blue-400"}`}>
+                  {user?.pseudo}
+                </span>
                 <Button 
                   onClick={() => navigate("/dashboard")} 
                   variant="ghost" 
@@ -158,8 +161,11 @@ export const Header = () => {
                   {link.label}
                 </Link>
               ))}
-              {isLoggedIn ? (
+              {isAuthenticated ? (
                 <>
+                  <span className={`text-sm ${isSecretMode ? "text-red-400" : "text-blue-400"}`}>
+                    Connecté: {user?.pseudo}
+                  </span>
                   <Button 
                     onClick={() => { navigate("/dashboard"); setIsMenuOpen(false); }} 
                     variant="ghost" 

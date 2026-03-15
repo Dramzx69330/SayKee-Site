@@ -1065,20 +1065,41 @@ const NormalDashboard = ({ userName }) => {
 export const DashboardPage = () => {
   const navigate = useNavigate();
   const { isSecretMode } = useSecretMode();
-  const [userName, setUserName] = useState("");
+  
+  // Try to import useAuth, fallback to localStorage if not available
+  let user = null;
+  let isAuthenticated = false;
+  let loading = false;
+  
+  try {
+    const authContext = require("../context/AuthContext");
+    const auth = authContext.useAuth();
+    user = auth.user;
+    isAuthenticated = auth.isAuthenticated;
+    loading = auth.loading;
+  } catch (e) {
+    // Fallback to localStorage
+    isAuthenticated = localStorage.getItem("token") !== null;
+    user = { pseudo: localStorage.getItem("userName") || "Champion" };
+  }
 
   useEffect(() => {
-    const isLoggedIn = localStorage.getItem("isLoggedIn");
-    if (!isLoggedIn) {
+    if (!loading && !isAuthenticated) {
       navigate("/login");
-      return;
     }
+  }, [loading, isAuthenticated, navigate]);
 
-    const name = localStorage.getItem("userName") || "Champion";
-    setUserName(name);
-  }, [navigate]);
+  if (loading) {
+    return (
+      <div className="min-h-screen pt-20 bg-black flex items-center justify-center">
+        <div className="text-white text-xl">Chargement...</div>
+      </div>
+    );
+  }
 
-  if (!userName) return null;
+  if (!isAuthenticated || !user) return null;
+
+  const userName = user.pseudo || "Champion";
 
   return isSecretMode ? (
     <SecretDashboard userName={userName} />

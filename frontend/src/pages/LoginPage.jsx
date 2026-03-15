@@ -6,41 +6,65 @@ import { Input } from "../components/ui/input";
 import { Label } from "../components/ui/label";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "../components/ui/tabs";
 import { toast } from "sonner";
+import { useAuth } from "../context/AuthContext";
 
 export const LoginPage = () => {
   const navigate = useNavigate();
+  const { login, register } = useAuth();
+  const [isLoading, setIsLoading] = useState(false);
   const [loginData, setLoginData] = useState({ email: "", password: "" });
   const [registerData, setRegisterData] = useState({
-    name: "",
+    pseudo: "",
     email: "",
     password: "",
     confirmPassword: ""
   });
 
-  const handleLogin = (e) => {
+  const handleLogin = async (e) => {
     e.preventDefault();
-    // Mock login
-    if (loginData.email && loginData.password) {
-      localStorage.setItem("isLoggedIn", "true");
-      localStorage.setItem("userName", loginData.email.split("@")[0]);
+    setIsLoading(true);
+    
+    const result = await login(loginData.email, loginData.password);
+    
+    if (result.success) {
       toast.success("Connexion réussie ! Bienvenue sur SayKee.");
       navigate("/dashboard");
+    } else {
+      toast.error(result.message);
     }
+    
+    setIsLoading(false);
   };
 
-  const handleRegister = (e) => {
+  const handleRegister = async (e) => {
     e.preventDefault();
-    // Mock registration
+    
     if (registerData.password !== registerData.confirmPassword) {
       toast.error("Les mots de passe ne correspondent pas.");
       return;
     }
-    if (registerData.name && registerData.email && registerData.password) {
-      localStorage.setItem("isLoggedIn", "true");
-      localStorage.setItem("userName", registerData.name);
+    
+    if (registerData.password.length < 4) {
+      toast.error("Le mot de passe doit contenir au moins 4 caractères.");
+      return;
+    }
+    
+    setIsLoading(true);
+    
+    const result = await register(
+      registerData.pseudo,
+      registerData.email,
+      registerData.password
+    );
+    
+    if (result.success) {
       toast.success("Compte créé avec succès ! Bienvenue sur SayKee.");
       navigate("/dashboard");
+    } else {
+      toast.error(result.message);
     }
+    
+    setIsLoading(false);
   };
 
   return (
@@ -77,6 +101,7 @@ export const LoginPage = () => {
                       onChange={(e) => setLoginData({ ...loginData, email: e.target.value })}
                       placeholder="votre.email@exemple.com"
                       required
+                      disabled={isLoading}
                       className="bg-black/50 border-white/20 text-white mt-2"
                     />
                   </div>
@@ -90,12 +115,18 @@ export const LoginPage = () => {
                       onChange={(e) => setLoginData({ ...loginData, password: e.target.value })}
                       placeholder="••••••••"
                       required
+                      disabled={isLoading}
                       className="bg-black/50 border-white/20 text-white mt-2"
                     />
                   </div>
 
-                  <Button type="submit" className="w-full bg-blue-900 hover:bg-blue-800" size="lg">
-                    Se connecter
+                  <Button 
+                    type="submit" 
+                    className="w-full bg-blue-900 hover:bg-blue-800" 
+                    size="lg"
+                    disabled={isLoading}
+                  >
+                    {isLoading ? "Connexion..." : "Se connecter"}
                   </Button>
 
                   <p className="text-center text-sm text-gray-400">
@@ -111,14 +142,15 @@ export const LoginPage = () => {
               <TabsContent value="register">
                 <form onSubmit={handleRegister} className="space-y-4">
                   <div>
-                    <Label htmlFor="register-name" className="text-gray-300">Nom complet</Label>
+                    <Label htmlFor="register-pseudo" className="text-gray-300">Pseudo</Label>
                     <Input
-                      id="register-name"
+                      id="register-pseudo"
                       type="text"
-                      value={registerData.name}
-                      onChange={(e) => setRegisterData({ ...registerData, name: e.target.value })}
-                      placeholder="Votre nom"
+                      value={registerData.pseudo}
+                      onChange={(e) => setRegisterData({ ...registerData, pseudo: e.target.value })}
+                      placeholder="Votre pseudo"
                       required
+                      disabled={isLoading}
                       className="bg-black/50 border-white/20 text-white mt-2"
                     />
                   </div>
@@ -132,6 +164,7 @@ export const LoginPage = () => {
                       onChange={(e) => setRegisterData({ ...registerData, email: e.target.value })}
                       placeholder="votre.email@exemple.com"
                       required
+                      disabled={isLoading}
                       className="bg-black/50 border-white/20 text-white mt-2"
                     />
                   </div>
@@ -145,6 +178,7 @@ export const LoginPage = () => {
                       onChange={(e) => setRegisterData({ ...registerData, password: e.target.value })}
                       placeholder="••••••••"
                       required
+                      disabled={isLoading}
                       className="bg-black/50 border-white/20 text-white mt-2"
                     />
                   </div>
@@ -158,12 +192,18 @@ export const LoginPage = () => {
                       onChange={(e) => setRegisterData({ ...registerData, confirmPassword: e.target.value })}
                       placeholder="••••••••"
                       required
+                      disabled={isLoading}
                       className="bg-black/50 border-white/20 text-white mt-2"
                     />
                   </div>
 
-                  <Button type="submit" className="w-full bg-blue-900 hover:bg-blue-800" size="lg">
-                    Créer mon compte
+                  <Button 
+                    type="submit" 
+                    className="w-full bg-blue-900 hover:bg-blue-800" 
+                    size="lg"
+                    disabled={isLoading}
+                  >
+                    {isLoading ? "Création..." : "Créer mon compte"}
                   </Button>
 
                   <p className="text-center text-sm text-gray-400">

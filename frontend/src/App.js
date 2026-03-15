@@ -26,6 +26,7 @@ import Header from "./components/Header";
 import Footer from "./components/Footer";
 import { Toaster } from "./components/ui/sonner";
 import { SecretModeProvider, useSecretMode } from "./context/SecretModeContext";
+import { AuthProvider } from "./context/AuthContext";
 
 const BACKEND_URL = process.env.REACT_APP_BACKEND_URL;
 const API = `${BACKEND_URL}/api`;
@@ -85,9 +86,11 @@ function AppContent() {
 
 function App() {
   return (
-    <SecretModeProvider>
-      <AppContent />
-    </SecretModeProvider>
+    <AuthProvider>
+      <SecretModeProvider>
+        <AppContent />
+      </SecretModeProvider>
+    </AuthProvider>
   );
 }
 

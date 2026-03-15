@@ -101,3 +101,135 @@
 #====================================================================================================
 # Testing Data - Main Agent and testing sub agent both should log testing data below this section
 #====================================================================================================
+
+user_problem_statement: "Système d'authentification basé sur fichiers JSON (sans MongoDB) - Création de compte et login avec stockage en fichiers users.json et account_created.json"
+
+backend:
+  - task: "API Register - Création de compte"
+    implemented: true
+    working: true
+    file: "backend/server.py"
+    stuck_count: 0
+    priority: "high"
+    needs_retesting: false
+    status_history:
+      - working: true
+        agent: "main"
+        comment: "POST /api/auth/register fonctionne - stocke email, pseudo, password (clair), date, IP dans users.json et logs dans account_created.json"
+      - working: true
+        agent: "testing"
+        comment: "VERIFIED: ✅ New user registration working perfectly ✅ Duplicate email validation (400 error) ✅ Duplicate pseudo validation (400 error) ✅ Data correctly stored in users.json and account_created.json with IP, timestamp, UUID"
+
+  - task: "API Login - Connexion utilisateur"
+    implemented: true
+    working: true
+    file: "backend/server.py"
+    stuck_count: 0
+    priority: "high"
+    needs_retesting: false
+    status_history:
+      - working: true
+        agent: "main"
+        comment: "POST /api/auth/login vérifie email+password dans users.json, retourne JWT token si OK, sinon erreur 401"
+      - working: true
+        agent: "testing"
+        comment: "VERIFIED: ✅ Valid credentials login working (returns JWT token) ✅ Wrong password correctly rejected (401 'Identifiants incorrects') ✅ Non-existent email correctly rejected (401 'Identifiants incorrects') ✅ JWT token generation working properly"
+
+  - task: "API Me - Récupération utilisateur connecté"
+    implemented: true
+    working: true
+    file: "backend/server.py"
+    stuck_count: 0
+    priority: "high"
+    needs_retesting: false
+    status_history:
+      - working: true
+        agent: "main"
+        comment: "GET /api/auth/me avec Bearer token retourne les infos user"
+      - working: true
+        agent: "testing"
+        comment: "VERIFIED: ✅ GET /api/auth/me with valid Bearer token returns complete user info (id, pseudo, email, created_at) ✅ Invalid token correctly rejected (401 'Token invalide') ✅ Missing token correctly rejected (403 Forbidden) ✅ JWT verification working properly"
+
+  - task: "Vérification email/pseudo existant"
+    implemented: true
+    working: true
+    file: "backend/server.py"
+    stuck_count: 0
+    priority: "medium"
+    needs_retesting: false
+    status_history:
+      - working: true
+        agent: "main"
+        comment: "Retourne erreur si email ou pseudo déjà utilisé"
+      - working: true
+        agent: "testing"
+        comment: "VERIFIED: ✅ Duplicate email validation working (400 'Cet email est déjà utilisé') ✅ Duplicate pseudo validation working (400 'Ce pseudo est déjà utilisé') ✅ Case-insensitive email checking implemented ✅ Case-insensitive pseudo checking implemented"
+
+frontend:
+  - task: "Page Login/Register"
+    implemented: true
+    working: true
+    file: "frontend/src/pages/LoginPage.jsx"
+    stuck_count: 0
+    priority: "high"
+    needs_retesting: false
+    status_history:
+      - working: true
+        agent: "main"
+        comment: "Formulaires connexion/inscription fonctionnels avec AuthContext"
+
+  - task: "AuthContext - Gestion état authentification"
+    implemented: true
+    working: true
+    file: "frontend/src/context/AuthContext.jsx"
+    stuck_count: 0
+    priority: "high"
+    needs_retesting: false
+    status_history:
+      - working: true
+        agent: "main"
+        comment: "Context React pour login/register/logout avec stockage token localStorage"
+
+  - task: "Header - Affichage état connexion"
+    implemented: true
+    working: true
+    file: "frontend/src/components/Header.jsx"
+    stuck_count: 0
+    priority: "medium"
+    needs_retesting: false
+    status_history:
+      - working: true
+        agent: "main"
+        comment: "Affiche pseudo utilisateur et bouton déconnexion quand connecté"
+
+  - task: "Dashboard - Protection route"
+    implemented: true
+    working: true
+    file: "frontend/src/pages/DashboardPage.jsx"
+    stuck_count: 0
+    priority: "medium"
+    needs_retesting: false
+    status_history:
+      - working: true
+        agent: "main"
+        comment: "Redirige vers /login si non authentifié"
+
+metadata:
+  created_by: "main_agent"
+  version: "1.0"
+  test_sequence: 2
+  run_ui: false
+
+test_plan:
+  current_focus:
+    - "API Register"
+    - "API Login"
+  stuck_tasks: []
+  test_all: false
+  test_priority: "high_first"
+
+agent_communication:
+  - agent: "main"
+    message: "Système d'auth par fichiers JSON implémenté. Backend teste OK via curl. Frontend testé via Playwright - login fonctionne avec touche Enter."
+  - agent: "testing"
+    message: "COMPREHENSIVE BACKEND AUTH TESTING COMPLETE - All 9 tests passed: ✅ POST /api/auth/register (new user, duplicate email/pseudo validation) ✅ POST /api/auth/login (valid credentials, wrong password, non-existent email) ✅ GET /api/auth/me (valid token, invalid token, no token). File storage verified - users.json and account_created.json correctly updated. Backend service running properly."
