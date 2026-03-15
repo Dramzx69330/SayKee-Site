@@ -1,4 +1,4 @@
-import { Skull, Shield, TrendingUp, Users, MessageCircle, Zap, Award } from "lucide-react";
+import { Skull, TrendingUp, Users, MessageCircle, Zap, DollarSign, Target } from "lucide-react";
 import { Button } from "../../components/ui/button";
 import { useNavigate } from "react-router-dom";
 
@@ -25,8 +25,8 @@ export const SecretAboutPage = () => {
           </h1>
           
           <p className="text-xl text-neutral-400 max-w-2xl">
-            J'ai fais +200 000€ en 1 an. Pas en vendant des formations à 2000€, pas en arnaquant des gens. 
-            En comprenant le game et en appliquant les bonnes méthodes.
+            +200 000€ en 1 an. J'ai fais ca pendant un moment dans ma vie. 
+            Aujourd'hui je partage ce que je sais.
           </p>
         </div>
       </section>
@@ -44,8 +44,8 @@ export const SecretAboutPage = () => {
               <div className="text-sm text-neutral-400">Autodidacte</div>
             </div>
             <div className="text-center">
-              <div className="text-4xl md:text-5xl font-black text-white mb-2">0€</div>
-              <div className="text-sm text-neutral-400">Formation payante</div>
+              <div className="text-4xl md:text-5xl font-black text-white mb-2">0</div>
+              <div className="text-sm text-neutral-400">Formation suivie</div>
             </div>
             <div className="text-center">
               <div className="text-4xl md:text-5xl font-black text-red-500 mb-2">24/7</div>
@@ -64,97 +64,148 @@ export const SecretAboutPage = () => {
           
           <div className="space-y-8 text-lg text-neutral-300 leading-relaxed">
             <p>
-              <span className="text-white font-bold">J'ai commencé de zéro.</span> Pas de famille riche, 
-              pas de contacts, pas de réseau. Juste un PC et la volonté de comprendre comment ca marche.
+              <span className="text-white font-bold">J'ai commencé de zéro.</span> Pas de thunes, 
+              pas de réseau, rien. Juste un PC et l'envie de m'en sortir. J'ai découvert ce monde 
+              par hasard et j'ai compris que y'avait moyen de faire de l'argent.
             </p>
             
             <p>
-              J'ai testé plein de trucs. Le trading, le e-commerce, et ouais... j'ai aussi exploré 
-              le côté sombre. <span className="text-red-500 font-bold">Je connais les deux mondes.</span> 
-              C'est pour ca que je peux t'en parler.
+              J'ai tout appris par moi-même. Le spam, le carding, les allos, les spoof... 
+              <span className="text-red-500 font-bold"> J'ai tout testé.</span> J'ai fait des erreurs, 
+              j'ai perdu de l'argent, mais j'ai appris.
             </p>
             
             <div className="bg-gradient-to-r from-red-950/50 to-red-900/30 border border-red-900/50 p-8 my-10">
               <div className="text-4xl font-black text-white mb-4">+200 000€ en 1 an</div>
               <p className="text-neutral-300">
-                C'est pas de la chance. C'est des heures à apprendre, tester, échouer, recommencer. 
-                J'ai compris comment le système marche et j'ai joué avec les règles.
+                C'est ce que j'ai généré à mon pic. Pas en vendant des formations bidons, 
+                pas en arnaquant des débutants. En appliquant ce que je savais.
               </p>
             </div>
             
             <p>
-              <span className="text-white font-bold">Pourquoi je partage tout ca ?</span> 
-              Parce que j'aurais kiffé avoir quelqu'un qui m'explique tout ca quand j'ai commencé. 
-              Au lieu de ca j'ai du tout apprendre par moi-même, en faisant des erreurs.
+              <span className="text-white font-bold">Pourquoi je partage tout ca maintenant ?</span> 
+              Parce que j'ai décidé de passer à autre chose. Mais tout ce que j'ai appris, 
+              ca serait con de le garder pour moi.
             </p>
             
             <p>
-              Cette section c'est pour ceux qui veulent comprendre le game. Pas pour les juger, 
-              pas pour les encourager à faire des conneries. Juste pour <span className="text-red-500 font-bold">montrer comment ca marche</span>.
+              Ici je vous montre comment ca marche. <span className="text-red-500 font-bold">Pas de bullshit, 
+              pas de morale.</span> Juste les techniques, le matos, et comment faire.
             </p>
             
             <p>
-              Si t'es la pour apprendre et évoluer, t'es au bon endroit. Si t'es la pour critiquer, 
-              la porte est la 👉🚪
+              Ce que vous en faites après, c'est votre problème. Moi je suis la pour partager, 
+              pas pour vous tenir la main.
             </p>
           </div>
         </div>
       </section>
 
-      {/* What I do */}
+      {/* What I did */}
       <section className="py-20 px-6 bg-neutral-900/30">
         <div className="max-w-7xl mx-auto">
           <h2 className="text-4xl font-black text-white mb-12 text-center">
-            Ce que je <span className="text-red-500">propose</span>
+            Ce que j'ai <span className="text-red-500">fait</span>
           </h2>
           
           <div className="grid md:grid-cols-3 gap-8">
             <div className="bg-neutral-900 border border-neutral-800 p-8">
               <div className="w-12 h-12 bg-red-600 flex items-center justify-center mb-6">
+                <DollarSign size={24} className="text-white" />
+              </div>
+              <h3 className="text-xl font-bold text-white mb-3">Spam & Phishing</h3>
+              <p className="text-neutral-400">
+                Des campagnes de spam, des scamas, de la récup de logs. 
+                J'ai monté des opérations qui ont généré des dizaines de milliers d'euros.
+              </p>
+            </div>
+            
+            <div className="bg-neutral-900 border border-neutral-800 p-8">
+              <div className="w-12 h-12 bg-red-600 flex items-center justify-center mb-6">
+                <Target size={24} className="text-white" />
+              </div>
+              <h3 className="text-xl font-bold text-white mb-3">Allos & Spoof</h3>
+              <p className="text-neutral-400">
+                Des allos bancaires, du spoof call, de la récup de codes. 
+                J'ai perfectionné les techniques jusqu'à avoir un taux de conversion de ouf.
+              </p>
+            </div>
+            
+            <div className="bg-neutral-900 border border-neutral-800 p-8">
+              <div className="w-12 h-12 bg-red-600 flex items-center justify-center mb-6">
                 <TrendingUp size={24} className="text-white" />
               </div>
-              <h3 className="text-xl font-bold text-white mb-3">Formations Gratuites</h3>
+              <h3 className="text-xl font-bold text-white mb-3">Carding & Décaisse</h3>
               <p className="text-neutral-400">
-                Tout ce que je partage ici est gratuit. Pas de formation à 997€, pas de upsell, 
-                pas de bullshit. Juste du contenu brut.
+                De l'achat avec des CC, du décaisse, des drops. 
+                J'ai compris comment le système marche et comment l'exploiter.
               </p>
             </div>
-            
-            <div className="bg-neutral-900 border border-neutral-800 p-8">
-              <div className="w-12 h-12 bg-red-600 flex items-center justify-center mb-6">
-                <Users size={24} className="text-white" />
+          </div>
+        </div>
+      </section>
+
+      {/* What I offer now */}
+      <section className="py-20 px-6">
+        <div className="max-w-4xl mx-auto">
+          <h2 className="text-4xl font-black text-white mb-10">
+            Ce que je <span className="text-red-500">propose</span> maintenant
+          </h2>
+          
+          <div className="space-y-6">
+            <div className="bg-neutral-900 border border-neutral-800 p-6 flex items-start gap-4">
+              <div className="w-10 h-10 bg-red-600 flex items-center justify-center flex-shrink-0">
+                <Zap size={20} className="text-white" />
               </div>
-              <h3 className="text-xl font-bold text-white mb-3">Accompagnement</h3>
-              <p className="text-neutral-400">
-                Si t'as des questions ou tu veux aller plus loin, tu peux me contacter directement. 
-                Je réponds à tout le monde.
-              </p>
+              <div>
+                <h3 className="text-lg font-bold text-white mb-2">Formations Gratuites</h3>
+                <p className="text-neutral-400">
+                  Tout ce que tu vois ici c'est gratuit. Je vends pas de formation à 500€. 
+                  Je partage ce que je sais, point.
+                </p>
+              </div>
             </div>
             
-            <div className="bg-neutral-900 border border-neutral-800 p-8">
-              <div className="w-12 h-12 bg-red-600 flex items-center justify-center mb-6">
-                <Zap size={24} className="text-white" />
+            <div className="bg-neutral-900 border border-neutral-800 p-6 flex items-start gap-4">
+              <div className="w-10 h-10 bg-red-600 flex items-center justify-center flex-shrink-0">
+                <Users size={20} className="text-white" />
               </div>
-              <h3 className="text-xl font-bold text-white mb-3">Services</h3>
-              <p className="text-neutral-400">
-                Je propose aussi des services pour ceux qui veulent aller plus vite. 
-                Tout est dans les formations.
-              </p>
+              <div>
+                <h3 className="text-lg font-bold text-white mb-2">Vente de Matos</h3>
+                <p className="text-neutral-400">
+                  Si t'as besoin de matos (scama, sender, NL, etc.) je peux te fournir. 
+                  Les prix sont dans les formations.
+                </p>
+              </div>
+            </div>
+            
+            <div className="bg-neutral-900 border border-neutral-800 p-6 flex items-start gap-4">
+              <div className="w-10 h-10 bg-red-600 flex items-center justify-center flex-shrink-0">
+                <MessageCircle size={20} className="text-white" />
+              </div>
+              <div>
+                <h3 className="text-lg font-bold text-white mb-2">Accompagnement</h3>
+                <p className="text-neutral-400">
+                  Si t'as des questions ou tu veux que je t'aide sur un truc précis, 
+                  tu me contact sur Telegram.
+                </p>
+              </div>
             </div>
           </div>
         </div>
       </section>
 
       {/* Contact */}
-      <section className="py-20 px-6">
+      <section className="py-20 px-6 bg-neutral-900/30">
         <div className="max-w-4xl mx-auto">
           <div className="bg-gradient-to-r from-red-950/50 to-red-900/30 border border-red-900/50 p-10 text-center">
             <MessageCircle className="text-red-500 mx-auto mb-6" size={48} />
             <h2 className="text-3xl font-black text-white mb-4">
-              Une question ? Un projet ?
+              Tu veux me parler ?
             </h2>
             <p className="text-neutral-300 mb-8 text-lg">
-              Contacte moi directement sur Telegram, je réponds vite.
+              Telegram c'est le plus simple. Je réponds à tout le monde.
             </p>
             <a 
               href="https://t.me/Loukra" 
@@ -170,13 +221,13 @@ export const SecretAboutPage = () => {
       </section>
 
       {/* CTA */}
-      <section className="py-24 px-6 bg-neutral-900/30">
+      <section className="py-24 px-6">
         <div className="max-w-4xl mx-auto text-center">
           <h2 className="text-5xl font-black text-white mb-8 tracking-tight">
-            Ready to <span className="text-red-500">learn</span> ?
+            Prêt à <span className="text-red-500">apprendre</span> ?
           </h2>
           <p className="text-xl text-neutral-400 mb-10">
-            Choisis ta formation et commence maintenant. C'est gratuit.
+            Choisis ta formation et commence. C'est gratuit.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <Button
