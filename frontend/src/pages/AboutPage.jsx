@@ -33,20 +33,20 @@ export const AboutPage = () => {
         <div className="max-w-6xl mx-auto">
           <div className="grid grid-cols-2 lg:grid-cols-4 gap-12 lg:gap-16">
             <div className="flex flex-col items-center justify-center">
-              <div className="text-5xl lg:text-6xl font-extrabold text-white mb-3 tracking-tight">5+</div>
-              <div className="text-sm lg:text-base text-neutral-400 uppercase tracking-wider font-medium">Années d'expérience</div>
+              <div className="text-4xl lg:text-5xl font-bold text-white mb-2 tracking-tight">5+</div>
+              <div className="text-sm lg:text-base text-neutral-400 uppercase tracking-wide font-medium">Années d'expérience</div>
             </div>
             <div className="flex flex-col items-center justify-center">
-              <div className="text-5xl lg:text-6xl font-extrabold text-blue-400 mb-3 tracking-tight">100%</div>
-              <div className="text-sm lg:text-base text-neutral-400 uppercase tracking-wider font-medium">Autodidacte</div>
+              <div className="text-4xl lg:text-5xl font-bold text-blue-400 mb-2 tracking-tight">100%</div>
+              <div className="text-sm lg:text-base text-neutral-400 uppercase tracking-wide font-medium">Autodidacte</div>
             </div>
             <div className="flex flex-col items-center justify-center">
-              <div className="text-5xl lg:text-6xl font-extrabold text-white mb-3 tracking-tight">2,500+</div>
-              <div className="text-sm lg:text-base text-neutral-400 uppercase tracking-wider font-medium">Étudiants formés</div>
+              <div className="text-4xl lg:text-5xl font-bold text-white mb-2 tracking-tight">2,500+</div>
+              <div className="text-sm lg:text-base text-neutral-400 uppercase tracking-wide font-medium">Étudiants formés</div>
             </div>
             <div className="flex flex-col items-center justify-center">
-              <div className="text-5xl lg:text-6xl font-extrabold text-blue-400 mb-3 tracking-tight">100%</div>
-              <div className="text-sm lg:text-base text-neutral-400 uppercase tracking-wider font-medium">Gratuit</div>
+              <div className="text-4xl lg:text-5xl font-bold text-blue-400 mb-2 tracking-tight">100%</div>
+              <div className="text-sm lg:text-base text-neutral-400 uppercase tracking-wide font-medium">Gratuit</div>
             </div>
           </div>
         </div>
