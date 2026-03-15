@@ -1,6 +1,6 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { useParams, useNavigate } from "react-router-dom";
-import { ArrowLeft, ChevronLeft, ChevronRight, BookOpen, Download } from "lucide-react";
+import { ArrowLeft, ChevronLeft, ChevronRight, BookOpen, Download, CheckCircle2 } from "lucide-react";
 import { Button } from "../components/ui/button";
 
 // Ebook content data
@@ -1756,8 +1756,46 @@ export const EbookReaderPage = () => {
   const { category, ebookId } = useParams();
   const navigate = useNavigate();
   const [currentChapter, setCurrentChapter] = useState(0);
+  const [readChapters, setReadChapters] = useState({});
 
   const ebook = ebooksContent[category]?.[ebookId];
+
+  // Load progress from localStorage on mount
+  useEffect(() => {
+    const savedProgress = localStorage.getItem("saykee-ebook-progress");
+    if (savedProgress) {
+      const progress = JSON.parse(savedProgress);
+      const ebookKey = `${category}-${ebookId}`;
+      if (progress[ebookKey]) {
+        setReadChapters(progress[ebookKey]);
+      }
+    }
+  }, [category, ebookId]);
+
+  // Save progress to localStorage
+  const saveProgress = (chapterIndex) => {
+    const savedProgress = localStorage.getItem("saykee-ebook-progress");
+    const progress = savedProgress ? JSON.parse(savedProgress) : {};
+    const ebookKey = `${category}-${ebookId}`;
+    
+    if (!progress[ebookKey]) {
+      progress[ebookKey] = {};
+    }
+    progress[ebookKey][chapterIndex] = true;
+    
+    localStorage.setItem("saykee-ebook-progress", JSON.stringify(progress));
+    setReadChapters(prev => ({ ...prev, [chapterIndex]: true }));
+  };
+
+  // Mark current chapter as read after viewing
+  useEffect(() => {
+    if (ebook) {
+      const timer = setTimeout(() => {
+        saveProgress(currentChapter);
+      }, 3000);
+      return () => clearTimeout(timer);
+    }
+  }, [currentChapter, ebook]);
 
   if (!ebook) {
     return (
@@ -1827,19 +1865,31 @@ export const EbookReaderPage = () => {
 
           {/* Chapter navigation */}
           <div className="mb-8 p-4 bg-neutral-900 border border-neutral-800">
-            <p className="text-sm text-neutral-400 mb-3">Chapitres</p>
+            <div className="flex items-center justify-between mb-3">
+              <p className="text-sm text-neutral-400">Chapitres</p>
+              <p className="text-xs text-neutral-500">
+                {Object.keys(readChapters).length}/{ebook.chapters.length} lus
+              </p>
+            </div>
             <div className="flex flex-wrap gap-2">
               {ebook.chapters.map((ch, index) => (
                 <button
                   key={index}
                   onClick={() => setCurrentChapter(index)}
-                  className={`px-3 py-2 text-xs sm:text-sm transition-colors ${
+                  className={`px-3 py-2 text-xs sm:text-sm transition-colors flex items-center gap-1 ${
                     currentChapter === index
                       ? accentColor === "blue" ? "bg-blue-600 text-white" : "bg-emerald-600 text-white"
-                      : "bg-neutral-800 text-neutral-300 hover:bg-neutral-700"
+                      : readChapters[index]
+                        ? accentColor === "blue" ? "bg-blue-950 text-blue-400 border border-blue-800" : "bg-emerald-950 text-emerald-400 border border-emerald-800"
+                        : "bg-neutral-800 text-neutral-300 hover:bg-neutral-700"
                   }`}
                 >
-                  {index + 1}. {ch.title.length > 20 ? ch.title.substring(0, 20) + "..." : ch.title}
+                  {readChapters[index] && currentChapter !== index && (
+                    <CheckCircle2 size={12} className="flex-shrink-0" />
+                  )}
+                  <span className="truncate max-w-[100px] sm:max-w-[150px]">
+                    {index + 1}. {ch.title.length > 15 ? ch.title.substring(0, 15) + "..." : ch.title}
+                  </span>
                 </button>
               ))}
             </div>
@@ -1895,6 +1945,7 @@ export const EbookReaderPage = () => {
             
             <Button
               onClick={() => {
+                saveProgress(currentChapter); // Mark current as read
                 if (currentChapter < ebook.chapters.length - 1) {
                   setCurrentChapter(currentChapter + 1);
                   window.scrollTo(0, 0);
@@ -1910,7 +1961,10 @@ export const EbookReaderPage = () => {
                   <ChevronRight size={20} className="ml-1 sm:ml-2" />
                 </>
               ) : (
-                "Terminer"
+                <>
+                  <CheckCircle2 size={18} className="mr-1 sm:mr-2" />
+                  <span>Terminer</span>
+                </>
               )}
             </Button>
           </div>
