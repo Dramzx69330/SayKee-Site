@@ -41,8 +41,8 @@ export const AboutPage = () => {
               <div className="text-xs lg:text-sm text-neutral-400 uppercase tracking-wide font-medium">Autodidacte</div>
             </div>
             <div className="flex flex-col items-center justify-center">
-              <div className="text-3xl lg:text-4xl font-bold text-white mb-1.5 tracking-tight">2,500+</div>
-              <div className="text-xs lg:text-sm text-neutral-400 uppercase tracking-wide font-medium">Étudiants formés</div>
+              <div className="text-3xl lg:text-4xl font-bold text-white mb-1.5 tracking-tight">24/7</div>
+              <div className="text-xs lg:text-sm text-neutral-400 uppercase tracking-wide font-medium">Support actif</div>
             </div>
             <div className="flex flex-col items-center justify-center">
               <div className="text-3xl lg:text-4xl font-bold text-blue-400 mb-1.5 tracking-tight">100%</div>
