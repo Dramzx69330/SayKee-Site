@@ -12,17 +12,6 @@ export const useAuth = () => {
   return context;
 };
 
-// Helper function to safely parse JSON response
-const safeJsonParse = async (response) => {
-  try {
-    const text = await response.text();
-    return JSON.parse(text);
-  } catch (error) {
-    console.error('JSON parse error:', error);
-    throw new Error('Erreur de parsing de la réponse');
-  }
-};
-
 export const AuthProvider = ({ children }) => {
   const [user, setUser] = useState(null);
   const [token, setToken] = useState(localStorage.getItem('token'));
@@ -40,11 +29,11 @@ export const AuthProvider = ({ children }) => {
             }
           });
           if (response.ok) {
-            const userData = await safeJsonParse(response);
+            const text = await response.text();
+            const userData = JSON.parse(text);
             setUser(userData);
             setToken(storedToken);
           } else {
-            // Token invalide, on le supprime
             localStorage.removeItem('token');
             setToken(null);
             setUser(null);
@@ -71,25 +60,36 @@ export const AuthProvider = ({ children }) => {
         body: JSON.stringify({ pseudo, email, password })
       });
       
-      const data = await safeJsonParse(response);
+      const text = await response.text();
+      console.log('Register response text:', text);
+      
+      let data;
+      try {
+        data = JSON.parse(text);
+      } catch (parseError) {
+        console.error('Parse error:', parseError, 'Text was:', text);
+        throw new Error('Réponse invalide du serveur');
+      }
       
       if (!response.ok) {
         throw new Error(data.detail || 'Erreur lors de l\'inscription');
       }
       
-      // Stocker le token et l'utilisateur
       localStorage.setItem('token', data.token);
       setToken(data.token);
       setUser(data.user);
       
       return { success: true, message: data.message };
     } catch (error) {
+      console.error('Register error:', error);
       return { success: false, message: error.message };
     }
   };
 
   const login = async (email, password) => {
     try {
+      console.log('Login starting...', { email, url: `${BACKEND_URL}/api/auth/login` });
+      
       const response = await fetch(`${BACKEND_URL}/api/auth/login`, {
         method: 'POST',
         headers: {
@@ -98,19 +98,33 @@ export const AuthProvider = ({ children }) => {
         body: JSON.stringify({ email, password })
       });
       
-      const data = await safeJsonParse(response);
+      console.log('Response received, status:', response.status);
+      
+      const text = await response.text();
+      console.log('Response text:', text.substring(0, 200));
+      
+      let data;
+      try {
+        data = JSON.parse(text);
+      } catch (parseError) {
+        console.error('JSON Parse error:', parseError);
+        console.error('Raw text was:', text);
+        throw new Error('Réponse invalide du serveur');
+      }
+      
+      console.log('Parsed data:', data);
       
       if (!response.ok) {
         throw new Error(data.detail || 'Identifiants incorrects');
       }
       
-      // Stocker le token et l'utilisateur
       localStorage.setItem('token', data.token);
       setToken(data.token);
       setUser(data.user);
       
       return { success: true, message: data.message };
     } catch (error) {
+      console.error('Login error:', error);
       return { success: false, message: error.message };
     }
   };
