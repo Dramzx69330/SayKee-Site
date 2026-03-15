@@ -60,7 +60,16 @@ export const AuthProvider = ({ children }) => {
         body: JSON.stringify({ pseudo, email, password })
       });
       
-      const data = await response.json();
+      // Clone response to avoid "body stream already read" error
+      const responseClone = response.clone();
+      
+      let data;
+      try {
+        data = await response.json();
+      } catch (e) {
+        // If first attempt fails, try with clone
+        data = await responseClone.json();
+      }
       
       if (!response.ok) {
         throw new Error(data.detail || 'Erreur lors de l\'inscription');
@@ -87,7 +96,16 @@ export const AuthProvider = ({ children }) => {
         body: JSON.stringify({ email, password })
       });
       
-      const data = await response.json();
+      // Clone response to avoid "body stream already read" error
+      const responseClone = response.clone();
+      
+      let data;
+      try {
+        data = await response.json();
+      } catch (e) {
+        // If first attempt fails, try with clone
+        data = await responseClone.json();
+      }
       
       if (!response.ok) {
         throw new Error(data.detail || 'Identifiants incorrects');
