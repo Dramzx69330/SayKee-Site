@@ -22,8 +22,8 @@ export const AboutPage = () => {
           </h1>
           
           <p className="text-xl text-neutral-400 max-w-2xl">
-            J'ai fais +200 000€ en trading et e-commerce. Pas en vendant des formations bidons. 
-            En appliquant ce que je savais. Aujourd'hui je partage tout gratuitement.
+            Expert en trading et e-commerce. J'ai développé des stratégies qui fonctionnent vraiment. 
+            Aujourd'hui je partage tout ce que j'ai appris, gratuitement.
           </p>
         </div>
       </section>
@@ -33,8 +33,8 @@ export const AboutPage = () => {
         <div className="max-w-7xl mx-auto">
           <div className="grid grid-cols-2 md:grid-cols-4 gap-8">
             <div className="text-center">
-              <div className="text-4xl md:text-5xl font-black text-white mb-2">+200K€</div>
-              <div className="text-sm text-neutral-400">Générés</div>
+              <div className="text-4xl md:text-5xl font-black text-white mb-2">5+ ans</div>
+              <div className="text-sm text-neutral-400">Expérience</div>
             </div>
             <div className="text-center">
               <div className="text-4xl md:text-5xl font-black text-blue-500 mb-2">100%</div>
@@ -72,13 +72,11 @@ export const AboutPage = () => {
               mais j'ai appris.</span> Et à force de persévérer, j'ai trouvé ce qui marche vraiment.
             </p>
             
-            <div className="bg-gradient-to-r from-blue-950/50 to-blue-900/30 border border-blue-900/50 p-8 my-10">
-              <div className="text-4xl font-black text-white mb-4">+200 000€ générés</div>
-              <p className="text-neutral-300">
-                C'est ce que j'ai fais en trading et e-commerce. Pas en vendant des formations à 2000€, 
-                pas en arnaquant des débutants. En appliquant des stratégies qui fonctionnent vraiment.
-              </p>
-            </div>
+            <p>
+              Après plusieurs années, j'ai généré des revenus significatifs en trading et e-commerce. 
+              <span className="text-white font-bold">Pas en vendant des formations à 2000€, pas en arnaquant des débutants.</span> 
+              En appliquant des stratégies qui fonctionnent vraiment.
+            </p>
             
             <p>
               <span className="text-white font-bold">Pourquoi je partage tout ca gratuitement ?</span> 
