@@ -164,56 +164,57 @@ export const ChecklistPage = () => {
   return (
     <div className="min-h-screen pt-20 bg-black">
       {/* Hero */}
-      <section className="py-16 px-6">
+      <section className="py-10 sm:py-16 px-4 sm:px-6">
         <div className="max-w-4xl mx-auto">
-          <div className="flex items-center gap-3 mb-4">
-            <Sparkles className="text-yellow-500" size={24} />
-            <span className="text-sm uppercase tracking-wider text-yellow-500 font-bold">
+          <div className="flex items-center gap-2 sm:gap-3 mb-3 sm:mb-4">
+            <Sparkles className="text-yellow-500" size={20} />
+            <span className="text-xs sm:text-sm uppercase tracking-wider text-yellow-500 font-bold">
               Checklist Interactive
             </span>
           </div>
-          <h1 className="text-4xl md:text-5xl font-black text-white mb-4 tracking-tight">
+          <h1 className="text-3xl sm:text-4xl md:text-5xl font-black text-white mb-3 sm:mb-4 tracking-tight">
             Ta roadmap vers le <span className={activeTab === "trading" ? "text-blue-500" : "text-emerald-500"}>succès</span>
           </h1>
-          <p className="text-lg text-neutral-400 mb-8">
+          <p className="text-base sm:text-lg text-neutral-400 mb-6 sm:mb-8">
             Coche chaque étape au fur et à mesure. Ta progression est sauvegardée automatiquement.
           </p>
 
           {/* Tabs */}
-          <div className="flex gap-4 mb-8">
+          <div className="flex gap-2 sm:gap-4 mb-6 sm:mb-8">
             <button
               onClick={() => setActiveTab("ecommerce")}
-              className={`flex items-center gap-2 px-6 py-3 font-bold transition-all ${
+              className={`flex items-center gap-1 sm:gap-2 px-3 sm:px-6 py-2 sm:py-3 font-bold transition-all text-sm sm:text-base ${
                 activeTab === "ecommerce"
                   ? "bg-emerald-600 text-white"
                   : "bg-neutral-800 text-neutral-400 hover:bg-neutral-700"
               }`}
             >
-              <ShoppingCart size={20} />
-              E-commerce
+              <ShoppingCart size={18} className="sm:w-5 sm:h-5" />
+              <span className="hidden xs:inline">E-commerce</span>
+              <span className="xs:hidden">E-com</span>
             </button>
             <button
               onClick={() => setActiveTab("trading")}
-              className={`flex items-center gap-2 px-6 py-3 font-bold transition-all ${
+              className={`flex items-center gap-1 sm:gap-2 px-3 sm:px-6 py-2 sm:py-3 font-bold transition-all text-sm sm:text-base ${
                 activeTab === "trading"
                   ? "bg-blue-600 text-white"
                   : "bg-neutral-800 text-neutral-400 hover:bg-neutral-700"
               }`}
             >
-              <TrendingUp size={20} />
+              <TrendingUp size={18} className="sm:w-5 sm:h-5" />
               Trading
             </button>
           </div>
 
           {/* Progress bar */}
-          <div className="bg-neutral-900 border border-neutral-800 p-6 mb-8">
-            <div className="flex items-center justify-between mb-4">
-              <div className="flex items-center gap-3">
-                <IconComponent className={activeTab === "trading" ? "text-blue-500" : "text-emerald-500"} size={24} />
-                <span className="text-white font-bold text-lg">{currentData.title}</span>
+          <div className="bg-neutral-900 border border-neutral-800 p-4 sm:p-6 mb-6 sm:mb-8">
+            <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3 sm:gap-0 mb-4">
+              <div className="flex items-center gap-2 sm:gap-3">
+                <IconComponent className={activeTab === "trading" ? "text-blue-500" : "text-emerald-500"} size={20} />
+                <span className="text-white font-bold text-base sm:text-lg">{currentData.title}</span>
               </div>
-              <div className="flex items-center gap-4">
-                <span className="text-neutral-400">
+              <div className="flex items-center justify-between sm:justify-end gap-3 sm:gap-4">
+                <span className="text-neutral-400 text-sm sm:text-base">
                   {progress.checked}/{progress.total} complétés
                 </span>
                 <button
@@ -249,8 +250,8 @@ export const ChecklistPage = () => {
       </section>
 
       {/* Checklist sections */}
-      <section className="pb-20 px-6">
-        <div className="max-w-4xl mx-auto space-y-6">
+      <section className="pb-16 sm:pb-20 px-4 sm:px-6">
+        <div className="max-w-4xl mx-auto space-y-4 sm:space-y-6">
           {currentData.sections.map((section, sectionIndex) => {
             const sectionChecked = section.items.filter(item => checkedItems[item.id]).length;
             const sectionTotal = section.items.length;
@@ -258,39 +259,39 @@ export const ChecklistPage = () => {
 
             return (
               <div key={sectionIndex} className="bg-neutral-900 border border-neutral-800">
-                <div className={`p-4 border-b border-neutral-800 flex items-center justify-between ${
+                <div className={`p-3 sm:p-4 border-b border-neutral-800 flex items-center justify-between ${
                   isComplete ? (activeTab === "trading" ? "bg-blue-950/30" : "bg-emerald-950/30") : ""
                 }`}>
-                  <div className="flex items-center gap-3">
+                  <div className="flex items-center gap-2 sm:gap-3">
                     {isComplete ? (
-                      <CheckCircle2 className={activeTab === "trading" ? "text-blue-500" : "text-emerald-500"} size={20} />
+                      <CheckCircle2 className={activeTab === "trading" ? "text-blue-500" : "text-emerald-500"} size={18} />
                     ) : (
-                      <span className={`w-6 h-6 rounded-full border-2 flex items-center justify-center text-xs font-bold ${
+                      <span className={`w-5 h-5 sm:w-6 sm:h-6 rounded-full border-2 flex items-center justify-center text-xs font-bold ${
                         activeTab === "trading" ? "border-blue-500 text-blue-500" : "border-emerald-500 text-emerald-500"
                       }`}>
                         {sectionIndex + 1}
                       </span>
                     )}
-                    <h3 className="text-white font-bold">{section.title}</h3>
+                    <h3 className="text-white font-bold text-sm sm:text-base">{section.title}</h3>
                   </div>
-                  <span className="text-sm text-neutral-400">
+                  <span className="text-xs sm:text-sm text-neutral-400">
                     {sectionChecked}/{sectionTotal}
                   </span>
                 </div>
-                <div className="p-4 space-y-3">
+                <div className="p-2 sm:p-4 space-y-2 sm:space-y-3">
                   {section.items.map((item) => (
                     <div key={item.id}>
                       <button
                         onClick={() => toggleItem(item.id)}
-                        className="w-full flex items-start gap-3 p-3 bg-neutral-800/50 hover:bg-neutral-800 transition-colors text-left"
+                        className="w-full flex items-start gap-2 sm:gap-3 p-2 sm:p-3 bg-neutral-800/50 hover:bg-neutral-800 transition-colors text-left"
                       >
                         {checkedItems[item.id] ? (
-                          <CheckCircle2 className={`mt-0.5 flex-shrink-0 ${activeTab === "trading" ? "text-blue-500" : "text-emerald-500"}`} size={20} />
+                          <CheckCircle2 className={`mt-0.5 flex-shrink-0 ${activeTab === "trading" ? "text-blue-500" : "text-emerald-500"}`} size={18} />
                         ) : (
-                          <Circle className="mt-0.5 flex-shrink-0 text-neutral-600" size={20} />
+                          <Circle className="mt-0.5 flex-shrink-0 text-neutral-600" size={18} />
                         )}
-                        <div className="flex-1">
-                          <span className={`${
+                        <div className="flex-1 min-w-0">
+                          <span className={`text-sm sm:text-base ${
                             checkedItems[item.id] ? "text-neutral-500 line-through" : "text-white"
                           }`}>
                             {item.text}
@@ -301,7 +302,7 @@ export const ChecklistPage = () => {
                             e.stopPropagation();
                             setExpandedTip(expandedTip === item.id ? null : item.id);
                           }}
-                          className={`text-xs px-2 py-1 transition-colors ${
+                          className={`text-xs px-2 py-1 flex-shrink-0 transition-colors ${
                             expandedTip === item.id
                               ? (activeTab === "trading" ? "bg-blue-600 text-white" : "bg-emerald-600 text-white")
                               : "bg-neutral-700 text-neutral-400 hover:text-white"
@@ -311,7 +312,7 @@ export const ChecklistPage = () => {
                         </button>
                       </button>
                       {expandedTip === item.id && (
-                        <div className={`ml-8 mt-2 p-3 text-sm ${
+                        <div className={`ml-4 sm:ml-8 mt-2 p-2 sm:p-3 text-xs sm:text-sm ${
                           activeTab === "trading" ? "bg-blue-950/30 border-l-2 border-blue-600 text-blue-300" : "bg-emerald-950/30 border-l-2 border-emerald-600 text-emerald-300"
                         }`}>
                           💡 {item.tip}
@@ -327,19 +328,19 @@ export const ChecklistPage = () => {
       </section>
 
       {/* CTA */}
-      <section className={`py-16 px-6 border-t ${activeTab === "trading" ? "bg-blue-950/20 border-blue-900/30" : "bg-emerald-950/20 border-emerald-900/30"}`}>
+      <section className={`py-12 sm:py-16 px-4 sm:px-6 border-t ${activeTab === "trading" ? "bg-blue-950/20 border-blue-900/30" : "bg-emerald-950/20 border-emerald-900/30"}`}>
         <div className="max-w-4xl mx-auto text-center">
-          <h2 className="text-2xl font-black text-white mb-4">
+          <h2 className="text-xl sm:text-2xl font-black text-white mb-3 sm:mb-4">
             Besoin d'aide sur une étape ?
           </h2>
-          <p className="text-neutral-400 mb-6">
+          <p className="text-sm sm:text-base text-neutral-400 mb-5 sm:mb-6">
             Consulte les ebooks pour des explications détaillées sur chaque point.
           </p>
           <Button
             onClick={() => navigate(activeTab === "trading" ? "/trading" : "/ecommerce")}
-            className={`font-bold px-8 h-12 rounded-none ${activeTab === "trading" ? "bg-blue-600 hover:bg-blue-700" : "bg-emerald-600 hover:bg-emerald-700"}`}
+            className={`font-bold px-6 sm:px-8 h-11 sm:h-12 rounded-none text-sm sm:text-base ${activeTab === "trading" ? "bg-blue-600 hover:bg-blue-700" : "bg-emerald-600 hover:bg-emerald-700"}`}
           >
-            <BookOpen className="mr-2" size={18} />
+            <BookOpen className="mr-2" size={16} />
             Voir les ebooks {currentData.title}
           </Button>
         </div>

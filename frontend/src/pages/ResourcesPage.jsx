@@ -332,43 +332,44 @@ export const ResourcesPage = () => {
   return (
     <div className="min-h-screen pt-20 bg-black">
       {/* Hero */}
-      <section className="py-16 px-6">
+      <section className="py-10 sm:py-16 px-4 sm:px-6">
         <div className="max-w-6xl mx-auto">
-          <div className="flex items-center gap-3 mb-4">
-            <Wrench className={activeTab === "trading" ? "text-blue-500" : "text-emerald-500"} size={24} />
-            <span className={`text-sm uppercase tracking-wider font-bold ${activeTab === "trading" ? "text-blue-500" : "text-emerald-500"}`}>
+          <div className="flex items-center gap-2 sm:gap-3 mb-3 sm:mb-4">
+            <Wrench className={activeTab === "trading" ? "text-blue-500" : "text-emerald-500"} size={20} />
+            <span className={`text-xs sm:text-sm uppercase tracking-wider font-bold ${activeTab === "trading" ? "text-blue-500" : "text-emerald-500"}`}>
               Boîte à outils
             </span>
           </div>
-          <h1 className="text-4xl md:text-5xl font-black text-white mb-4 tracking-tight">
+          <h1 className="text-3xl sm:text-4xl md:text-5xl font-black text-white mb-3 sm:mb-4 tracking-tight">
             Les <span className={activeTab === "trading" ? "text-blue-500" : "text-emerald-500"}>outils</span> que j'utilise
           </h1>
-          <p className="text-lg text-neutral-400 mb-8 max-w-2xl">
+          <p className="text-base sm:text-lg text-neutral-400 mb-6 sm:mb-8 max-w-2xl">
             Pas de bullshit, juste les outils qui marchent vraiment. Je les utilise au quotidien.
           </p>
 
           {/* Tabs */}
-          <div className="flex gap-4 mb-12">
+          <div className="flex gap-2 sm:gap-4 mb-8 sm:mb-12">
             <button
               onClick={() => setActiveTab("ecommerce")}
-              className={`flex items-center gap-2 px-6 py-3 font-bold transition-all ${
+              className={`flex items-center gap-1 sm:gap-2 px-3 sm:px-6 py-2 sm:py-3 font-bold transition-all text-sm sm:text-base ${
                 activeTab === "ecommerce"
                   ? "bg-emerald-600 text-white"
                   : "bg-neutral-800 text-neutral-400 hover:bg-neutral-700"
               }`}
             >
-              <ShoppingCart size={20} />
-              E-commerce
+              <ShoppingCart size={18} />
+              <span className="hidden xs:inline">E-commerce</span>
+              <span className="xs:hidden">E-com</span>
             </button>
             <button
               onClick={() => setActiveTab("trading")}
-              className={`flex items-center gap-2 px-6 py-3 font-bold transition-all ${
+              className={`flex items-center gap-1 sm:gap-2 px-3 sm:px-6 py-2 sm:py-3 font-bold transition-all text-sm sm:text-base ${
                 activeTab === "trading"
                   ? "bg-blue-600 text-white"
                   : "bg-neutral-800 text-neutral-400 hover:bg-neutral-700"
               }`}
             >
-              <TrendingUp size={20} />
+              <TrendingUp size={18} />
               Trading
             </button>
           </div>
@@ -376,34 +377,34 @@ export const ResourcesPage = () => {
       </section>
 
       {/* Resources */}
-      <section className="pb-20 px-6">
-        <div className="max-w-6xl mx-auto space-y-12">
+      <section className="pb-16 sm:pb-20 px-4 sm:px-6">
+        <div className="max-w-6xl mx-auto space-y-8 sm:space-y-12">
           {currentData.categories.map((category, catIndex) => {
             const IconComponent = category.icon;
             return (
               <div key={catIndex}>
-                <div className="flex items-center gap-3 mb-6">
-                  <div className={`w-10 h-10 flex items-center justify-center ${activeTab === "trading" ? "bg-blue-600" : "bg-emerald-600"}`}>
-                    <IconComponent size={20} className="text-white" />
+                <div className="flex items-center gap-2 sm:gap-3 mb-4 sm:mb-6">
+                  <div className={`w-8 h-8 sm:w-10 sm:h-10 flex items-center justify-center ${activeTab === "trading" ? "bg-blue-600" : "bg-emerald-600"}`}>
+                    <IconComponent size={16} className="text-white sm:w-5 sm:h-5" />
                   </div>
-                  <h2 className="text-2xl font-bold text-white">{category.name}</h2>
+                  <h2 className="text-xl sm:text-2xl font-bold text-white">{category.name}</h2>
                 </div>
                 
-                <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-4">
+                <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-3 sm:gap-4">
                   {category.tools.map((tool, toolIndex) => (
                     <div
                       key={toolIndex}
-                      className="bg-neutral-900 border border-neutral-800 p-6 hover:border-neutral-700 transition-colors"
+                      className="bg-neutral-900 border border-neutral-800 p-4 sm:p-6 hover:border-neutral-700 transition-colors"
                     >
-                      <div className="flex items-start justify-between mb-3">
-                        <h3 className="text-lg font-bold text-white">{tool.name}</h3>
+                      <div className="flex items-start justify-between gap-2 mb-2 sm:mb-3">
+                        <h3 className="text-base sm:text-lg font-bold text-white">{tool.name}</h3>
                         {tool.tag && (
-                          <span className={`text-xs px-2 py-1 border ${tagColors[tool.tagColor]}`}>
+                          <span className={`text-xs px-2 py-1 border flex-shrink-0 ${tagColors[tool.tagColor]}`}>
                             {tool.tag}
                           </span>
                         )}
                       </div>
-                      <p className="text-neutral-400 text-sm mb-4 leading-relaxed">
+                      <p className="text-neutral-400 text-xs sm:text-sm mb-3 sm:mb-4 leading-relaxed">
                         {tool.description}
                       </p>
                       {tool.url && (
@@ -428,10 +429,10 @@ export const ResourcesPage = () => {
       </section>
 
       {/* Disclaimer */}
-      <section className="py-12 px-6 bg-neutral-900/50 border-t border-neutral-800">
+      <section className="py-8 sm:py-12 px-4 sm:px-6 bg-neutral-900/50 border-t border-neutral-800">
         <div className="max-w-4xl mx-auto text-center">
-          <p className="text-neutral-500 text-sm">
-            <Star className="inline mr-2" size={14} />
+          <p className="text-neutral-500 text-xs sm:text-sm">
+            <Star className="inline mr-1 sm:mr-2" size={12} />
             Ces recommandations sont basées sur mon expérience personnelle. Je ne suis affilié à aucun de ces outils.
             Fais toujours tes propres recherches avant de t'engager.
           </p>

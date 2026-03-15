@@ -197,33 +197,33 @@ export const EcommercePage = () => {
   return (
     <div className="min-h-screen pt-20 bg-black">
       {/* Hero */}
-      <section className="py-24 px-6">
+      <section className="py-12 sm:py-24 px-4 sm:px-6">
         <div className="max-w-7xl mx-auto">
           <div className="max-w-3xl">
-            <span className="text-sm uppercase tracking-wider text-emerald-500 font-bold mb-4 block">
+            <span className="text-xs sm:text-sm uppercase tracking-wider text-emerald-500 font-bold mb-3 sm:mb-4 block">
               Formations E-commerce
             </span>
-            <h1 className="text-5xl md:text-7xl font-black text-white mb-6 tracking-tight">
+            <h1 className="text-3xl sm:text-5xl md:text-7xl font-black text-white mb-4 sm:mb-6 tracking-tight">
               Lance ta <span className="text-emerald-500">boutique</span> en ligne
             </h1>
-            <p className="text-xl text-neutral-400 mb-8">
+            <p className="text-base sm:text-xl text-neutral-400 mb-6 sm:mb-8">
               Dropshipping, print on demand, marque... Peu importe ton modèle, je te montre comment 
               faire tes premières ventes. Concrètement, sans bullshit.
             </p>
-            <div className="flex flex-wrap gap-4">
+            <div className="flex flex-col xs:flex-row gap-3 sm:gap-4">
               <Button 
                 onClick={() => setShowQuiz(true)}
-                className="bg-emerald-600 hover:bg-emerald-700 text-white font-bold px-8 h-14 rounded-none"
+                className="bg-emerald-600 hover:bg-emerald-700 text-white font-bold px-4 sm:px-8 h-12 sm:h-14 rounded-none text-sm sm:text-base"
               >
-                <Gamepad2 className="mr-2" size={20} />
+                <Gamepad2 className="mr-2" size={18} />
                 Teste ton niveau
               </Button>
               <Button 
                 onClick={() => setShowProductGame(true)}
                 variant="outline"
-                className="border-neutral-700 hover:bg-neutral-900 text-white font-bold px-8 h-14 rounded-none"
+                className="border-neutral-700 hover:bg-neutral-900 text-white font-bold px-4 sm:px-8 h-12 sm:h-14 rounded-none text-sm sm:text-base"
               >
-                <Package className="mr-2" size={20} />
+                <Package className="mr-2" size={18} />
                 Trouve ta niche
               </Button>
             </div>
@@ -233,26 +233,26 @@ export const EcommercePage = () => {
 
       {/* Quiz Modal */}
       {showQuiz && (
-        <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/90 p-4">
-          <div className="bg-neutral-900 border border-neutral-800 max-w-2xl w-full p-8">
+        <div className="fixed inset-0 z-50 flex items-start sm:items-center justify-center bg-black/90 p-3 sm:p-4 overflow-y-auto">
+          <div className="bg-neutral-900 border border-neutral-800 max-w-2xl w-full p-4 sm:p-8 my-4">
             {!showResult ? (
               <>
-                <div className="flex justify-between items-center mb-8">
-                  <span className="text-emerald-500 font-bold">Question {currentQuestion + 1}/{quizQuestions.length}</span>
-                  <span className="text-neutral-400">Score: {score}</span>
+                <div className="flex justify-between items-center mb-4 sm:mb-8">
+                  <span className="text-emerald-500 font-bold text-sm sm:text-base">Question {currentQuestion + 1}/{quizQuestions.length}</span>
+                  <span className="text-neutral-400 text-sm sm:text-base">Score: {score}</span>
                 </div>
                 
-                <h2 className="text-2xl font-bold text-white mb-8">
+                <h2 className="text-lg sm:text-2xl font-bold text-white mb-4 sm:mb-8">
                   {quizQuestions[currentQuestion].question}
                 </h2>
                 
-                <div className="space-y-4">
+                <div className="space-y-2 sm:space-y-4">
                   {quizQuestions[currentQuestion].options.map((option, index) => (
                     <button
                       key={index}
                       onClick={() => selectedAnswer === null && handleAnswer(index)}
                       disabled={selectedAnswer !== null}
-                      className={`w-full p-4 text-left transition-all ${
+                      className={`w-full p-3 sm:p-4 text-left transition-all text-sm sm:text-base ${
                         selectedAnswer === null 
                           ? "bg-neutral-800 hover:bg-neutral-700 text-white" 
                           : selectedAnswer === index
@@ -267,10 +267,10 @@ export const EcommercePage = () => {
                       <div className="flex items-center justify-between">
                         <span>{option}</span>
                         {selectedAnswer !== null && index === quizQuestions[currentQuestion].correct && (
-                          <CheckCircle className="text-green-500" size={20} />
+                          <CheckCircle className="text-green-500 flex-shrink-0" size={18} />
                         )}
                         {selectedAnswer === index && index !== quizQuestions[currentQuestion].correct && (
-                          <XCircle className="text-red-500" size={20} />
+                          <XCircle className="text-red-500 flex-shrink-0" size={18} />
                         )}
                       </div>
                     </button>
@@ -278,19 +278,19 @@ export const EcommercePage = () => {
                 </div>
                 
                 {selectedAnswer !== null && (
-                  <div className="mt-6 p-4 bg-emerald-950/30 border border-emerald-900/50">
-                    <p className="text-emerald-300 text-sm">
+                  <div className="mt-4 sm:mt-6 p-3 sm:p-4 bg-emerald-950/30 border border-emerald-900/50">
+                    <p className="text-emerald-300 text-xs sm:text-sm">
                       {quizQuestions[currentQuestion].explanation}
                     </p>
                   </div>
                 )}
               </>
             ) : (
-              <div className="text-center py-8">
-                <Trophy className="text-yellow-500 mx-auto mb-6" size={64} />
-                <h2 className="text-3xl font-black text-white mb-4">Quiz terminé !</h2>
-                <p className="text-5xl font-black text-emerald-500 mb-4">{score}/{quizQuestions.length}</p>
-                <p className="text-neutral-400 mb-8">
+              <div className="text-center py-4 sm:py-8">
+                <Trophy className="text-yellow-500 mx-auto mb-4 sm:mb-6" size={48} />
+                <h2 className="text-2xl sm:text-3xl font-black text-white mb-3 sm:mb-4">Quiz terminé !</h2>
+                <p className="text-4xl sm:text-5xl font-black text-emerald-500 mb-3 sm:mb-4">{score}/{quizQuestions.length}</p>
+                <p className="text-sm sm:text-base text-neutral-400 mb-6 sm:mb-8">
                   {score === quizQuestions.length ? "T'es prêt à scaler ! 🚀" :
                    score >= 3 ? "Tu connais les bases, on peut aller plus loin." :
                    "T'inquiète, les ebooks sont là pour ça."}
@@ -306,25 +306,25 @@ export const EcommercePage = () => {
 
       {/* Product Finder Modal */}
       {showProductGame && (
-        <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/90 p-4">
-          <div className="bg-neutral-900 border border-neutral-800 max-w-2xl w-full p-8">
+        <div className="fixed inset-0 z-50 flex items-start sm:items-center justify-center bg-black/90 p-3 sm:p-4 overflow-y-auto">
+          <div className="bg-neutral-900 border border-neutral-800 max-w-2xl w-full p-4 sm:p-8 my-4">
             {productStep >= 0 ? (
               <>
-                <div className="flex justify-between items-center mb-8">
-                  <span className="text-emerald-500 font-bold">Étape {productStep + 1}/{productQuestions.length}</span>
+                <div className="flex justify-between items-center mb-4 sm:mb-8">
+                  <span className="text-emerald-500 font-bold text-sm sm:text-base">Étape {productStep + 1}/{productQuestions.length}</span>
                   <button onClick={resetProductGame} className="text-neutral-400 hover:text-white">✕</button>
                 </div>
                 
-                <h2 className="text-2xl font-bold text-white mb-8">
+                <h2 className="text-lg sm:text-2xl font-bold text-white mb-4 sm:mb-8">
                   {productQuestions[productStep].question}
                 </h2>
                 
-                <div className="grid grid-cols-2 gap-4">
+                <div className="grid grid-cols-2 gap-2 sm:gap-4">
                   {productQuestions[productStep].options.map((option, index) => (
                     <button
                       key={index}
                       onClick={() => handleProductAnswer(option.value)}
-                      className="p-6 bg-neutral-800 hover:bg-emerald-900/30 hover:border-emerald-700 border border-neutral-700 text-white font-medium transition-all"
+                      className="p-4 sm:p-6 bg-neutral-800 hover:bg-emerald-900/30 hover:border-emerald-700 border border-neutral-700 text-white font-medium transition-all text-sm sm:text-base"
                     >
                       {option.label}
                     </button>
@@ -332,11 +332,11 @@ export const EcommercePage = () => {
                 </div>
               </>
             ) : (
-              <div className="py-8">
-                <Package className="text-emerald-500 mx-auto mb-6" size={64} />
-                <h2 className="text-3xl font-black text-white mb-6 text-center">Mon conseil</h2>
-                <div className="bg-emerald-950/30 border border-emerald-900/50 p-6 mb-8">
-                  <p className="text-neutral-300 leading-relaxed">
+              <div className="py-4 sm:py-8">
+                <Package className="text-emerald-500 mx-auto mb-4 sm:mb-6" size={48} />
+                <h2 className="text-2xl sm:text-3xl font-black text-white mb-4 sm:mb-6 text-center">Mon conseil</h2>
+                <div className="bg-emerald-950/30 border border-emerald-900/50 p-4 sm:p-6 mb-6 sm:mb-8">
+                  <p className="text-neutral-300 leading-relaxed text-sm sm:text-base">
                     {productResults[productResult]}
                   </p>
                 </div>
@@ -353,118 +353,118 @@ export const EcommercePage = () => {
 
       {/* Margin Calculator Modal */}
       {showCalculator && (
-        <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/90 p-4 overflow-y-auto">
-          <div className="bg-neutral-900 border border-neutral-800 max-w-2xl w-full p-8 my-8">
-            <div className="flex justify-between items-center mb-6">
-              <div className="flex items-center gap-3">
-                <Calculator className="text-emerald-500" size={24} />
-                <h2 className="text-2xl font-bold text-white">Calculateur de Marge</h2>
+        <div className="fixed inset-0 z-50 flex items-start sm:items-center justify-center bg-black/90 p-3 sm:p-4 overflow-y-auto">
+          <div className="bg-neutral-900 border border-neutral-800 max-w-2xl w-full p-4 sm:p-8 my-4 sm:my-8">
+            <div className="flex justify-between items-center mb-4 sm:mb-6">
+              <div className="flex items-center gap-2 sm:gap-3">
+                <Calculator className="text-emerald-500" size={20} />
+                <h2 className="text-lg sm:text-2xl font-bold text-white">Calculateur de Marge</h2>
               </div>
-              <button onClick={() => setShowCalculator(false)} className="text-neutral-400 hover:text-white">
-                <X size={24} />
+              <button onClick={() => setShowCalculator(false)} className="text-neutral-400 hover:text-white p-1">
+                <X size={20} />
               </button>
             </div>
 
-            <p className="text-neutral-400 mb-6">
+            <p className="text-sm sm:text-base text-neutral-400 mb-4 sm:mb-6">
               Entre tes chiffres pour voir si ton produit est rentable.
             </p>
 
-            <div className="grid md:grid-cols-2 gap-4 mb-6">
+            <div className="grid grid-cols-2 gap-3 sm:gap-4 mb-4 sm:mb-6">
               <div>
-                <label className="block text-sm text-neutral-400 mb-2">Coût du produit (€)</label>
+                <label className="block text-xs sm:text-sm text-neutral-400 mb-1 sm:mb-2">Coût produit (€)</label>
                 <input
                   type="number"
                   value={calcValues.productCost}
                   onChange={(e) => setCalcValues({...calcValues, productCost: e.target.value})}
-                  placeholder="Ex: 8"
-                  className="w-full bg-neutral-800 border border-neutral-700 text-white p-3 focus:border-emerald-500 focus:outline-none"
+                  placeholder="8"
+                  className="w-full bg-neutral-800 border border-neutral-700 text-white p-2 sm:p-3 text-sm focus:border-emerald-500 focus:outline-none"
                 />
               </div>
               <div>
-                <label className="block text-sm text-neutral-400 mb-2">Frais de livraison (€)</label>
+                <label className="block text-xs sm:text-sm text-neutral-400 mb-1 sm:mb-2">Frais livraison (€)</label>
                 <input
                   type="number"
                   value={calcValues.shippingCost}
                   onChange={(e) => setCalcValues({...calcValues, shippingCost: e.target.value})}
-                  placeholder="Ex: 3"
-                  className="w-full bg-neutral-800 border border-neutral-700 text-white p-3 focus:border-emerald-500 focus:outline-none"
+                  placeholder="3"
+                  className="w-full bg-neutral-800 border border-neutral-700 text-white p-2 sm:p-3 text-sm focus:border-emerald-500 focus:outline-none"
                 />
               </div>
               <div>
-                <label className="block text-sm text-neutral-400 mb-2">Prix de vente (€)</label>
+                <label className="block text-xs sm:text-sm text-neutral-400 mb-1 sm:mb-2">Prix de vente (€)</label>
                 <input
                   type="number"
                   value={calcValues.sellingPrice}
                   onChange={(e) => setCalcValues({...calcValues, sellingPrice: e.target.value})}
-                  placeholder="Ex: 29.99"
-                  className="w-full bg-neutral-800 border border-neutral-700 text-white p-3 focus:border-emerald-500 focus:outline-none"
+                  placeholder="29.99"
+                  className="w-full bg-neutral-800 border border-neutral-700 text-white p-2 sm:p-3 text-sm focus:border-emerald-500 focus:outline-none"
                 />
               </div>
               <div>
-                <label className="block text-sm text-neutral-400 mb-2">Coût pub par vente (€)</label>
+                <label className="block text-xs sm:text-sm text-neutral-400 mb-1 sm:mb-2">Coût pub/vente (€)</label>
                 <input
                   type="number"
                   value={calcValues.adCostPerSale}
                   onChange={(e) => setCalcValues({...calcValues, adCostPerSale: e.target.value})}
-                  placeholder="Ex: 10"
-                  className="w-full bg-neutral-800 border border-neutral-700 text-white p-3 focus:border-emerald-500 focus:outline-none"
+                  placeholder="10"
+                  className="w-full bg-neutral-800 border border-neutral-700 text-white p-2 sm:p-3 text-sm focus:border-emerald-500 focus:outline-none"
                 />
               </div>
-              <div className="md:col-span-2">
-                <label className="block text-sm text-neutral-400 mb-2">Frais de transaction (%)</label>
+              <div className="col-span-2">
+                <label className="block text-xs sm:text-sm text-neutral-400 mb-1 sm:mb-2">Frais transaction (%)</label>
                 <input
                   type="number"
                   value={calcValues.transactionFee}
                   onChange={(e) => setCalcValues({...calcValues, transactionFee: e.target.value})}
                   placeholder="2.9"
                   step="0.1"
-                  className="w-full bg-neutral-800 border border-neutral-700 text-white p-3 focus:border-emerald-500 focus:outline-none"
+                  className="w-full bg-neutral-800 border border-neutral-700 text-white p-2 sm:p-3 text-sm focus:border-emerald-500 focus:outline-none"
                 />
                 <p className="text-xs text-neutral-500 mt-1">Stripe ~2.9%, PayPal ~3.4%</p>
               </div>
             </div>
 
             {/* Results */}
-            <div className="border-t border-neutral-800 pt-6">
-              <h3 className="text-lg font-bold text-white mb-4">Résultats</h3>
+            <div className="border-t border-neutral-800 pt-4 sm:pt-6">
+              <h3 className="text-base sm:text-lg font-bold text-white mb-3 sm:mb-4">Résultats</h3>
               
-              <div className="grid grid-cols-2 gap-4 mb-6">
-                <div className="bg-neutral-800 p-4">
-                  <p className="text-sm text-neutral-400">Coût total</p>
-                  <p className="text-2xl font-bold text-white">{margin.totalCost}€</p>
+              <div className="grid grid-cols-2 gap-2 sm:gap-4 mb-4 sm:mb-6">
+                <div className="bg-neutral-800 p-3 sm:p-4">
+                  <p className="text-xs sm:text-sm text-neutral-400">Coût total</p>
+                  <p className="text-lg sm:text-2xl font-bold text-white">{margin.totalCost}€</p>
                 </div>
-                <div className="bg-neutral-800 p-4">
-                  <p className="text-sm text-neutral-400">Frais transaction</p>
-                  <p className="text-2xl font-bold text-white">{margin.transactionFee}€</p>
+                <div className="bg-neutral-800 p-3 sm:p-4">
+                  <p className="text-xs sm:text-sm text-neutral-400">Frais transaction</p>
+                  <p className="text-lg sm:text-2xl font-bold text-white">{margin.transactionFee}€</p>
                 </div>
-                <div className={`p-4 ${margin.isProfitable ? "bg-emerald-950/50 border border-emerald-800" : "bg-red-950/50 border border-red-800"}`}>
-                  <p className="text-sm text-neutral-400">Marge nette</p>
-                  <p className={`text-2xl font-bold ${margin.isProfitable ? "text-emerald-500" : "text-red-500"}`}>
+                <div className={`p-3 sm:p-4 ${margin.isProfitable ? "bg-emerald-950/50 border border-emerald-800" : "bg-red-950/50 border border-red-800"}`}>
+                  <p className="text-xs sm:text-sm text-neutral-400">Marge nette</p>
+                  <p className={`text-lg sm:text-2xl font-bold ${margin.isProfitable ? "text-emerald-500" : "text-red-500"}`}>
                     {margin.netMargin}€
                   </p>
                 </div>
-                <div className={`p-4 ${margin.isProfitable ? "bg-emerald-950/50 border border-emerald-800" : "bg-red-950/50 border border-red-800"}`}>
-                  <p className="text-sm text-neutral-400">Marge %</p>
-                  <p className={`text-2xl font-bold ${margin.isProfitable ? "text-emerald-500" : "text-red-500"}`}>
+                <div className={`p-3 sm:p-4 ${margin.isProfitable ? "bg-emerald-950/50 border border-emerald-800" : "bg-red-950/50 border border-red-800"}`}>
+                  <p className="text-xs sm:text-sm text-neutral-400">Marge %</p>
+                  <p className={`text-lg sm:text-2xl font-bold ${margin.isProfitable ? "text-emerald-500" : "text-red-500"}`}>
                     {margin.marginPercent}%
                   </p>
                 </div>
               </div>
 
               {/* Verdict */}
-              <div className={`p-4 ${
+              <div className={`p-3 sm:p-4 ${
                 margin.rating === "excellent" ? "bg-emerald-950/30 border border-emerald-800" :
                 margin.rating === "good" ? "bg-green-950/30 border border-green-800" :
                 margin.rating === "okay" ? "bg-yellow-950/30 border border-yellow-800" :
                 "bg-red-950/30 border border-red-800"
               }`}>
-                <p className="font-bold mb-2 text-white">
+                <p className="font-bold mb-1 sm:mb-2 text-white text-sm sm:text-base">
                   {margin.rating === "excellent" ? "🚀 Excellent !" :
                    margin.rating === "good" ? "✅ Bon produit" :
                    margin.rating === "okay" ? "⚠️ Marges serrées" :
                    "❌ Pas rentable"}
                 </p>
-                <p className="text-sm text-neutral-300">
+                <p className="text-xs sm:text-sm text-neutral-300">
                   {margin.rating === "excellent" ? "Marge > 40%. T'as trouvé un winner potentiel. Lance les tests !" :
                    margin.rating === "good" ? "Marge entre 25-40%. Correct pour commencer, tu pourras optimiser." :
                    margin.rating === "okay" ? "Marge entre 10-25%. Ça peut marcher mais attention aux imprévus." :
@@ -473,13 +473,13 @@ export const EcommercePage = () => {
                 </p>
               </div>
 
-              <div className="mt-4 text-xs text-neutral-500">
+              <div className="mt-3 sm:mt-4 text-xs text-neutral-500">
                 💡 Tip : Vise minimum 30% de marge pour avoir de la marge de manœuvre.
               </div>
             </div>
 
-            <div className="mt-6 flex justify-end">
-              <Button onClick={() => setShowCalculator(false)} className="bg-emerald-600 hover:bg-emerald-700 rounded-none">
+            <div className="mt-4 sm:mt-6 flex justify-end">
+              <Button onClick={() => setShowCalculator(false)} className="bg-emerald-600 hover:bg-emerald-700 rounded-none text-sm sm:text-base">
                 Fermer
               </Button>
             </div>
@@ -488,49 +488,49 @@ export const EcommercePage = () => {
       )}
 
       {/* Ebooks Section */}
-      <section className="py-20 px-6 bg-neutral-900/30">
+      <section className="py-12 sm:py-20 px-4 sm:px-6 bg-neutral-900/30">
         <div className="max-w-7xl mx-auto">
-          <div className="mb-12">
-            <h2 className="text-4xl font-black text-white mb-4">
+          <div className="mb-8 sm:mb-12">
+            <h2 className="text-2xl sm:text-4xl font-black text-white mb-3 sm:mb-4">
               Les <span className="text-emerald-500">ebooks</span>
             </h2>
-            <p className="text-neutral-400 text-lg">
+            <p className="text-neutral-400 text-sm sm:text-lg">
               Tout ce que j'aurais aimé savoir quand j'ai commencé. Sans langue de bois.
             </p>
           </div>
 
-          <div className="grid md:grid-cols-3 gap-8">
+          <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-8">
             {ebooks.map((ebook) => (
               <div key={ebook.id} className="bg-neutral-900 border border-neutral-800 hover:border-emerald-900/50 transition-colors">
-                <div className="p-8">
-                  <div className="flex items-center justify-between mb-4">
-                    <span className={`text-xs uppercase tracking-wider font-bold px-3 py-1 ${
+                <div className="p-4 sm:p-8">
+                  <div className="flex items-center justify-between mb-3 sm:mb-4">
+                    <span className={`text-xs uppercase tracking-wider font-bold px-2 sm:px-3 py-1 ${
                       ebook.level === "Débutant" ? "bg-green-950 text-green-500" :
                       ebook.level === "Intermédiaire" ? "bg-yellow-950 text-yellow-500" :
                       "bg-red-950 text-red-500"
                     }`}>
                       {ebook.level}
                     </span>
-                    <BookOpen className="text-emerald-500" size={24} />
+                    <BookOpen className="text-emerald-500" size={20} />
                   </div>
                   
-                  <h3 className="text-2xl font-bold text-white mb-3">{ebook.title}</h3>
-                  <p className="text-neutral-400 mb-6">{ebook.description}</p>
+                  <h3 className="text-lg sm:text-2xl font-bold text-white mb-2 sm:mb-3">{ebook.title}</h3>
+                  <p className="text-neutral-400 text-sm sm:text-base mb-4 sm:mb-6">{ebook.description}</p>
                   
-                  <div className="space-y-2 mb-6">
+                  <div className="space-y-1 sm:space-y-2 mb-4 sm:mb-6">
                     {ebook.chapters.map((chapter, i) => (
-                      <div key={i} className="flex items-center gap-2 text-sm text-neutral-300">
-                        <ChevronRight className="text-emerald-500" size={14} />
-                        <span>{chapter}</span>
+                      <div key={i} className="flex items-center gap-2 text-xs sm:text-sm text-neutral-300">
+                        <ChevronRight className="text-emerald-500 flex-shrink-0" size={12} />
+                        <span className="truncate">{chapter}</span>
                       </div>
                     ))}
                   </div>
                   
                   <Button 
-                    className="w-full bg-emerald-600 hover:bg-emerald-700 rounded-none font-bold"
+                    className="w-full bg-emerald-600 hover:bg-emerald-700 rounded-none font-bold text-sm sm:text-base"
                     onClick={() => navigate(`/ebook/ecommerce/${ebook.id}`)}
                   >
-                    <Download className="mr-2" size={18} />
+                    <Download className="mr-2" size={16} />
                     Lire l'ebook
                   </Button>
                 </div>
@@ -541,76 +541,76 @@ export const EcommercePage = () => {
       </section>
 
       {/* Interactive Tools */}
-      <section className="py-20 px-6">
+      <section className="py-12 sm:py-20 px-4 sm:px-6">
         <div className="max-w-7xl mx-auto">
-          <div className="mb-12">
-            <h2 className="text-4xl font-black text-white mb-4">
+          <div className="mb-8 sm:mb-12">
+            <h2 className="text-2xl sm:text-4xl font-black text-white mb-3 sm:mb-4">
               Outils <span className="text-emerald-500">interactifs</span>
             </h2>
-            <p className="text-neutral-400 text-lg">
+            <p className="text-neutral-400 text-sm sm:text-lg">
               Des mini-outils pour t'aider à démarrer plus vite.
             </p>
           </div>
 
-          <div className="grid md:grid-cols-3 gap-8">
-            <div className="bg-neutral-900 border border-neutral-800 p-8">
-              <div className="flex items-center gap-4 mb-6">
-                <div className="w-14 h-14 bg-emerald-600 flex items-center justify-center">
-                  <Brain size={28} className="text-white" />
+          <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-8">
+            <div className="bg-neutral-900 border border-neutral-800 p-4 sm:p-8">
+              <div className="flex items-center gap-3 sm:gap-4 mb-4 sm:mb-6">
+                <div className="w-12 h-12 sm:w-14 sm:h-14 bg-emerald-600 flex items-center justify-center">
+                  <Brain size={24} className="text-white" />
                 </div>
                 <div>
-                  <h3 className="text-xl font-bold text-white">Quiz E-commerce</h3>
-                  <p className="text-neutral-400 text-sm">Teste tes connaissances</p>
+                  <h3 className="text-base sm:text-xl font-bold text-white">Quiz E-commerce</h3>
+                  <p className="text-neutral-400 text-xs sm:text-sm">Teste tes connaissances</p>
                 </div>
               </div>
-              <p className="text-neutral-300 mb-6">
+              <p className="text-neutral-300 text-sm sm:text-base mb-4 sm:mb-6">
                 Tu connais les bases ? On va voir ça en 5 questions.
               </p>
               <Button 
                 onClick={() => setShowQuiz(true)}
-                className="w-full bg-emerald-600 hover:bg-emerald-700 rounded-none font-bold"
+                className="w-full bg-emerald-600 hover:bg-emerald-700 rounded-none font-bold text-sm sm:text-base"
               >
                 Lancer le quiz
               </Button>
             </div>
 
-            <div className="bg-neutral-900 border border-neutral-800 p-8">
-              <div className="flex items-center gap-4 mb-6">
-                <div className="w-14 h-14 bg-emerald-600 flex items-center justify-center">
-                  <Package size={28} className="text-white" />
+            <div className="bg-neutral-900 border border-neutral-800 p-4 sm:p-8">
+              <div className="flex items-center gap-3 sm:gap-4 mb-4 sm:mb-6">
+                <div className="w-12 h-12 sm:w-14 sm:h-14 bg-emerald-600 flex items-center justify-center">
+                  <Package size={24} className="text-white" />
                 </div>
                 <div>
-                  <h3 className="text-xl font-bold text-white">Trouve ta Niche</h3>
-                  <p className="text-neutral-400 text-sm">Mini-guide interactif</p>
+                  <h3 className="text-base sm:text-xl font-bold text-white">Trouve ta Niche</h3>
+                  <p className="text-neutral-400 text-xs sm:text-sm">Mini-guide interactif</p>
                 </div>
               </div>
-              <p className="text-neutral-300 mb-6">
+              <p className="text-neutral-300 text-sm sm:text-base mb-4 sm:mb-6">
                 Réponds à 3 questions et je te donne des pistes concrètes.
               </p>
               <Button 
                 onClick={() => setShowProductGame(true)}
-                className="w-full bg-emerald-600 hover:bg-emerald-700 rounded-none font-bold"
+                className="w-full bg-emerald-600 hover:bg-emerald-700 rounded-none font-bold text-sm sm:text-base"
               >
                 Commencer
               </Button>
             </div>
 
-            <div className="bg-neutral-900 border border-neutral-800 p-8">
-              <div className="flex items-center gap-4 mb-6">
-                <div className="w-14 h-14 bg-emerald-600 flex items-center justify-center">
-                  <Calculator size={28} className="text-white" />
+            <div className="bg-neutral-900 border border-neutral-800 p-4 sm:p-8">
+              <div className="flex items-center gap-3 sm:gap-4 mb-4 sm:mb-6">
+                <div className="w-12 h-12 sm:w-14 sm:h-14 bg-emerald-600 flex items-center justify-center">
+                  <Calculator size={24} className="text-white" />
                 </div>
                 <div>
-                  <h3 className="text-xl font-bold text-white">Calculateur de Marge</h3>
-                  <p className="text-neutral-400 text-sm">Calcule ta rentabilité</p>
+                  <h3 className="text-base sm:text-xl font-bold text-white">Calculateur de Marge</h3>
+                  <p className="text-neutral-400 text-xs sm:text-sm">Calcule ta rentabilité</p>
                 </div>
               </div>
-              <p className="text-neutral-300 mb-6">
+              <p className="text-neutral-300 text-sm sm:text-base mb-4 sm:mb-6">
                 Vérifie si ton produit est rentable avant de te lancer.
               </p>
               <Button 
                 onClick={() => setShowCalculator(true)}
-                className="w-full bg-emerald-600 hover:bg-emerald-700 rounded-none font-bold"
+                className="w-full bg-emerald-600 hover:bg-emerald-700 rounded-none font-bold text-sm sm:text-base"
               >
                 Calculer ma marge
               </Button>
@@ -620,20 +620,20 @@ export const EcommercePage = () => {
       </section>
 
       {/* CTA */}
-      <section className="py-24 px-6 bg-emerald-950/20 border-t border-emerald-900/30">
+      <section className="py-12 sm:py-24 px-4 sm:px-6 bg-emerald-950/20 border-t border-emerald-900/30">
         <div className="max-w-4xl mx-auto text-center">
-          <h2 className="text-4xl md:text-5xl font-black text-white mb-6">
+          <h2 className="text-2xl sm:text-4xl md:text-5xl font-black text-white mb-4 sm:mb-6">
             Prêt à lancer ta boutique ?
           </h2>
-          <p className="text-xl text-neutral-400 mb-10">
+          <p className="text-base sm:text-xl text-neutral-400 mb-6 sm:mb-10">
             Crée ton compte gratuit et accède à tous les ebooks et outils.
           </p>
           <Button 
             onClick={() => navigate("/login")}
-            className="bg-emerald-600 hover:bg-emerald-700 text-white font-bold text-lg px-12 h-16 rounded-none"
+            className="bg-emerald-600 hover:bg-emerald-700 text-white font-bold text-sm sm:text-lg px-6 sm:px-12 h-12 sm:h-16 rounded-none"
           >
             Commencer maintenant
-            <ArrowRight className="ml-2" size={20} />
+            <ArrowRight className="ml-2" size={18} />
           </Button>
         </div>
       </section>
